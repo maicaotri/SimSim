@@ -2,6 +2,7 @@ package com.app.dao.impl;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.BillDao;
 import com.app.dao.CartBillDetailDao;
+import com.app.dao.SimDao;
 import com.app.model.entitymodel.Bill;
 import com.app.model.entitymodel.CartBillDetail;
 import com.app.model.entitymodel.MainUser;
@@ -25,6 +27,8 @@ import com.app.model.entitymodel.MainUser;
 public class CartBillDetailDaoImpl implements CartBillDetailDao {
 	@Autowired
 	BillDao billDao;
+	@Autowired
+	SimDao simDao;
 	@Autowired
 	SessionFactory sessionFactory;
 	Session session;
@@ -119,27 +123,25 @@ public class CartBillDetailDaoImpl implements CartBillDetailDao {
 		return results;
 	}
 
-	// ghi 3 phan khac nhau de han che so lan truy suat db va do phai dung lai phuong thuc tim roi dung vong lap, nhu vay mat tg hon
-	public boolean payByUsernameAndListSimId(String username, List<Integer> listId, int page, int size) {
+	// ghi 3 phan khac nhau de han che so lan truy suat db va do phai dung lai
+	// phuong thuc tim roi dung vong lap, nhu vay mat tg hon
+	public boolean payByUsernameAndListId(String username, List<Integer> listId) {
 		session = sessionFactory.getCurrentSession();
-		// get sum price of bill
-		String sqlTotalPrice = "SELECT SUM(price) FROM cart_bill_detail WHERE username = :username AND `status` = 'READY' ";
-		StringBuilder findId = new StringBuilder("");
-		if (listId != null) {
-			findId.append(" AND id IN ( ");
-			for (int i = 0; i < listId.size(); i++) {
-				if (i == listId.size() - 1) {
-					findId.append(listId.get(i));
-					findId.append(") ");
+		List<CartBillDetail> listResult = getByUsernameListId(username, listId);
+
+		List<Integer> listSimId = new ArrayList<Integer>();
+		double totalPriceOfBill = 0;
+		if (listResult != null) {
+			for (int i = 0; i < listResult.size(); i++) {
+				if (i == listResult.size() - 1) {
+					totalPriceOfBill += listResult.get(i).getPrice();
+					listSimId.add(listResult.get(i).getSim().getId());
 				} else {
-					findId.append(listId.get(i));
-					findId.append(" , ");
+					totalPriceOfBill += listResult.get(i).getPrice();
+					listSimId.add(listResult.get(i).getSim().getId());
 				}
 			}
 		}
-		sqlTotalPrice += findId.toString();
-		SQLQuery queryTotalPrice = session.createSQLQuery(sqlTotalPrice);
-		queryTotalPrice.setParameter("username", username);
 
 		// create new bill
 		MainUser u = new MainUser();
@@ -148,35 +150,64 @@ public class CartBillDetailDaoImpl implements CartBillDetailDao {
 		bill.setMainuser(u);
 		bill.setDateCreate(Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
 		bill.setStatus("ORDERED");
-		bill.setPrice(Double.parseDouble(queryTotalPrice.list().get(0).toString()));
+		bill.setPrice(totalPriceOfBill);
 		billDao.add(bill);
 
-		// update cart_bill_detail mix with bill
-		StringBuilder sbSql = new StringBuilder("");
-		sbSql.append("UPDATE cart_bill_detail SET `status` = 'ORDERED', ").append("billId= '").append(bill.getId())
-				.append("' WHERE username = :username AND `status` = 'READY' ");
+		simDao.setSimSold(listSimId);
 		if (listId != null) {
-			sbSql.append(" AND id IN ( ");
-			for (int i = 0; i < listId.size(); i++) {
-				if (i == listId.size() - 1) {
-					sbSql.append(listId.get(i));
-					sbSql.append(" ) ");
-				} else {
-					sbSql.append(listId.get(i));
-					sbSql.append(" , ");
-				}
-			}
+			setStatusOrdered(listId, bill.getId(), username);
 		}
 
-		String sql = sbSql.toString();
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(CartBillDetail.class);
-		query.setParameter("username", username);
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		query.executeUpdate();
-
 		return true;
+	}
+
+	public void setStatusOrdered(List<Integer> listId, Integer billId, String username) {
+		if (listId != null) {
+			session = sessionFactory.getCurrentSession();
+			StringBuilder sql = new StringBuilder("");
+			sql.append("UPDATE cart_bill_detail SET `status` = 'ORDERED', ").append("billId= '").append(billId)
+					.append("' WHERE username = :username AND `status` = 'READY' ");
+			sql.append(" AND id IN ( ");
+			for (int i = 0; i < listId.size(); i++) {
+				if (i == listId.size() - 1) {
+					sql.append(listId.get(i));
+					sql.append(" ) ");
+				} else {
+					sql.append(listId.get(i));
+					sql.append(" , ");
+				}
+			}
+			SQLQuery query = session.createSQLQuery(sql.toString());
+			query.addEntity(CartBillDetail.class);
+			query.setParameter("username", username);
+			query.executeUpdate();
+		}
+	}
+
+	public List<CartBillDetail> getByUsernameListId(String username, List<Integer> listId) {
+		if (listId != null) {
+			session = sessionFactory.getCurrentSession();
+			String sqlTotalPrice = "SELECT * FROM cart_bill_detail WHERE username = :username AND `status` = 'READY' ";
+			StringBuilder findId = new StringBuilder("");
+			if (!listId.isEmpty()) {
+				findId.append(" AND id IN (");
+				for (int i = 0; i < listId.size(); i++) {
+					if (i == listId.size() - 1) {
+						findId.append(listId.get(i)).append(") ");
+					} else {
+						findId.append(listId.get(i)).append(" , ");
+					}
+				}
+			}
+			sqlTotalPrice += findId.toString();
+			SQLQuery queryTotal = session.createSQLQuery(sqlTotalPrice);
+			queryTotal.setParameter("username", username);
+			queryTotal.addEntity(CartBillDetail.class);
+			List<CartBillDetail> listResult = queryTotal.list();
+			return listResult;
+		} else {
+			return null;
+		}
 	}
 
 }

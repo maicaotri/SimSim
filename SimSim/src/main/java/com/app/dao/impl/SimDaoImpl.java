@@ -45,7 +45,7 @@ public class SimDaoImpl implements SimDao {
 
 	public List<Sim> findByNetword(int networdId, int page, int size) {
 		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE networdId = :networdId";
+		String sql = "SELECT * FROM sim WHERE sold ='0' AND networdId = :networdId";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addEntity(Sim.class);
 		query.setParameter("networdId", networdId);
@@ -325,7 +325,7 @@ public class SimDaoImpl implements SimDao {
 	public List<Sim> findByAllInputsAndReturn(Integer networdId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size) {
 		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE (price >= :priceFrom) AND (price <= :priceTo) ";
+		String sql = "SELECT * FROM sim WHERE (`enabled` = '1') AND (sold = '0') AND (price >= :priceFrom) AND (price <= :priceTo) ";
 		StringBuilder str = new StringBuilder("");
 		if (networdId != null && networdId > 0)
 			str.append(" AND (networdId ='").append(networdId).append("') ");
@@ -333,7 +333,7 @@ public class SimDaoImpl implements SimDao {
 			str.append(" AND (score ='").append(score).append("') ");
 		if (totalNumbers != null && totalNumbers > 20 && totalNumbers < 81)
 			str.append(" AND (sumOfNumbers ='").append(totalNumbers).append("') ");
-		if (notContainNumbers != null && notContainNumbers.size()>0) {
+		if (notContainNumbers != null) {
 			str.append(" AND (realNumber ");
 			for (int i = 0; i < notContainNumbers.size(); i++) {
 				if (i == notContainNumbers.size() - 1) {
@@ -344,7 +344,7 @@ public class SimDaoImpl implements SimDao {
 				}
 			}
 		}
-		if (number != null && number.length()>0) {
+		if (number != null && number.length() > 0) {
 			String[] words = number.split("\\*");
 			if (words.length == 1)
 				str.append(" AND (realNumber LIKE '%").append(words[0]).append("%' )");
@@ -364,4 +364,19 @@ public class SimDaoImpl implements SimDao {
 		return results;
 	}
 
+	public void setSimSold(List<Integer> listSimId) {
+		if (listSimId != null) {
+			session = sessionFactory.getCurrentSession();
+			StringBuilder sqlSim = new StringBuilder("UPDATE sim SET `sold` = '1' WHERE id in (");
+			for (int i = 0; i < listSimId.size(); i++) {
+				if (i == listSimId.size() - 1) {
+					sqlSim.append(listSimId.get(i)).append(")");
+				} else {
+					sqlSim.append(listSimId.get(i)).append(",");
+				}
+			}
+			SQLQuery query = session.createSQLQuery(sqlSim.toString());
+			query.executeUpdate();
+		}
+	}
 }

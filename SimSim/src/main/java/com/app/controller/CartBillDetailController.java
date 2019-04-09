@@ -62,7 +62,7 @@ public class CartBillDetailController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName();
 		HttpSession sessionHttp = request.getSession();
-		cartBillDetailService.payByUsernameAndListSimId(username, listId, page, size);
+		cartBillDetailService.payByUsernameAndListSimId(username, listId);
 		List<CartBillDetail> list = cartBillDetailService.findBillByUsername(username, page, size);
 		sessionHttp.setAttribute("list", list);
 		return new ModelAndView("redirect:/user/bill");

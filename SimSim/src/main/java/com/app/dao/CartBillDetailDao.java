@@ -24,5 +24,9 @@ public interface CartBillDetailDao {
 	
 	public List<CartBillDetail> findCartByUsernameAndListSimId(String username,List<Integer> listSimId, int page, int size);
 	
-	public boolean payByUsernameAndListSimId(String username,List<Integer> listSimId, int page, int size);
+	public boolean payByUsernameAndListId(String username,List<Integer> listId);
+	
+	public void setStatusOrdered(List<Integer> listId, Integer billId, String username);
+	
+	public List<CartBillDetail> getByUsernameListId(String username, List<Integer> listId);
 }

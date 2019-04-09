@@ -24,5 +24,5 @@ public interface CartBillDetailService {
 	
 	public List<CartBillDetail> findBillByUsernameAndListSimId(String username,List<Integer> listSimId, int page, int size);
 
-	public boolean payByUsernameAndListSimId(String username,List<Integer> listSimId, int page, int size);
+	public boolean payByUsernameAndListSimId(String username,List<Integer> listCartBillDetailId);
 }

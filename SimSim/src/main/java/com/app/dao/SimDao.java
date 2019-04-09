@@ -57,5 +57,5 @@ public interface SimDao {
 	public List<Sim> findByAllInputsAndReturn(Integer networdId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size);
 	
-	
+	public void setSimSold(List<Integer> listSimId);
 }

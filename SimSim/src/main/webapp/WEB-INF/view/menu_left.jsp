@@ -107,7 +107,7 @@
 
 		<ul class="nav navbar-nav">
 			<li class="dropdown"><a href="" class="dropdown-toggle"
-				data-toggle="dropdown"> <span class="net"></span> VinaPhone <span
+				data-toggle="dropdown"> <span class="net"></span> <a href="${pageContext.request.contextPath}/sim/findSim?networdId=3">VinaPhone</a> <span
 					class="caret"></span>
 			</a>
 				<ul class="dropdown-menu mega-menu" role="menu">
@@ -188,7 +188,7 @@
 					</li>
 				</ul></li>
 			<li class="dropdown"><a href="" class="dropdown-toggle"
-				data-toggle="dropdown"> <span class="net"></span> Mobiphone <span
+				data-toggle="dropdown"> <span class="net"></span> <a href="${pageContext.request.contextPath}/sim/findSim?networdId=2">Mobiphone<a></a> <span
 					class="caret"></span>
 			</a>
 				<ul class="dropdown-menu mega-menu" role="menu">
@@ -269,7 +269,7 @@
 					</li>
 				</ul></li>
 			<li class="dropdown"><a href="" class="dropdown-toggle"
-				data-toggle="dropdown"> <span class="net"></span> Viettel <span
+				data-toggle="dropdown"> <span class="net"></span> <a href="${pageContext.request.contextPath}/sim/findSim?networdId=1">Viettel</a> <span
 					class="caret"></span>
 			</a>
 				<ul class="dropdown-menu mega-menu" role="menu">
@@ -349,7 +349,7 @@
 					</li>
 				</ul></li>
 			<li class="dropdown"><a href="" class="dropdown-toggle"
-				data-toggle="dropdown"> <span class="net"></span> Vietnamobile <span
+				data-toggle="dropdown"> <span class="net"></span> <a href="${pageContext.request.contextPath}/sim/findSim?networdId=4">Vietnamobile</a> <span
 					class="caret"></span>
 			</a>
 				<ul class="dropdown-menu mega-menu" role="menu">
@@ -429,7 +429,7 @@
 					</li>
 				</ul></li>
 			<li class="dropdown"><a href="" class="dropdown-toggle"
-				data-toggle="dropdown"> <span class="net"></span> GMobile <span
+				data-toggle="dropdown"> <span class="net"></span> <a href="${pageContext.request.contextPath}/sim/findSim?networdId=5">GMobile</a> <span
 					class="caret"></span>
 			</a>
 				<ul class="dropdown-menu mega-menu" role="menu">
