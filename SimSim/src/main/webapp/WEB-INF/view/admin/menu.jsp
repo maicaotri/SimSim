@@ -5,10 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+       
         <title>Menu</title>
     <head>
         <meta charset="utf-8">
@@ -16,27 +19,29 @@
         <title>Dashboard V.1 | Kiaalap - Kiaalap Admin Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/owl.carousel.css">
-        <link rel="stylesheet" href="css/owl.theme.css">
-        <link rel="stylesheet" href="css/owl.transitions.css">
-        <link rel="stylesheet" href="css/animate.css">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/meanmenu.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/educate-custon-icon.css">
-        <link rel="stylesheet" href="css/morrisjs/morris.css">
-        <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
-        <link rel="stylesheet" href="css/metisMenu/metisMenu.min.css">
-        <link rel="stylesheet" href="css/metisMenu/metisMenu-vertical.css">
-        <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
-        <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="css/responsive.css">
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resource/admin/img/favicon.ico"/>">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/bootstrap.min.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/font-awesome.min.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/owl.carousel.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/owl.theme.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/owl.transitions.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/animate.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/normalize.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/meanmenu.min.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/main.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/educate-custon-icon.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/morrisjs/morris.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/scrollbar/jquery.mCustomScrollbar.min.css"/>">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/metisMenu/metisMenu.min.css"/>">
+    	<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/metisMenu/metisMenu-vertical.css"/>">
+    	<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/calendar/fullcalendar.min.css"/>">
+    	<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/calendar/fullcalendar.print.min.css"/>">
+    	<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/style.css"/>">
+    	<link rel="stylesheet" type="text/css" href="<c:url value="/resource/admin/css/responsive.css"/>"	>
+    	<script type="text/javascript" src="<c:url value="/resource/admin/js/vendor/modernizr-2.8.3.min.js"/>"></script>
+        
+       
     </head>
 </head>
 <body>
@@ -188,30 +193,31 @@
         </nav>
     </div>
 
-    <script src="js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/jquery-price-slider.js"></script>
-    <script src="js/jquery.meanmenu.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/jquery.scrollUp.min.js"></script>
-    <script src="js/counterup/jquery.counterup.min.js"></script>
-    <script src="js/counterup/waypoints.min.js"></script>
-    <script src="js/counterup/counterup-active.js"></script>
-    <script src="js/metisMenu/metisMenu.min.js"></script>
-    <script src="js/metisMenu/metisMenu-active.js"></script>
-    <script src="js/morrisjs/raphael-min.js"></script>
-    <script src="js/morrisjs/morris.js"></script>
-    <script src="js/morrisjs/morris-active.js"></script>
-    <script src="js/sparkline/jquery.sparkline.min.js"></script>
-    <script src="js/sparkline/jquery.charts-sparkline.js"></script>
-    <script src="js/sparkline/sparkline-active.js"></script>
-    <script src="js/calendar/moment.min.js"></script>
-    <script src="js/calendar/fullcalendar.min.js"></script>
-    <script src="js/calendar/fullcalendar-active.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/tawk-chat.js"></script>
+    <script src="<c:url value="/resource/admin/js/vendor/jquery-1.12.4.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/bootstrap.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/wow.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/jquery-price-slider.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/jquery.meanmenu.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/owl.carousel.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/jquery.sticky.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/jquery.scrollUp.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/counterup/jquery.counterup.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/counterup/waypoints.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/counterup/counterup-active.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/metisMenu/metisMenu.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/metisMenu/metisMenu-active.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/morrisjs/raphael-min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/morrisjs/morris.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/morrisjs/morris-active.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/sparkline/jquery.sparkline.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/sparkline/jquery.charts-sparkline.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/sparkline/sparkline-active.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/calendar/moment.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/calendar/fullcalendar.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/calendar/fullcalendar-active.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/vendor/modernizr-2.8.3.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/plugins.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/main.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resource/admin/js/tawk-chat.js"/>" type="text/javascript"></script>
 </body>
 </html>

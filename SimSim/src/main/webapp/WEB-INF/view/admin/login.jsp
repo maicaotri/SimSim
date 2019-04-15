@@ -1,18 +1,17 @@
-<%-- 
-    Document   : login
-    Created on : Apr 9, 2019, 3:49:30 PM
-    Author     : Admin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+        <link href="<c:url value="/resource/css/main.css"/>" rel="stylesheet"
+	type="text/css" />
+        <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resource/admin/img/favicon.ico"/>">
         <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="<c:url value="/resource/admin/css/bootstrap.min.css"/>">
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/owl.theme.css">

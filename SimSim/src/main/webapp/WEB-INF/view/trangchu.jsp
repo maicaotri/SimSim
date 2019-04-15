@@ -223,12 +223,10 @@
 											type="number" maxFractionDigits="3" value="${sim.price}" />
 										VNĐ</td>
 									<td class="text-center"><span class="badge">${sim.sumOfNumbers}</span></td>
-									<td class="text-center"><span
-										class="network n${sim.netword.id}"></span></td>
-									<td class="text-center"><a rel="nofollow" href=""
-										class="btn btn-xs btn-warning ">Đặt mua</a></td>
-									<td class="text-center"><a rel="nofollow"
-										title="Thêm sim ${sim.realNumber} vào giỏ hàng" href="${context}/user/addSimToCart"
+									<td class="text-center"><span class="network n${sim.netword.id}"></span></td>
+									<td class="text-center"><a rel="nofollow" href="" class="btn btn-xs btn-warning ">Đặt mua</a></td>
+									<td class="text-center"><a rel="nofollow" title="Thêm sim ${sim.realNumber} vào giỏ hàng" 
+									href="${context}/user/addSimToCart"
 										class="addcarts" data-sim="${sim.realNumber}" data-gia="4.5">
 											<i class="glyphicon glyphicon-shopping-cart"></i>
 									</a></td>
