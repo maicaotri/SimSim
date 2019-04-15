@@ -111,4 +111,9 @@ public class SimServiceImpl implements SimService {
 		return simDao.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size);
 	}
 
+	public int getTotalRecords(Integer networdId, double priceFrom, double priceTo, Integer score, Integer totalNumbers,
+			String number, List<Integer> notContainNumbers) {
+		return simDao.getTotalRecords(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers);
+	}
+
 }

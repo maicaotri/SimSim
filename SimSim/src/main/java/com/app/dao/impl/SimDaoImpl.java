@@ -379,4 +379,42 @@ public class SimDaoImpl implements SimDao {
 			query.executeUpdate();
 		}
 	}
+
+	public int getTotalRecords(Integer networdId, double priceFrom, double priceTo, Integer score,
+			Integer totalNumbers, String number, List<Integer> notContainNumbers) {
+		session = sessionFactory.getCurrentSession();
+		String sql = "SELECT COUNT(*) FROM sim WHERE (`enabled` = '1') AND (sold = '0') AND (price >= :priceFrom) AND (price <= :priceTo) ";
+		StringBuilder str = new StringBuilder("");
+		if (networdId != null && networdId > 0)
+			str.append(" AND (networdId ='").append(networdId).append("') ");
+		if (score != null && score > -1 && score < 10)
+			str.append(" AND (score ='").append(score).append("') ");
+		if (totalNumbers != null && totalNumbers > 20 && totalNumbers < 81)
+			str.append(" AND (sumOfNumbers ='").append(totalNumbers).append("') ");
+		if (notContainNumbers != null) {
+			str.append(" AND (realNumber ");
+			for (int i = 0; i < notContainNumbers.size(); i++) {
+				if (i == notContainNumbers.size() - 1) {
+					str.append(" NOT LIKE '%").append(notContainNumbers.get(i)).append("%' )");
+				} else {
+					str.append(" NOT LIKE '%").append(notContainNumbers.get(i)).append("%' )")
+							.append(" AND (realNumber ");
+				}
+			}
+		}
+		if (number != null && number.length() > 0) {
+			String[] words = number.split("\\*");
+			if (words.length == 1)
+				str.append(" AND (realNumber LIKE '%").append(words[0]).append("%' )");
+			if (words.length == 2)
+				str.append(" AND (realNumber LIKE '").append(words[0]).append("%").append(words[1]).append("' )");
+		}
+
+		sql += str.toString();
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("priceFrom", priceFrom);
+		query.setParameter("priceTo", priceTo);
+		
+		return Integer.parseInt(query.list().get(0).toString());
+	}
 }

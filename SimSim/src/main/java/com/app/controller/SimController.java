@@ -66,8 +66,37 @@ public class SimController {
 		List<Sim> list = simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size);
 		request.setAttribute("list", list);
 		return new ModelAndView("trangchu");
-//		return new ModelAndView("redirect:/trangchu");
 	}
 
+	@RequestMapping(value="/sim/findSimDetail", method = RequestMethod.POST)
+	public @ResponseBody List<Sim> findSimDetail(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@RequestParam(name = "networdId", required = false) Integer networdId,
+			@RequestParam(name = "priceFrom", required = false, defaultValue = "0") double priceFrom,
+			@RequestParam(name = "priceTo", required = false, defaultValue = "10000000") double priceTo,
+			@RequestParam(name = "score", required = false) Integer score,
+			@RequestParam(name = "totalNumbers", required = false) Integer totalNumbers,
+			@RequestParam(name = "simFind", required = false) String number,
+			@RequestParam(name = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(name = "size", required = false, defaultValue = "10") int size,
+			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
+			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
+		
+		return simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size);
+	}
 	
+	@RequestMapping(value="/sim/getTotalRecords", method = RequestMethod.POST)
+	public @ResponseBody int getTotalRecords(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@RequestParam(name = "networdId", required = false) Integer networdId,
+			@RequestParam(name = "priceFrom", required = false, defaultValue = "0") double priceFrom,
+			@RequestParam(name = "priceTo", required = false, defaultValue = "10000000") double priceTo,
+			@RequestParam(name = "score", required = false) Integer score,
+			@RequestParam(name = "totalNumbers", required = false) Integer totalNumbers,
+			@RequestParam(name = "simFind", required = false) String number,
+			@RequestParam(name = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(name = "size", required = false, defaultValue = "10") int size,
+			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
+			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
+		
+		return simService.getTotalRecords(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers);
+	}
 }
