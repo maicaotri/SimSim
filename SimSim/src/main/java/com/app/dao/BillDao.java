@@ -15,4 +15,6 @@ public interface BillDao {
 	public Bill getById(int id);
 
 	public List<Bill> getAll();
+	
+	public int countAll();
 }

@@ -54,7 +54,7 @@ public interface SimService {
 	public List<Sim> findByAllInputsAndReturn(Integer networdId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size);
 	
-	public int getTotalRecords(Integer networdId, double priceFrom, double priceTo, Integer score,
+	public int countAll(Integer networdId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers);
 
 }

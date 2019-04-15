@@ -28,4 +28,11 @@ public class BillController {
 		List<Bill> list = billService.getAll();
 		return list;
 	}
+
+	@RequestMapping("/bill/countAll")
+	public @ResponseBody int countAll(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
+
+		return billService.countAll();
+	}
 }

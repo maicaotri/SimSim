@@ -97,6 +97,6 @@ public class SimController {
 			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 		
-		return simService.getTotalRecords(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers);
+		return simService.countAll(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers);
 	}
 }

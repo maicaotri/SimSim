@@ -3,6 +3,8 @@ package com.app.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,7 @@ import com.app.model.entitymodel.MainUser;
 public class UserDaoImpl implements UserDao {
 	@Autowired
 	SessionFactory sessionFactory;
+	Session session;
 
 	public void add(MainUser user) {
 		sessionFactory.getCurrentSession().save(user);
@@ -36,6 +39,13 @@ public class UserDaoImpl implements UserDao {
 
 	public MainUser getByUsername(String username) {
 		return (MainUser) sessionFactory.getCurrentSession().get(MainUser.class, username);
+	}
+
+	public int countAll() {
+		session = sessionFactory.getCurrentSession();
+		String sql = "SELECT COUNT(*) FROM mainuser";
+		SQLQuery query = session.createSQLQuery(sql);
+		return Integer.parseInt(query.list().get(0).toString());
 	}
 
 }

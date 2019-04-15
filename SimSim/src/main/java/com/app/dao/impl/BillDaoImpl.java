@@ -3,6 +3,8 @@ package com.app.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,6 +16,7 @@ import com.app.model.entitymodel.Bill;
 public class BillDaoImpl implements BillDao {
 	@Autowired
 	SessionFactory sessionFactory;
+	Session session;
 
 	public void add(Bill n) {
 		sessionFactory.getCurrentSession().save(n);
@@ -34,6 +37,13 @@ public class BillDaoImpl implements BillDao {
 	public List<Bill> getAll() {
 		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Bill.class);
 		return criteria.list();
+	}
+
+	public int countAll() {
+		session = sessionFactory.getCurrentSession();
+		String sql = "SELECT COUNT(*) FROM bill";
+		SQLQuery query = session.createSQLQuery(sql);
+		return Integer.parseInt(query.list().get(0).toString());
 	}
 
 }

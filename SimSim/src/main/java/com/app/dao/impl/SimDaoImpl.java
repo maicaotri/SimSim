@@ -380,8 +380,8 @@ public class SimDaoImpl implements SimDao {
 		}
 	}
 
-	public int getTotalRecords(Integer networdId, double priceFrom, double priceTo, Integer score,
-			Integer totalNumbers, String number, List<Integer> notContainNumbers) {
+	public int countAll(Integer networdId, double priceFrom, double priceTo, Integer score, Integer totalNumbers,
+			String number, List<Integer> notContainNumbers) {
 		session = sessionFactory.getCurrentSession();
 		String sql = "SELECT COUNT(*) FROM sim WHERE (`enabled` = '1') AND (sold = '0') AND (price >= :priceFrom) AND (price <= :priceTo) ";
 		StringBuilder str = new StringBuilder("");
@@ -414,7 +414,7 @@ public class SimDaoImpl implements SimDao {
 		SQLQuery query = session.createSQLQuery(sql);
 		query.setParameter("priceFrom", priceFrom);
 		query.setParameter("priceTo", priceTo);
-		
+
 		return Integer.parseInt(query.list().get(0).toString());
 	}
 }

@@ -15,4 +15,6 @@ public interface UserService {
 	public List<MainUser> getAll();
 	
 	public MainUser getByUsername(String username);
+	
+	public int countAll();
 }

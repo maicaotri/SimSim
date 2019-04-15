@@ -37,4 +37,8 @@ public class UserServiceImpl implements UserService {
 		return userDao.getByUsername(username);
 	}
 
+	public int countAll() {
+		return userDao.countAll();
+	}
+
 }

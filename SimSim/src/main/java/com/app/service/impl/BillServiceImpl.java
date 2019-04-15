@@ -36,4 +36,8 @@ public class BillServiceImpl implements BillService {
 		return billDao.getAll();
 	}
 
+	public int countAll() {
+		return billDao.countAll();
+	}
+
 }

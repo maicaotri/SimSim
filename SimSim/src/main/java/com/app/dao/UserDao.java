@@ -15,4 +15,6 @@ public interface UserDao {
 	public MainUser getByUsername(String username);
 
 	public List<MainUser> getAll();
+	
+	public int countAll();
 }

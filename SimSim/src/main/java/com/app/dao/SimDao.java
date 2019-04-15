@@ -59,6 +59,6 @@ public interface SimDao {
 	
 	public void setSimSold(List<Integer> listSimId);
 	
-	public int getTotalRecords(Integer networdId, double priceFrom, double priceTo, Integer score,
+	public int countAll(Integer networdId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers);
 }
