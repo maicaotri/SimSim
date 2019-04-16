@@ -315,7 +315,7 @@ size
 		        	tr.append(tdTotalNumber);
 		        	tr.append(tdSold);
 		        	tr.append(tdEnabled);
-		        	$('#appendData').prepend(tr);
+		        	$('#appendData').append(tr);
 		        });
 		        
 		        data.listPage.forEach(p => {
@@ -324,7 +324,7 @@ size
 		        	btn.onclick = function(){
 		        		loadData(p);
 		        	  };
-		        	$('#appendBtnPage').prepend(btn);
+		        	$('#appendBtnPage').append(btn);
 		        });
 		    },
 		    error: function(xhr, ajaxOptions, thrownError) {
