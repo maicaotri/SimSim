@@ -1,5 +1,6 @@
 package com.app.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.app.model.SimView;
 import com.app.model.entitymodel.Sim;
 import com.app.service.SimService;
 
@@ -87,8 +89,8 @@ public class SimController {
 				notContainNumbers, page, size);
 	}
 
-	@RequestMapping(value = "/sim/getTotalRecords", method = RequestMethod.POST)
-	public @ResponseBody int getTotalRecords(HttpServletRequest request, HttpServletResponse response,
+	@RequestMapping(value = "/sim/findSimView", method = RequestMethod.POST)
+	public @ResponseBody SimView findSimView(HttpServletRequest request, HttpServletResponse response,
 			HttpSession session, @RequestParam(name = "networdId", required = false) Integer networdId,
 			@RequestParam(name = "priceFrom", required = false, defaultValue = "0") double priceFrom,
 			@RequestParam(name = "priceTo", required = false, defaultValue = "10000000") double priceTo,
@@ -99,6 +101,28 @@ public class SimController {
 			@RequestParam(name = "size", required = false, defaultValue = "10") int size,
 			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
+
+		List<Sim> listSim = simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers,
+				number, notContainNumbers, page, size);
+		List<Integer> listPage = getListPage(page, size, getTotalRecords(request, response, session, networdId,
+				priceFrom, priceTo, score, totalNumbers, number, page, size, notContainNumbers));
+for (int i = 0; i < listPage.size(); i++) {
+	System.out.println(listPage.get(i));
+}
+		return new SimView(listSim, listPage);
+	}
+
+	@RequestMapping(value = "/sim/getTotalRecords", method = RequestMethod.POST)
+	public @ResponseBody int getTotalRecords(HttpServletRequest request, HttpServletResponse response,
+			HttpSession session, @RequestParam(name = "networdId", required = false) Integer networdId,
+			@RequestParam(name = "priceFrom", required = false, defaultValue = "0") double priceFrom,
+			@RequestParam(name = "priceTo", required = false, defaultValue = "10000000") double priceTo,
+			@RequestParam(name = "score", required = false) Integer score,
+			@RequestParam(name = "totalNumbers", required = false) Integer totalNumbers,
+			@RequestParam(name = "simFind", required = false) String number,
+			@RequestParam(name = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(name = "size", required = false, defaultValue = "10") int size,
+			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers) {
 
 		return simService.countAll(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers);
 	}
@@ -112,8 +136,45 @@ public class SimController {
 	public ModelAndView admin(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return new ModelAndView("admin/admin");
 	}
-	@RequestMapping(value = "/admin/table")
+
+	@RequestMapping(value = "/admin/sim/table")
 	public ModelAndView getAdminTable(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		return new ModelAndView("admin/table");
+		List<Sim> list = simService.findByAllInputsAndReturn(null, 0, 200000000, null, null, null, null, 1, 10);
+		request.setAttribute("list", list);
+		return new ModelAndView("admin/table_sim");
 	}
+
+	@RequestMapping(value = "/test")
+	public String test() {
+		return "admin/test";
+	}
+
+	public List<Integer> getListPage(int page, int size, int totalRecords) {
+		int totalPages;
+		List<Integer> list = new ArrayList<Integer>();
+		if (totalRecords / size == 0) {
+			totalPages = totalRecords / size;
+		} else {
+			totalPages = totalRecords / size + 1;
+		}
+		if (totalPages > 0 && totalPages < 6) {
+			for (int i = 1; i < totalPages + 1; i++) {
+				list.add(i);
+			}
+		}
+		if (totalPages >= 6) {
+			if (page >= totalPages) {
+				for (int i = page - 4; i < page + 1; i++) {
+					list.add(i);
+				}
+			} else {
+				for (int i = page - 1; i < page + 4; i++) {
+					if (i >= 1 && i <= totalPages)
+						list.add(i);
+				}
+			}
+		}
+		return list;
+	}
+
 }

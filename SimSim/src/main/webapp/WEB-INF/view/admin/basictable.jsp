@@ -41,7 +41,7 @@ $.ajax({
     	console.log(data); 
     	//$('#manage_user table > tbody').prepend(data);
         //alert(data);
-        data.forEach(v = {
+        data.forEach(v => {
         	//$('#appendData').prepend('<tr>'+
         		//	'<td>'+v.id+'</td>'+
         			//'<td>'+v.realNumber+'</td>'+ 

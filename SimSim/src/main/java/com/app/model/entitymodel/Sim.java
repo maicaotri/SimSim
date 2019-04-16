@@ -43,13 +43,11 @@ public class Sim implements Serializable {
 	// bi-directional many-to-one association to Simtype
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "simTypeId")
-	@JsonIgnore
 	private SimType simType;
 
 	// bi-directional many-to-one association to Netword
 	@ManyToOne
 	@JoinColumn(name = "networdId")
-	@JsonIgnore
 	private Netword netword;
 
 	public Sim() {

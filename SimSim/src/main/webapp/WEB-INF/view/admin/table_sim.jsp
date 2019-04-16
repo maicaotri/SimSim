@@ -40,6 +40,7 @@
 
 <script src="<c:url value="/resource/admin/js/vendor/modernizr-2.8.3.min.js"/>"></script>
 <script src="<c:url value="/resource/admin/js/vendor/modernizr-2.8.3.min.js"/>"></script>
+
 </head>
 
 <body>
@@ -47,6 +48,22 @@
 	<!-- Start Welcome area -->
 	<div class="all-content-wrapper">
 		<%@ include file="menu_nav.jsp"%>
+networdId
+<input id="networdId" type="text"><br>
+priceFrom
+<input id="priceFrom" type="text"><br>
+priceTo
+<input id="priceTo" type="text"><br>
+score
+<input id="score" type="text"><br>
+totalNumbers
+<input id="totalNumbers" type="text"><br>
+simFind
+<input id="simFind" type="text"><br>
+page
+<input id="page" type="text"><br>
+size
+<input id="size" type="text"><br>
 
 		<div class="data-table-area mg-b-15">
 			<div class="container-fluid">
@@ -73,40 +90,26 @@
 										data-search="true" data-show-columns="true"
 										data-show-pagination-switch="true" data-show-refresh="true"
 										data-key-events="true" data-show-toggle="true"
-										data-resizable="true" data-cookie="true"
-										data-cookie-id-table="saveId" data-show-export="true"
+										data-resizable="false" data-cookie="true"
+										data-cookie-id-table="saveId" 
 										data-click-to-select="true" data-toolbar="#toolbar">
 										<thead>
 											<tr>
-												<th data-field="state" data-checkbox="true"></th>
-												<th data-field="id">Sim</th>
-												<th data-field="name" data-editable="true">Giá tiền</th>
-												<th data-field="name" data-editable="true">Mạng</th>
-												<th data-field="email" data-editable="true">Tổng nút</th>
-												<th data-field="phone" data-editable="true">Tổng điểm</th>
-												<th data-field="task" data-editable="true">Tình trạng</th>
+												<th data-field="id">Id</th>
+												<th data-field="sim">Sim</th>
+												<th data-field="price" >Giá tiền</th>
+												<th data-field="name" >Mạng</th>
+												<th data-field="email" >Tổng nút</th>
+												<th data-field="phone" >Tổng điểm</th>
+												<th data-field="task" >Tình trạng</th>
+												<th data-field="enabled" >Khả dụng</th>
 											</tr>
 										</thead>
-										<tbody>
-											<c:forEach items="${list}" var="sim">
-								<tr>
-								<td></td>
-								<td><a href="" title="${sim.realNumber}" rel="nofollow">
-								<strong class="font-16 sim">${sim.realNumber}</strong></a></td>
-								<td class="font-13" style="color: black;"><fmt:formatNumber
-								type="number" maxFractionDigits="3" value="${sim.price}" />VNĐ</td>
-								<td class="text-center"><span class="network n${sim.netword.name}"></span></td>
-								<td class="text-center"><span class="badge">${sim.score}</span></td>
-								<td class="text-center"><span class="badge">${sim.sumOfNumbers}</span></td>
-								<td>
-								<c:if test = "${sim.sold == 0}">Còn</c:if>
-								<c:if test = "${sim.sold == 1}">Đã bán</c:if>
-								</td>
-								</tr>
-							</c:forEach>
-										</tbody>
-									</table>
-								</div>
+										<tbody id="appendData">
+
+								</tbody>
+							</table>
+										<div id="appendBtnPage" style="vertical-align:middle;text-align: center; margin-top: 3px;"></div>
 							</div>
 						</div>
 					</div>
@@ -128,7 +131,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script src="<c:url value="/resource/admin/js/vendor/jquery-1.12.4.min.js"/>"></script>
 	<script src="<c:url value="/resource/admin/js/bootstrap.min.js"/>"></script>
 	<script src="<c:url value="/resource/admin/js/wow.min.js"/>"></script>
@@ -164,6 +166,177 @@
 	<script src="<c:url value="/resource/admin/js/main.js"/>"></script>
 	<script src="<c:url value="/resource/admin/js/tawk-chat.js"/>"></script>
 
+<script type="text/javascript">
+/* $(".pagingBtn").on('click', function(){
+	$.ajax({
+	    type: "POST", // HTTP method POST or GET
+	    url: '${pageContext.request.contextPath}/sim/findSimView', 
+	    dataType: 'json',
+	     data: {
+	    	 page: $('#page').val(),
+	    	 size: $('#size').val(),
+	    	 networdId: $('#networdId').val(),
+	    	 priceFrom: $('#priceFrom').val(),
+	    	 priceTo: $('#priceTo').val(),
+	    	 score: $('#score').val(),
+	    	 totalNumbers: $('#totalNumbers').val(),
+	    	 simFind: $('#simFind').val(),
+	    	 totalNumbers: $('#totalNumbers').val(),
+	     },
+	    success: function(data) {
+	    	console.log(data); 
+	    	//$('#manage_user table > tbody').prepend(data);
+	        //alert(data);
+	        $('#appendData').empty();
+	        data.listSim.forEach(v => {
+	        	var tr = document.createElement('tr');
+	        	var tdId =  document.createElement('td');
+	        	tdId.innerHTML = v.id;
+	        	var tdRealNumber =  document.createElement('td');
+	        	tdRealNumber.innerHTML = v.realNumber;
+	        	var tdScore =  document.createElement('td');
+	        	tdScore.innerHTML = v.score;
+	        	var tdPrice = document.createElement('td');
+	        	tdPrice.innerHTML =v.price;
+	        	var tdNetword = document.createElement('td');
+	        	tdNetword.innerHTML =v.netword.name;
+	        	var tdScore = document.createElement('td');
+	        	tdScore.innerHTML =v.score;
+	        	var tdTotalNumber = document.createElement('td');
+	        	tdTotalNumber.innerHTML =v.sumOfNumbers;
+	        	var tdSold = document.createElement('td');
+	        	if(v.sold==1){
+	        	tdSold.innerHTML ='Đã bán';
+	        	}
+	        	if(v.sold==0){
+	        	tdSold.innerHTML ='Còn';
+	        	}
+	        	var tdEnabled = document.createElement('td');
+	        	if(v.enabled==1){
+	        	tdEnabled.innerHTML ='Khả dụng';
+	        	}
+	        	if(v.enabled==0){
+	        	tdEnabled.innerHTML ='Vô hiệu hóa';
+	        	}
+	        	
+	        	
+	        	tr.append(tdId);
+	        	tr.append(tdRealNumber);
+	        	tr.append(tdPrice);
+	        	tr.append(tdNetword);
+	        	tr.append(tdScore);
+	        	tr.append(tdTotalNumber);
+	        	tr.append(tdSold);
+	        	tr.append(tdEnabled);
+	        	$('#appendData').prepend(tr);
+	        });
+	        
+	        data.listPage.forEach(p => {
+	        	var btn = document.createElement('BUTTON');
+	        	btn.innerHTML = p;
+	        	btn.onclick = function(){
+	        	    alert('here be dragons');return false;
+	        	  };
+	        });
+	    },
+	    error: function(xhr, ajaxOptions, thrownError) {
+	        //On error, we alert user
+	        alert(thrownError);
+	    },
+	    complete: function() {
+	        //alert('update success'); 
+	    }
+	});
+	}); */
+	$( document ).ready(function() {
+		loadData();
+	});
+	
+	  
+	function loadData(page){
+		$.ajax({
+		    type: "POST", // HTTP method POST or GET
+		    url: '${pageContext.request.contextPath}/sim/findSimView', 
+		    dataType: 'json',
+		     data: {
+		    	 page: page,
+		    	 size: $('#size').val(),
+		    	 networdId: $('#networdId').val(),
+		    	 priceFrom: $('#priceFrom').val(),
+		    	 priceTo: $('#priceTo').val(),
+		    	 score: $('#score').val(),
+		    	 totalNumbers: $('#totalNumbers').val(),
+		    	 simFind: $('#simFind').val(),
+		    	 totalNumbers: $('#totalNumbers').val(),
+		     },
+		    success: function(data) {
+		    	console.log(data); 
+		    	//$('#manage_user table > tbody').prepend(data);
+		        //alert(data);
+		        $('#appendBtnPage').empty();
+		        $('#appendData').empty();
+		        data.listSim.forEach(v => {
+		        	var tr = document.createElement('tr');
+		        	var tdId =  document.createElement('td');
+		        	tdId.innerHTML = v.id;
+		        	var tdRealNumber =  document.createElement('td');
+		        	tdRealNumber.innerHTML = v.realNumber;
+		        	var tdScore =  document.createElement('td');
+		        	tdScore.innerHTML = v.score;
+		        	var tdPrice = document.createElement('td');
+		        	tdPrice.innerHTML =v.price;
+		        	var tdNetword = document.createElement('td');
+		        	tdNetword.innerHTML =v.netword.name;
+		        	var tdScore = document.createElement('td');
+		        	tdScore.innerHTML =v.score;
+		        	var tdTotalNumber = document.createElement('td');
+		        	tdTotalNumber.innerHTML =v.sumOfNumbers;
+		        	var tdSold = document.createElement('td');
+		        	if(v.sold==1){
+		        	tdSold.innerHTML ='Đã bán';
+		        	}
+		        	if(v.sold==0){
+		        	tdSold.innerHTML ='Còn';
+		        	}
+		        	var tdEnabled = document.createElement('td');
+		        	if(v.enabled==1){
+		        	tdEnabled.innerHTML ='Khả dụng';
+		        	}
+		        	if(v.enabled==0){
+		        	tdEnabled.innerHTML ='Vô hiệu hóa';
+		        	}
+		        	
+		        	
+		        	tr.append(tdId);
+		        	tr.append(tdRealNumber);
+		        	tr.append(tdPrice);
+		        	tr.append(tdNetword);
+		        	tr.append(tdScore);
+		        	tr.append(tdTotalNumber);
+		        	tr.append(tdSold);
+		        	tr.append(tdEnabled);
+		        	$('#appendData').prepend(tr);
+		        });
+		        
+		        data.listPage.forEach(p => {
+		        	var btn = document.createElement('BUTTON');
+		        	btn.innerHTML = p;
+		        	btn.onclick = function(){
+		        		loadData(p);
+		        	  };
+		        	$('#appendBtnPage').prepend(btn);
+		        });
+		    },
+		    error: function(xhr, ajaxOptions, thrownError) {
+		        //On error, we alert user
+		        alert(thrownError);
+		    },
+		    complete: function() {
+		        //alert('update success'); 
+		    }
+		});
+		}
+</script>
 </body>
 
 </html>
