@@ -107,8 +107,8 @@ public class SimServiceImpl implements SimService {
 	}
 
 	public List<Sim> findByAllInputsAndReturn(Integer networdId, double priceFrom, double priceTo, Integer score,
-			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size) {
-		return simDao.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size);
+			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled, Integer sold) {
+		return simDao.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size, enabled, sold);
 	}
 
 	public int countAll(Integer networdId, double priceFrom, double priceTo, Integer score, Integer totalNumbers,

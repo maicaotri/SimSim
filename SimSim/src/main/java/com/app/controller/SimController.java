@@ -47,7 +47,7 @@ public class SimController {
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
 		List<Sim> list = simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number,
-				notContainNumbers, page, size);
+				notContainNumbers, page, size, 1, 0);
 		request.setAttribute("list", list);
 		return new ModelAndView("trangchu");
 //		return new ModelAndView("redirect:/trangchu");
@@ -67,7 +67,7 @@ public class SimController {
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
 		List<Sim> list = simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number,
-				notContainNumbers, page, size);
+				notContainNumbers, page, size, 1, 0);
 		request.setAttribute("list", list);
 		return new ModelAndView("trangchu");
 	}
@@ -86,7 +86,7 @@ public class SimController {
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
 		return simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number,
-				notContainNumbers, page, size);
+				notContainNumbers, page, size, 1, 0);
 	}
 
 	@RequestMapping(value = "/sim/findSimView", method = RequestMethod.POST)
@@ -103,12 +103,9 @@ public class SimController {
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
 		List<Sim> listSim = simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers,
-				number, notContainNumbers, page, size);
+				number, notContainNumbers, page, size, null, null);
 		List<Integer> listPage = getListPage(page, size, getTotalRecords(request, response, session, networdId,
 				priceFrom, priceTo, score, totalNumbers, number, page, size, notContainNumbers));
-for (int i = 0; i < listPage.size(); i++) {
-	System.out.println(listPage.get(i));
-}
 		return new SimView(listSim, listPage);
 	}
 
@@ -139,8 +136,6 @@ for (int i = 0; i < listPage.size(); i++) {
 
 	@RequestMapping(value = "/admin/sim/table")
 	public ModelAndView getAdminTable(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		List<Sim> list = simService.findByAllInputsAndReturn(null, 0, 200000000, null, null, null, null, 1, 10);
-		request.setAttribute("list", list);
 		return new ModelAndView("admin/table_sim");
 	}
 

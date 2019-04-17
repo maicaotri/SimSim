@@ -323,9 +323,10 @@ public class SimDaoImpl implements SimDao {
 	}
 
 	public List<Sim> findByAllInputsAndReturn(Integer networdId, double priceFrom, double priceTo, Integer score,
-			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size) {
+			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled,
+			Integer sold) {
 		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE (`enabled` = '1') AND (sold = '0') AND (price >= :priceFrom) AND (price <= :priceTo) ";
+		String sql = "SELECT * FROM sim WHERE (price >= :priceFrom) AND (price <= :priceTo) ";
 		StringBuilder str = new StringBuilder("");
 		if (networdId != null && networdId > 0)
 			str.append(" AND (networdId ='").append(networdId).append("') ");
@@ -351,7 +352,12 @@ public class SimDaoImpl implements SimDao {
 			if (words.length == 2)
 				str.append(" AND (realNumber LIKE '").append(words[0]).append("%").append(words[1]).append("' )");
 		}
-
+		if (enabled != null) {
+			str.append(" AND (`enabled` ='").append(enabled).append("') ");
+		}
+		if (sold != null) {
+			str.append(" AND (`sold` ='").append(sold).append("') ");
+		}
 		sql += str.toString();
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addEntity(Sim.class);
