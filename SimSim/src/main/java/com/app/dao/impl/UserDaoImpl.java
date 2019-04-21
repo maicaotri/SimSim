@@ -48,4 +48,20 @@ public class UserDaoImpl implements UserDao {
 		return Integer.parseInt(query.list().get(0).toString());
 	}
 
+	public int usernameIsExist(String username) {
+		session = sessionFactory.getCurrentSession();
+		String sql = "SELECT COUNT(*) FROM mainuser WHERE username =:username";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("username", username);
+		return Integer.parseInt(query.list().get(0).toString());
+	}
+
+	public int emailIsExist(String email) {
+		session = sessionFactory.getCurrentSession();
+		String sql = "SELECT COUNT(*) FROM mainuser WHERE email =:email";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("email", email);
+		return Integer.parseInt(query.list().get(0).toString());
+	}
+
 }

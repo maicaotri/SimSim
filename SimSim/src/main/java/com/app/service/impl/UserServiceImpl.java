@@ -41,4 +41,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.countAll();
 	}
 
+	public int usernameIsExist(String username) {
+		return userDao.usernameIsExist(username);
+	}
+
+	public int emailIsExist(String email) {
+		return userDao.emailIsExist(email);
+	}
+
 }

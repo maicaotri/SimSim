@@ -46,11 +46,10 @@ public class SimController {
 			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
-		List<Sim> list = simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number,
+		List<Sim> list = simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number,
 				notContainNumbers, page, size, 1, 0);
 		request.setAttribute("list", list);
 		return new ModelAndView("trangchu");
-//		return new ModelAndView("redirect:/trangchu");
 	}
 
 	@RequestMapping(value = "/sim/findSim", method = RequestMethod.POST)
@@ -66,7 +65,7 @@ public class SimController {
 			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
-		List<Sim> list = simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number,
+		List<Sim> list = simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number,
 				notContainNumbers, page, size, 1, 0);
 		request.setAttribute("list", list);
 		return new ModelAndView("trangchu");
@@ -85,8 +84,8 @@ public class SimController {
 			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
-		return simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number,
-				notContainNumbers, page, size, 1, 0);
+		return simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page,
+				size, 1, 0);
 	}
 
 	@RequestMapping(value = "/sim/findSimView", method = RequestMethod.POST)
@@ -102,8 +101,8 @@ public class SimController {
 			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
-		List<Sim> listSim = simService.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers,
-				number, notContainNumbers, page, size, null, null);
+		List<Sim> listSim = simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number,
+				notContainNumbers, page, size, null, null);
 		List<Integer> listPage = getListPage(page, size, getTotalRecords(request, response, session, networdId,
 				priceFrom, priceTo, score, totalNumbers, number, page, size, notContainNumbers));
 		return new SimView(listSim, listPage);

@@ -17,4 +17,8 @@ public interface UserDao {
 	public List<MainUser> getAll();
 	
 	public int countAll();
+	
+	public int usernameIsExist(String username);
+	
+	public int emailIsExist(String email);
 }

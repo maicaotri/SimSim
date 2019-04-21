@@ -60,55 +60,9 @@ public class SimServiceImpl implements SimService {
 		return simDao.findByPhoneInside(number, page, size);
 	}
 
-	public List<Sim> findByPhoneStartAndEnd(String startNumber, String endNumber, int page, int size) {
-		return simDao.findByPhoneStartAndEnd(startNumber, endNumber, page, size);
-	}
-
-	public List<Sim> findByPhoneStartAndEndNum1XNum2(String startNumber, String endNumber1, String endNumber2, int page,
-			int size) {
-		return simDao.findByPhoneStartAndEndNum1XNum2(startNumber, endNumber1, endNumber2, page, size);
-	}
-
-	public List<Sim> findByNotContain(List<Integer> listChar, int page, int size) {
-		return simDao.findByNotContain(listChar, page, size);
-	}
-
-	public List<Sim> findByPrice(double priceFrom, double priceTo, int page, int size) {
-		return simDao.findByPrice(priceFrom, priceTo, page, size);
-	}
-
-	public List<Sim> findByNetwordPriceScoreTotalnumberPhoneStart(int networdId, double priceFrom, double priceTo,
-			int score, int totalNumbers, String startNumber, int page, int size) {
-		return simDao.findByNetwordPriceScoreTotalnumberPhoneStart(networdId, priceFrom, priceTo, score, totalNumbers,
-				startNumber, page, size);
-	}
-
-	public List<Sim> findByNetwordPriceScoreTotalnumberPhoneEnd(int networdId, double priceFrom, double priceTo,
-			int score, int totalNumbers, String endNumber, int page, int size) {
-		return simDao.findByNetwordPriceScoreTotalnumberPhoneEnd(networdId, priceFrom, priceTo, score, totalNumbers,
-				endNumber, page, size);
-	}
-
-	public List<Sim> findByNetwordPriceScoreTotalnumberPhoneInside(int networdId, double priceFrom, double priceTo,
-			int score, int totalNumbers, String number, int page, int size) {
-		return simDao.findByNetwordPriceScoreTotalnumberPhoneEnd(networdId, priceFrom, priceTo, score, totalNumbers,
-				number, page, size);
-	}
-
-	public List<Sim> findByNetwordPriceScoreTotalnumberPhoneInsideNotcontainnumbers(int networdId, double priceFrom,
-			double priceTo, int score, int totalNumbers, String number, List<Integer> notContainNumbers, int page,
-			int size) {
-		return simDao.findByNetwordPriceScoreTotalnumberPhoneInsideNotcontainnumbers(networdId, priceFrom, priceTo,
-				score, totalNumbers, number, notContainNumbers, page, size);
-	}
-
-	public List<Sim> findByNetwordAndScore(int networdId, int score, int page, int size) {
-		return simDao.findByNetwordAndScore(networdId, score, page, size);
-	}
-
-	public List<Sim> findByAllInputsAndReturn(Integer networdId, double priceFrom, double priceTo, Integer score,
+	public List<Sim> findSim(Integer networdId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled, Integer sold) {
-		return simDao.findByAllInputsAndReturn(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size, enabled, sold);
+		return simDao.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size, enabled, sold);
 	}
 
 	public int countAll(Integer networdId, double priceFrom, double priceTo, Integer score, Integer totalNumbers,

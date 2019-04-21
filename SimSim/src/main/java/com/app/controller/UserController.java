@@ -13,29 +13,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.model.entitymodel.MainUser;
 import com.app.service.UserService;
 @Controller
-@RequestMapping("/admin")
-public class HelloController {
+public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping("/")
+	@RequestMapping("/admin/")
 	public ModelAndView getListUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		request.setAttribute("mess", "Hello");
 		return new ModelAndView("wellcome");
 	}
 	
-	@RequestMapping("/danhsach")
+	@RequestMapping("/admin/danhsach")
 	public ModelAndView getListUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			@RequestHeader(name="content-type", required=false) String contentype) {
 		List<MainUser> list = userService.getAll();
 		request.setAttribute("listU", list);
-		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		HttpSession sessionHttp = request.getSession();
 		sessionHttp.setAttribute("username", authentication.getName());
@@ -43,25 +43,33 @@ public class HelloController {
 		return new ModelAndView("listuser");
 	}
 	
-	@RequestMapping("/listUser")
+	@RequestMapping("/admin/listUser")
 	public @ResponseBody List<MainUser> listUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			@RequestHeader(name="content-type", required=false, defaultValue="UTF-8") String contentype) {
-		
-		List<MainUser> list = userService.getAll();
-		return list;
+		return userService.getAll();
 	}
 	
-	@RequestMapping("/user/{username}")
+	@RequestMapping("/admin/user/{username}")
 	public @ResponseBody MainUser listUser(@PathVariable(name="username") String username) {
 		return userService.getByUsername(username);
 	}
 	
-	@RequestMapping("/listCheckbox")
+	@RequestMapping("/admin/listCheckbox")
 	public String listCheckbox(@PathVariable(name="listCheckbox") List<Integer> listCheckbox) {
 		for (Integer i : listCheckbox) {
 			System.out.println(i);
 		}
 		return "wellcome";
+	}
+	
+	@RequestMapping("/checkUsername/{username}")
+	public @ResponseBody int usernameIsExist(@PathVariable(name="username") String username) {
+		return userService.usernameIsExist(username);
+	}
+	
+	@RequestMapping(value = "/checkEmail", method = RequestMethod.POST)
+	public @ResponseBody int emailIsExist(@RequestParam(name="email") String email) {
+		return userService.emailIsExist(email);
 	}
 	
 }

@@ -124,169 +124,6 @@ public class SimDaoImpl implements SimDao {
 		return results;
 	}
 
-	public List<Sim> findByPhoneStartAndEnd(String startNumber, String endNumber, int page, int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE realNumber LIKE :number";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		String findString = startNumber + "%" + endNumber;
-		query.setParameter("number", findString);
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
-	public List<Sim> findByPhoneStartAndEndNum1XNum2(String startNumber, String endNumber1, String endNumber2, int page,
-			int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE realNumber LIKE :number";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		String findString = startNumber + "%" + endNumber1 + "_" + endNumber2;
-		query.setParameter("number", findString);
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
-//chua test duoc
-	public List<Sim> findByNotContain(List<Integer> listChar, int page, int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim ";
-		StringBuilder findString = new StringBuilder("");
-		if (listChar != null) {
-			findString.append(" WHERE realNumber ");
-			for (int i = 0; i < listChar.size(); i++) {
-				if (i == listChar.size() - 1) {
-					findString.append(" NOT LIKE '%").append(listChar.get(i)).append("%'");
-				} else {
-					findString.append(" NOT LIKE '%").append(listChar.get(i)).append("%'").append(" AND realNumber ");
-				}
-			}
-		}
-		sql += findString.toString();
-
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
-	public List<Sim> findByPrice(double priceFrom, double priceTo, int page, int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE price >= :priceFrom AND price <= :priceTo";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		query.setParameter("priceFrom", priceFrom);
-		query.setParameter("priceTo", priceTo);
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
-	public List<Sim> findByNetwordPriceScoreTotalnumberPhoneStart(int networdId, double priceFrom, double priceTo,
-			int score, int totalNumbers, String startNumber, int page, int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE (networdId = :networdId) AND (price >= :priceFrom AND price <= :priceTo) AND "
-				+ " (score = :score) AND (sumOfNumbers = :totalNumbers) AND (realNumber LIKE :number)";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		query.setParameter("networdId", networdId);
-		query.setParameter("priceFrom", priceFrom);
-		query.setParameter("priceTo", priceTo);
-		query.setParameter("score", score);
-		query.setParameter("totalNumbers", totalNumbers);
-		query.setParameter("number", startNumber + "%");
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
-	public List<Sim> findByNetwordPriceScoreTotalnumberPhoneEnd(int networdId, double priceFrom, double priceTo,
-			int score, int totalNumbers, String endNumber, int page, int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE (networdId = :networdId) AND (price >= :priceFrom AND price <= :priceTo) AND "
-				+ " (score = :score) AND (sumOfNumbers = :totalNumbers) AND (realNumber LIKE :number)";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		query.setParameter("networdId", networdId);
-		query.setParameter("priceFrom", priceFrom);
-		query.setParameter("priceTo", priceTo);
-		query.setParameter("score", score);
-		query.setParameter("totalNumbers", totalNumbers);
-		query.setParameter("number", "%" + endNumber);
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
-	public List<Sim> findByNetwordPriceScoreTotalnumberPhoneInside(int networdId, double priceFrom, double priceTo,
-			int score, int totalNumbers, String number, int page, int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE (networdId = :networdId) AND (price >= :priceFrom AND price <= :priceTo) AND "
-				+ " (score = :score) AND (sumOfNumbers = :totalNumbers) AND (realNumber LIKE :number)";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		query.setParameter("networdId", networdId);
-		query.setParameter("priceFrom", priceFrom);
-		query.setParameter("priceTo", priceTo);
-		query.setParameter("score", score);
-		query.setParameter("totalNumbers", totalNumbers);
-		query.setParameter("number", "%" + number + "%");
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
-	public List<Sim> findByNetwordPriceScoreTotalnumberPhoneInsideNotcontainnumbers(int networdId, double priceFrom,
-			double priceTo, int score, int totalNumbers, String number, List<Integer> notContainNumbers, int page,
-			int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE (networdId = :networdId) AND (price >= :priceFrom AND price <= :priceTo) AND "
-				+ " (score = :score) AND (sumOfNumbers = :totalNumbers) AND (realNumber LIKE :number)";
-		StringBuilder findString = new StringBuilder("");
-		if (notContainNumbers != null && notContainNumbers.size() >= 1) {
-			findString.append(" AND (realNumber ");
-			for (int i = 0; i < notContainNumbers.size(); i++) {
-				if (i == notContainNumbers.size() - 1) {
-					findString.append(" NOT LIKE '%").append(notContainNumbers.get(i)).append("%' )");
-				} else {
-					findString.append(" NOT LIKE '%").append(notContainNumbers.get(i)).append("%' )")
-							.append(" AND (realNumber ");
-				}
-			}
-		}
-		sql += findString.toString();
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		query.setParameter("networdId", networdId);
-		query.setParameter("priceFrom", priceFrom);
-		query.setParameter("priceTo", priceTo);
-		query.setParameter("score", score);
-		query.setParameter("totalNumbers", totalNumbers);
-		query.setParameter("number", "%" + number + "%");
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
 	public boolean updateSoldSim(List<Integer> list) {
 		session = sessionFactory.getCurrentSession();
 		String sql = "UPDATE sim SET sold = '1' WHERE ";
@@ -308,21 +145,7 @@ public class SimDaoImpl implements SimDao {
 		return true;
 	}
 
-	public List<Sim> findByNetwordAndScore(int networdId, int score, int page, int size) {
-		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM sim WHERE networdId = :networdId AND score = :score";
-		SQLQuery query = session.createSQLQuery(sql);
-		query.addEntity(Sim.class);
-		query.setParameter("networdId", networdId);
-		query.setParameter("score", score);
-		query.setFirstResult((page - 1) * size);
-		query.setMaxResults(size);
-		List<Sim> results = query.list();
-
-		return results;
-	}
-
-	public List<Sim> findByAllInputsAndReturn(Integer networdId, double priceFrom, double priceTo, Integer score,
+	public List<Sim> findSim(Integer networdId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled,
 			Integer sold) {
 		session = sessionFactory.getCurrentSession();
@@ -421,6 +244,14 @@ public class SimDaoImpl implements SimDao {
 		query.setParameter("priceFrom", priceFrom);
 		query.setParameter("priceTo", priceTo);
 
+		return Integer.parseInt(query.list().get(0).toString());
+	}
+
+	public int simIsExist(String simNumber) {
+		session = sessionFactory.getCurrentSession();
+		String sql = "SELECT COUNT(*) FROM sim WHERE 0969924283 =:simNumber";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.setParameter("simNumber", simNumber);
 		return Integer.parseInt(query.list().get(0).toString());
 	}
 }

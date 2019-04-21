@@ -17,4 +17,8 @@ public interface UserService {
 	public MainUser getByUsername(String username);
 	
 	public int countAll();
+	
+	public int usernameIsExist(String username);
+	
+	public int emailIsExist(String email);
 }
