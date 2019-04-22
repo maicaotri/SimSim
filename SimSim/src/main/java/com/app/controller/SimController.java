@@ -103,7 +103,7 @@ public class SimController {
 
 		List<Sim> listSim = simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number,
 				notContainNumbers, page, size, null, null);
-		List<Integer> listPage = getListPage(page, size, getTotalRecords(request, response, session, networdId,
+		List<Integer> listPage = PageProcessing.getListPage(page, size, getTotalRecords(request, response, session, networdId,
 				priceFrom, priceTo, score, totalNumbers, number, page, size, notContainNumbers));
 		return new SimView(listSim, listPage);
 	}
@@ -143,32 +143,32 @@ public class SimController {
 		return "admin/test";
 	}
 
-	public List<Integer> getListPage(int page, int size, int totalRecords) {
-		int totalPages;
-		List<Integer> list = new ArrayList<Integer>();
-		if (totalRecords / size == 0) {
-			totalPages = totalRecords / size;
-		} else {
-			totalPages = totalRecords / size + 1;
-		}
-		if (totalPages > 0 && totalPages < 6) {
-			for (int i = 1; i < totalPages + 1; i++) {
-				list.add(i);
-			}
-		}
-		if (totalPages >= 6) {
-			if (page >= totalPages) {
-				for (int i = page - 4; i < page + 1; i++) {
-					list.add(i);
-				}
-			} else {
-				for (int i = page - 1; i < page + 4; i++) {
-					if (i >= 1 && i <= totalPages)
-						list.add(i);
-				}
-			}
-		}
-		return list;
-	}
+//	public List<Integer> getListPage(int page, int size, int totalRecords) {
+//		int totalPages;
+//		List<Integer> list = new ArrayList<Integer>();
+//		if (totalRecords / size == 0) {
+//			totalPages = totalRecords / size;
+//		} else {
+//			totalPages = totalRecords / size + 1;
+//		}
+//		if (totalPages > 0 && totalPages < 6) {
+//			for (int i = 1; i < totalPages + 1; i++) {
+//				list.add(i);
+//			}
+//		}
+//		if (totalPages >= 6) {
+//			if (page >= totalPages) {
+//				for (int i = page - 4; i < page + 1; i++) {
+//					list.add(i);
+//				}
+//			} else {
+//				for (int i = page - 1; i < page + 4; i++) {
+//					if (i >= 1 && i <= totalPages)
+//						list.add(i);
+//				}
+//			}
+//		}
+//		return list;
+//	}
 
 }

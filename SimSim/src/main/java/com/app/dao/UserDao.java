@@ -21,4 +21,10 @@ public interface UserDao {
 	public int usernameIsExist(String username);
 	
 	public int emailIsExist(String email);
+	
+	public List<MainUser> findUsers(String keyword, int page, int size);
+	
+	public int countUsers(String keyword);
+	
+	public List<MainUser> getAll(int page, int size);
 }

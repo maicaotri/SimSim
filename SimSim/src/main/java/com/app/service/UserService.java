@@ -14,6 +14,8 @@ public interface UserService {
 
 	public List<MainUser> getAll();
 	
+	public List<MainUser> getAll(int page, int size);
+	
 	public MainUser getByUsername(String username);
 	
 	public int countAll();
@@ -21,4 +23,8 @@ public interface UserService {
 	public int usernameIsExist(String username);
 	
 	public int emailIsExist(String email);
+	
+	public List<MainUser> findUsers(String keyword, int page, int size);
+	
+	public int countUsers(String keyword);
 }

@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Data Table | Kiaalap - Kiaalap Admin Template</title>
+<title>Danh sách người dùng</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -73,88 +73,9 @@
 
 <body>
 	<%@ include file="menu.jsp"%>
-
 	<!-- Start Welcome area -->
 	<div class="all-content-wrapper">
 		<%@ include file="menu_nav.jsp"%>
-
-		<div class="panel-body">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<form class="form-horizontal" method="get">
-					<div class="form-group">
-						<div class="col-md-4 col-xs-12 col-lg-4">
-							<div class="row">
-								<select id="networdId" class="form-control strong">
-									<option value="0">Chọn mạng di động</option>
-									<option value="1">Viettel</option>
-									<option value="2">Mobifone</option>
-									<option value="3">Vinaphone</option>
-									<option value="4">Vietnamobile</option>
-									<option value="5">Gmobile</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-md-4 col-xs-6 col-lg-4 showgia "
-							style="margin-right: -15px;">
-							<div class="input-group">
-								<div class="input-group-addon font-12">Giá từ:</div>
-								<input id="priceFrom" class="form-control price"
-									placeholder="100,000" />
-							</div>
-						</div>
-						<div class="col-md-4 col-xs-6 col-lg-4 showgia">
-							<div class="input-group">
-								<div class="input-group-addon font-12">Đến:</div>
-								<input id="priceTo" class="form-control price"
-									placeholder="10,000,000" />
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<input id="simFind" type="text" value=""
-								class="form-control pull-left popover-dismiss"
-								placeholder="Nhập số sim bạn cần tìm" data-container="body"
-								data-toggle="popover" data-placement="bottom"
-								data-content=" - Sử dụng dấu <span class='red'>
-                                        x</span> đại điện cho 1 số và dấu <span class='red'>*</span> đại điện cho một chuỗi số. <br /> + Để tìm sim bắt đầu bằng 098, quý khách nhập vào 098*<br /> + Để tìm sim kết thúc bằng 888, quý khách nhập vào *888<br /> + Để tìm sim bắt đầu bằng 098 và kết thúc bằng 888, nhập vào 098*888<br /> + Để tìm sim bên trong có số 888, nhập vào 888<br /> + Để tìm sim bắt đầu bằng 098 và kết thúc bằng 808, 818, 828, 838, 848, 858, 868, 878, 888, 898 nhập vào 098*8x8<br /> "
-								title="Hướng dẫn tìm kiếm sim" /> <span class="input-group-btn">
-								<button type="button" class="btn btn-sm btn-warning strong"
-									id="searchBtn">Tìm sim</button>
-							</span>
-						</div>
-					</div>
-					<div class="form-group text-center">
-						<strong class="red font-12">Hot key:</strong> <span class="hotkey">
-							<a rel="nofollow" href="" class="hotkey">0912*68</a>, <a
-							rel="nofollow" href="" class="hotkey">090*888</a>, <a
-							rel="nofollow" href="" class="hotkey">0913*</a>, <a
-							rel="nofollow" href="" class="hotkey">*6688</a>, <a
-							rel="nofollow" href="" class="hotkey">09*(39|79|38|78)</a>, <a
-							rel="nofollow" href="" class="hotkey">09(1|0)*888</a>
-						</span>
-					</div>
-					<div class="form-group text-center fullsearch">
-						<div class="col-md-5 col-xs-6 col-md-offset-1">
-							<div class="input-group">
-								<div class="input-group-addon font-12">Tổng điểm:</div>
-								<input id="totalNumbers" maxlength="2" class="form-control mp0 "
-									placeholder=" < 81" />
-							</div>
-						</div>
-						<div class="col-md-5 col-xs-6">
-							<div class="input-group">
-								<div class="input-group-addon font-12">Tổng Nút:</div>
-								<input id="score" maxlength="1" class="form-control mp0 "
-									placeholder=" 0 -9" />
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div class="col-md-2"></div>
-		</div>
 
 		<div class="data-table-area mg-b-15">
 			<div class="container-fluid">
@@ -163,7 +84,9 @@
 						<div class="sparkline13-list">
 							<div class="sparkline13-hd">
 								<div class="main-sparkline13-hd">
-									<h1>Danh sách sim</h1>
+									<h1>Danh sách tài khoản</h1>
+Tìm kiếm theo username, email, fisrt, lastname<input id="keyword" placeholder="keyword" type="text"/>
+<button id="searchBtn">Search</button>
 								</div>
 							</div>
 							<div class="sparkline13-graph">
@@ -172,13 +95,13 @@
 										<thead>
 											<tr>
 												<th data-field="id">Id</th>
-												<th data-field="sim">Sim</th>
-												<th data-field="price">Giá tiền</th>
-												<th data-field="name">Mạng</th>
-												<th data-field="email">Tổng nút</th>
-												<th data-field="phone">Tổng điểm</th>
-												<th data-field="task">Tình trạng</th>
-												<th data-field="enabled">Khả dụng</th>
+												<th data-field="username">Username</th>
+												<th data-field="firstName">Tên</th>
+												<th data-field="lastName">Họ</th>
+												<th data-field="sex">Giới tính</th>
+												<th data-field="phone">Sdt</th>
+												<th data-field="address">Địa chỉ</th>
+												<th data-field="enabled">Trạng thái</th>
 											</tr>
 										</thead>
 										<tbody id="appendData">
@@ -279,48 +202,31 @@
 	function loadData(page){
 		$.ajax({
 		    type: "POST", // HTTP method POST or GET
-		    url: '${pageContext.request.contextPath}/sim/findSimView', 
+		    url: '${pageContext.request.contextPath}/user/finduser', 
 		    dataType: 'json',
 		     data: {
-		    	 page: page,
-		    	 size: $('#size').val(),
-		    	 networdId: $('#networdId').val(),
-		    	 priceFrom: $('#priceFrom').val(),
-		    	 priceTo: $('#priceTo').val(),
-		    	 score: $('#score').val(),
-		    	 totalNumbers: $('#totalNumbers').val(),
-		    	 simFind: $('#simFind').val(),
-		    	 totalNumbers: $('#totalNumbers').val(),
+		    	 keyword: $('#keyword').val(),
 		     },
 		    success: function(data) {
 		    	console.log(data); 
-		    	//$('#manage_user table > tbody').prepend(data);
-		        //alert(data);
 		        $('#appendBtnPage').empty();
 		        $('#appendData').empty();
-		        data.listSim.forEach(v => {
+		        data.listUser.forEach(v => {
 		        	var tr = document.createElement('tr');
 		        	var tdId =  document.createElement('td');
 		        	tdId.innerHTML = v.id;
-		        	var tdRealNumber =  document.createElement('td');
-		        	tdRealNumber.innerHTML = v.realNumber;
-		        	var tdScore =  document.createElement('td');
-		        	tdScore.innerHTML = v.score;
-		        	var tdPrice = document.createElement('td');
-		        	tdPrice.innerHTML =v.price;
-		        	var tdNetword = document.createElement('td');
-		        	tdNetword.innerHTML =v.netword.name;
-		        	var tdScore = document.createElement('td');
-		        	tdScore.innerHTML =v.score;
-		        	var tdTotalNumber = document.createElement('td');
-		        	tdTotalNumber.innerHTML =v.sumOfNumbers;
-		        	var tdSold = document.createElement('td');
-		        	if(v.sold==1){
-		        	tdSold.innerHTML ='Đã bán';
-		        	}
-		        	if(v.sold==0){
-		        	tdSold.innerHTML ='Còn';
-		        	}
+		        	var tdUsername =  document.createElement('td');
+		        	tdUsername.innerHTML = v.username;
+		        	var tdFName =  document.createElement('td');
+		        	tdFName.innerHTML = v.fName;
+		        	var tdLName = document.createElement('td');
+		        	tdLName.innerHTML =v.lName;
+		        	var tdSex = document.createElement('td');
+		        	tdSex.innerHTML =v.sex;
+		        	var tdPhone = document.createElement('td');
+		        	tdPhone.innerHTML =v.phone;
+		        	var tdAddress = document.createElement('td');
+		        	tdAddress.innerHTML =v.address;
 		        	var tdEnabled = document.createElement('td');
 		        	if(v.enabled==1){
 		        	tdEnabled.innerHTML ='Khả dụng';
@@ -331,12 +237,12 @@
 		        	
 		        	
 		        	tr.append(tdId);
-		        	tr.append(tdRealNumber);
-		        	tr.append(tdPrice);
-		        	tr.append(tdNetword);
-		        	tr.append(tdScore);
-		        	tr.append(tdTotalNumber);
-		        	tr.append(tdSold);
+		        	tr.append(tdUsername);
+		        	tr.append(tdFName);
+		        	tr.append(tdLName);
+		        	tr.append(tdSex);
+		        	tr.append(tdPhone);
+		        	tr.append(tdAddress);
 		        	tr.append(tdEnabled);
 		        	$('#appendData').append(tr);
 		        });

@@ -49,4 +49,16 @@ public class UserServiceImpl implements UserService {
 		return userDao.emailIsExist(email);
 	}
 
+	public List<MainUser> findUsers(String keyword, int page, int size) {
+		return userDao.findUsers(keyword, page, size);
+	}
+
+	public int countUsers(String keyword) {
+		return userDao.countUsers(keyword);
+	}
+
+	public List<MainUser> getAll(int page, int size) {
+		return userDao.getAll(page, size);
+	}
+
 }

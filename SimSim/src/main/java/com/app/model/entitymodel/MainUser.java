@@ -37,12 +37,12 @@ public class MainUser implements Serializable {
 	private String sex;
 
 	// bi-directional many-to-one association to Bill
-	@OneToMany(mappedBy = "mainuser")
-	private List<Bill> bills;
+//	@OneToMany(mappedBy = "mainuser")
+//	private List<Bill> bills;
 
 	// bi-directional many-to-one association to CartBillDetail
-	@OneToMany(mappedBy = "mainuser")
-	private List<CartBillDetail> cartBillDetails;
+//	@OneToMany(mappedBy = "mainuser")
+//	private List<CartBillDetail> cartBillDetails;
 
 	public MainUser() {
 	}
@@ -135,48 +135,48 @@ public class MainUser implements Serializable {
 		this.enabled = enabled;
 	}
 
-	public List<Bill> getBills() {
-		return this.bills;
-	}
+//	public List<Bill> getBills() {
+//		return this.bills;
+//	}
+//
+//	public void setBills(List<Bill> bills) {
+//		this.bills = bills;
+//	}
 
-	public void setBills(List<Bill> bills) {
-		this.bills = bills;
-	}
+//	public Bill addBill(Bill bill) {
+//		getBills().add(bill);
+//		bill.setMainuser(this);
+//
+//		return bill;
+//	}
+//
+//	public Bill removeBill(Bill bill) {
+//		getBills().remove(bill);
+//		bill.setMainuser(null);
+//
+//		return bill;
+//	}
 
-	public Bill addBill(Bill bill) {
-		getBills().add(bill);
-		bill.setMainuser(this);
-
-		return bill;
-	}
-
-	public Bill removeBill(Bill bill) {
-		getBills().remove(bill);
-		bill.setMainuser(null);
-
-		return bill;
-	}
-
-	public List<CartBillDetail> getCartBillDetails() {
-		return this.cartBillDetails;
-	}
-
-	public void setCartBillDetails(List<CartBillDetail> cartBillDetails) {
-		this.cartBillDetails = cartBillDetails;
-	}
-
-	public CartBillDetail addCartBillDetail(CartBillDetail cartBillDetail) {
-		getCartBillDetails().add(cartBillDetail);
-		cartBillDetail.setMainuser(this);
-
-		return cartBillDetail;
-	}
-
-	public CartBillDetail removeCartBillDetail(CartBillDetail cartBillDetail) {
-		getCartBillDetails().remove(cartBillDetail);
-		cartBillDetail.setMainuser(null);
-
-		return cartBillDetail;
-	}
+//	public List<CartBillDetail> getCartBillDetails() {
+//		return this.cartBillDetails;
+//	}
+//
+//	public void setCartBillDetails(List<CartBillDetail> cartBillDetails) {
+//		this.cartBillDetails = cartBillDetails;
+//	}
+//
+//	public CartBillDetail addCartBillDetail(CartBillDetail cartBillDetail) {
+//		getCartBillDetails().add(cartBillDetail);
+//		cartBillDetail.setMainuser(this);
+//
+//		return cartBillDetail;
+//	}
+//
+//	public CartBillDetail removeCartBillDetail(CartBillDetail cartBillDetail) {
+//		getCartBillDetails().remove(cartBillDetail);
+//		cartBillDetail.setMainuser(null);
+//
+//		return cartBillDetail;
+//	}
 
 }
