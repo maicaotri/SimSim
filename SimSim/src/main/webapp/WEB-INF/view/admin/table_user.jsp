@@ -201,8 +201,8 @@ Tìm kiếm theo username, email, fisrt, lastname<input id="keyword" placeholder
 	  
 	function loadData(page){
 		$.ajax({
-		    type: "POST", // HTTP method POST or GET
-		    url: '${pageContext.request.contextPath}/user/finduser', 
+		    type: "POST", 
+		    url: '${pageContext.request.contextPath}/finduser', 
 		    dataType: 'json',
 		     data: {
 		    	 keyword: $('#keyword').val(),

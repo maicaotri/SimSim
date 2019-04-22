@@ -80,7 +80,7 @@ public class UserController {
 		return "admin/table_user";
 	}
 
-	@RequestMapping(value = "/finduser", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/user/finduser", method = RequestMethod.POST)
 	public @ResponseBody UserView findUser(@RequestParam(name = "keyword", required = false) String keyword,
 			@RequestParam(name = "page", required = false, defaultValue = "1") int page,
 			@RequestParam(name = "size", required = false, defaultValue = "10") int size) {
