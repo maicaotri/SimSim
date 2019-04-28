@@ -37,12 +37,12 @@ public class CartBillDetailServiceImpl implements CartBillDetailService {
 		return cartBillDetailDao.getAll();
 	}
 
-	public List<CartBillDetail> findByUsername(String username, int page, int size) {
-		return cartBillDetailDao.findByUsername(username, page, size);
+	public List<CartBillDetail> find(String username, int page, int size) {
+		return cartBillDetailDao.find(username, page, size);
 	}
 
-	public List<CartBillDetail> findCartByUsername(String username, int page, int size) {
-		return cartBillDetailDao.findCartByUsername(username, page, size);
+	public List<CartBillDetail> find(String username, String status,int page, int size) {
+		return cartBillDetailDao.find(username, status, page, size);
 	}
 
 	public List<CartBillDetail> findBillByUsername(String username, int page, int size) {
@@ -56,6 +56,10 @@ public class CartBillDetailServiceImpl implements CartBillDetailService {
 
 	public boolean payByUsernameAndListSimId(String username, List<Integer> listId) {
 		return cartBillDetailDao.payByUsernameAndListId(username, listId);
+	}
+
+	public boolean isExist(String username, int simId) {
+		return cartBillDetailDao.isExist(username, simId);
 	}
 
 }

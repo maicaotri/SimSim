@@ -185,16 +185,17 @@
 							<table class="table table-hover table-condensed table-bordered">
 								<thead>
 									<tr>
-										<th class="active text-center col-md-1">Chọn</th>
+<!-- 										<th class="active text-center col-md-1">Chọn</th> -->
 										<th class="active text-center col-md-1">STT</th>
 										<th class="active text-center">Số sim</th>
+										<th class="active text-center">Mạng</th>
 										<th class="active"></th>
 									</tr>
 								</thead>
 								<c:forEach items="${list}" var="i" varStatus="loopCounter">
 									<tr>
-										<td class="center"><input type="checkbox"
-											value="${i.id}" name="listId" /></td>
+<!-- 										<td class="center"><input type="checkbox" -->
+<%-- 											value="${i.id}" name="listId" /></td> --%>
 										<td class="center">
 											${loopCounter.count}</td>
 										<td><div class="">
@@ -204,6 +205,8 @@
 														type="number" maxFractionDigits="3" value="${i.sim.price}" />
 												</strong>VNĐ<br>
 											</div></td>
+										<td class="text-center"><span
+                                        class="network n${i.sim.netword.id}"></span> </td>
 										<td class="text-center"><a href="" class="delcart"
 											data-sim="${i.sim.realNumber}"> <i
 												class="glyphicon glyphicon-trash text-danger"></i>

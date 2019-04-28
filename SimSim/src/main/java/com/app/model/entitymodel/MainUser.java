@@ -13,7 +13,6 @@ public class MainUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String username;
 
 	private String adress;
@@ -22,6 +21,7 @@ public class MainUser implements Serializable {
 
 	private String fName;
 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	private String lName;

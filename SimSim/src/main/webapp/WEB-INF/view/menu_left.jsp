@@ -594,14 +594,6 @@
 			<a class="list-group-item" href="">Đầu Số 086 Viettel</a>
 			<a class="list-group-item" href="">Đầu Số 088 VinaPhone</a>
 			<a class="list-group-item" href="">Đầu Số 089 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 032 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 033 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 034 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 035 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 036 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 037 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 038 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 039 Viettel</a>
 			<a class="list-group-item" href="">Đầu Số 081 VinaPhone</a>
 			<a class="list-group-item" href="">Đầu Số 082 VinaPhone</a>
 			<a class="list-group-item" href="">Đầu Số 083 VinaPhone</a>
@@ -612,10 +604,6 @@
 			<a class="list-group-item" href="">Đầu Số 077 MobiFone</a>
 			<a class="list-group-item" href="">Đầu Số 078 MobiFone</a>
 			<a class="list-group-item" href="">Đầu Số 079 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 052 Vietnamobile</a>
-			<a class="list-group-item" href="">Đầu Số 056 Vietnamobile</a>
-			<a class="list-group-item" href="">Đầu Số 058 Vietnamobile</a>
-			<a class="list-group-item" href="">Đầu Số 059 Gmobile</a>
 		</ul>
 	</div>
 
@@ -640,113 +628,6 @@
 	</div>
 
 	<div class="panel panel-primary hidden-xs">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<i class="glyphicon glyphicon-list"></i> Tìm sim tam hoa
-			</h2>
-		</div>
-		<div class="list-group">
-			<a class="list-group-item" href="">Sim Tam Hoa 999</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 888</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 777</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 666</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 555</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 444</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 333</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 222</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 111</a> <a
-				class="list-group-item" href="">Sim Tam Hoa 000</a>
-		</div>
-	</div>
-
-	<div class="panel panel-primary hidden-xs">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<i class="glyphicon glyphicon-list"></i> Tìm sim đuôi số tiến
-			</h2>
-		</div>
-		<div class="list-group">
-			<a class="list-group-item" href="">Sim Tiến Đuôi 6789</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 5678</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 4567</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 3456</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 2345</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 1234</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 0123</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 3579</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 2468</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 1357</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 0246</a> <a
-				class="list-group-item" href="">Sim Tiến Đuôi 1368</a>
-		</div>
-	</div>
-
-	<div class="panel panel-primary hidden-xs">
-		<div class="panel-heading">
-			<h2 class="panel-title">Tìm sim phong thủy</h2>
-		</div>
 		<div class="panel-body">
-			<form method="" action="">
-				<input name="do" value="search" type="hidden" />
-				<div class="form-group">
-					<label>Tổng nút</label> <input name="tongnut"
-						class="form-control input-sm" placeholder="Tổng nút 1-10"
-						type="text">
-				</div>
-				<div class="form-group">
-					<label>Tổng điểm</label> <input name="tongdiem"
-						class="form-control input-sm" placeholder="Tổng điểm < 81"
-						type="text">
-				</div>
-				<div class="row form-group"
-					style="font-size: 11px; font-weight: normal;">
-					<div class="col-xs-12 text-center">
-						<label> <input name="type" checked="checked" value="0"
-							type="radio"> Tất cả
-						</label> <label> <input name="type" value="0" type="radio">
-							10 Số
-						</label> <label> <input name="type" value="1" type="radio">
-							11 Số
-						</label>
-					</div>
-					<div class="col-xs-12 text-center margin-top">
-						<input class="btn btn-primary btn-sm" value="Tìm sim"
-							type="submit">
-					</div>
-				</div>
-				<input type="hidden" name="submit" value="true" />
-			</form>
-		</div>
-	</div>
-	<div class="panel panel-primary hidden-xs">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<i class="glyphicon glyphicon-search"> </i> Tìm sim năm sinh
-			</h2>
-		</div>
-		<div class="panel-body">
-			<form method="" action="">
-				<input name="do" value="search" type="hidden" />
-				<div class="form-group">
-					<label>Chọn ngày</label> <input name="date" type="text"
-						class="form-control input-sm datepicker" placeholder="dd/mm/yyyy"
-						type="text">
-				</div>
-				<div class="row form-group">
-					<div class="col-xs-12 text-center">
-						<label> <input name="dtp" checked="checked" value="0"
-							type="radio"> Tất cả
-						</label> <label> <input name="dtp" value="2" type="radio">
-							m/d/y
-						</label> <label> <input name="dtp" value="1" type="radio">
-							19xx
-						</label>
-					</div>
-					<div class="col-xs-12 text-center margin-top">
-						<input class="btn btn-primary btn-sm" value="Tìm sim"
-							type="submit">
-					</div>
-				</div>
-			</form>
 </body>
 </html>

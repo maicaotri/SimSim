@@ -72,7 +72,7 @@ public class SimController {
 	}
 
 	@RequestMapping(value = "/sim/findSimDetail", method = RequestMethod.POST)
-	public @ResponseBody List<Sim> findSimDetail(HttpServletRequest request, HttpServletResponse response,
+	public @ResponseBody SimView findSimDetail(HttpServletRequest request, HttpServletResponse response,
 			HttpSession session, @RequestParam(name = "networdId", required = false) Integer networdId,
 			@RequestParam(name = "priceFrom", required = false, defaultValue = "0") double priceFrom,
 			@RequestParam(name = "priceTo", required = false, defaultValue = "10000000") double priceTo,
@@ -84,8 +84,11 @@ public class SimController {
 			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
-		return simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page,
-				size, 1, 0);
+		List<Sim> listSim = simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number,
+				notContainNumbers, page, size, null, null);
+		List<Integer> listPage = PageProcessing.getListPage(page, size, getTotalRecords(request, response, session, networdId,
+				priceFrom, priceTo, score, totalNumbers, number, page, size, notContainNumbers));
+		return new SimView(listSim, listPage);
 	}
 
 	@RequestMapping(value = "/sim/findSimView", method = RequestMethod.POST)
@@ -142,33 +145,5 @@ public class SimController {
 	public String test() {
 		return "admin/test";
 	}
-
-//	public List<Integer> getListPage(int page, int size, int totalRecords) {
-//		int totalPages;
-//		List<Integer> list = new ArrayList<Integer>();
-//		if (totalRecords / size == 0) {
-//			totalPages = totalRecords / size;
-//		} else {
-//			totalPages = totalRecords / size + 1;
-//		}
-//		if (totalPages > 0 && totalPages < 6) {
-//			for (int i = 1; i < totalPages + 1; i++) {
-//				list.add(i);
-//			}
-//		}
-//		if (totalPages >= 6) {
-//			if (page >= totalPages) {
-//				for (int i = page - 4; i < page + 1; i++) {
-//					list.add(i);
-//				}
-//			} else {
-//				for (int i = page - 1; i < page + 4; i++) {
-//					if (i >= 1 && i <= totalPages)
-//						list.add(i);
-//				}
-//			}
-//		}
-//		return list;
-//	}
 
 }

@@ -25,14 +25,14 @@
 		<div class="collapse navbar-collapse navbar-menubuilder "
 			id="menuphai123">
 			<ul class="nav navbar-nav navbar-left">
-				<li class=""><a href="">Trang chủ</a></li>
-				<li class=""><a href="">Giới thiệu</a></li>
-				<li class=""><a href="">Thanh toán</a></li>
-				<li class=""><a href="">Liên hệ</a></li>
-				<li class=""><a href="">Bán sim trả góp</a></li>
-				<li class=""><a href="">Cầm cố sim</a></li>
-				<li class=""><a href="">Thu mua sim</a></li>
-				<li class=""><a href="">Xem phong thủy</a></li>
+				<li class=""><a href="${pageContext.request.contextPath}/trangchu">Trang chủ</a></li>
+				<li class=""><a href="#">Giới thiệu</a></li>
+				<li class=""><a href="#">Thanh toán</a></li>
+				<li class=""><a href="#">Liên hệ</a></li>
+				<li class=""><a href="#">Bán sim trả góp</a></li>
+				<li class=""><a href="#">Cầm cố sim</a></li>
+				<li class=""><a href="#">Thu mua sim</a></li>
+				<li class=""><a href="#">Xem phong thủy</a></li>
 			</ul>
 		</div>
 	</div>

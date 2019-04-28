@@ -27,6 +27,7 @@ public class LoginController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || authentication.getName().equals("anonymousUser")) {
 			System.out.println(error);
+			request.setAttribute("mess", "Nhập tên đăng nhập và mật khẩu.");
 			return "login";
 		} else {
 			MainUser u = userService.getByUsername(authentication.getName());

@@ -56,7 +56,7 @@ public class CartBillDetailDaoImpl implements CartBillDetailDao {
 		return criteria.list();
 	}
 
-	public List<CartBillDetail> findByUsername(String username, int page, int size) {
+	public List<CartBillDetail> find(String username, int page, int size) {
 		session = sessionFactory.getCurrentSession();
 		String sql = "SELECT * FROM cart_bill_detail WHERE username = :username";
 		SQLQuery query = session.createSQLQuery(sql);
@@ -69,12 +69,13 @@ public class CartBillDetailDaoImpl implements CartBillDetailDao {
 		return results;
 	}
 
-	public List<CartBillDetail> findCartByUsername(String username, int page, int size) {
+	public List<CartBillDetail> find(String username, String status, int page, int size) {
 		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM cart_bill_detail WHERE username = :username AND `status` = 'READY' ";
+		String sql = "SELECT * FROM cart_bill_detail WHERE username = :username AND `status` = :status ";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.addEntity(CartBillDetail.class);
 		query.setParameter("username", username);
+		query.setParameter("status", status);
 		query.setFirstResult((page - 1) * size);
 		query.setMaxResults(size);
 		List<CartBillDetail> results = query.list();
@@ -208,6 +209,19 @@ public class CartBillDetailDaoImpl implements CartBillDetailDao {
 		} else {
 			return null;
 		}
+	}
+
+	public boolean isExist(String username, int simId) {
+		session = sessionFactory.getCurrentSession();
+		String sql = "SELECT * FROM cart_bill_detail WHERE username = :username AND simId = :simId ";
+		SQLQuery query = session.createSQLQuery(sql);
+		query.addEntity(CartBillDetail.class);
+		query.setParameter("username", username);
+		query.setParameter("simId", simId);
+		List<CartBillDetail> results = query.list();
+		if (results.size() == 0 || results == null)
+			return false;
+		return true;
 	}
 
 }

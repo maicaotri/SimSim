@@ -46,21 +46,20 @@
 						<strong>CHIA SẺ MẠNG XÃ HỘI</strong>
 					</h4>
 					<a
-						href="http://online.gov.vn/CustomWebsiteDisplay.aspx?DocId=39351">
+						href="">
 						<img alt="" class="img-responsive img-fluid" height="95"
 						src="/data/dtb.png" width="250" />
 					</a>
 					<ul class="share">
-						<li><a href="#" class="facebook wow fadeInRight wowhover"
+						<li><a href="" class="facebook wow fadeInRight wowhover"
 							data-effect="flip" data-wow-duration="1s" data-wow-delay=".2s "
 							title="Chi lên trong Facebook"></a></li>
 						<li><a
-							href="http://twitter.com/share?text=Mua sim số đẹp đầu số mới đang rẩ rẻ? Kho sim rẻ nay xả lại rẻ thêm nữa. Hàng triệu sim số đẹp thỏa sức lựa chọn&url=http%3A%2F%2Fmuasim24h.vn%2F"
-							target="_blank" class="twitter wow fadeInRight"
+							href=""
 							data-wow-duration="1s" data-wow-delay=".4s "
 							title="Chi sẻ lên Twitter"></a></li>
 						<li><a
-							href="https://plus.google.com/share?url=http%3A%2F%2Fmuasim24h.vn%2F"
+							href=""
 							target="_blank" class="plusone wow fadeInRight"
 							data-wow-duration="1s" data-wow-delay=".6s "
 							title="Chia sẻ lên Google+"></a></li>
@@ -92,7 +91,7 @@
 				<span style="font-size: 18px;">Bản quyền: <span
 					style="font-weight: 700;"> <span
 						style="font-family: Arial, Helvetica, sans-serif; line-height: normal;">Công
-							ty TNHH NAM NHẬT THÀNH</span>
+							ty TNHH SIM</span>
 
 				</span></span> <br />
 				<br /> <span style="font-size: 14px;"> <span
@@ -132,8 +131,7 @@
 					</span>
 				</span>
 				</span> <span style="font-size: 18px;"> <span
-					style="font-weight: 700;"> <br />www.muasim24h.com -
-						www.muasim24h.vn
+					style="font-weight: 700;"> <br />
 				</span>
 				</span> <span style="font-size: 18px;"> <span
 					style="font-weight: 700; list-style-type: none; padding: 0px; margin: 0px;">
@@ -154,7 +152,7 @@
 						<span style="color: #4B0082;"> <span
 							style="font-weight: 700; list-style-type: none; padding: 0px; margin: 0px;">
 								<span class="__cf_email__"
-								data-cfemail="29445c485a40441b1d41075f47694e44484045074a4644">[email&#160;protected]</span>
+								data-cfemail=""></span>
 
 						</span></span>
 				</a>
@@ -167,12 +165,11 @@
 </div>
 <a class="glyphicon scrollToTop wowhover" data-effect="fadeInRight"
 	href="javascript://" rel="nofollow"></a>
-<a class="glyphicon scrollTobottom hidden-xs" href="javascript://"
+<a class="glyphicon scrollTobottom hidden-xs" href=""
 	rel="nofollow"></a>
 <script data-cfasync="false"
 	src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-<span class="designby banquyen1">Version 2.0 mobile support -
-	Thiết kế bởi: www.stv.vn</span>
+
 <div id="c-mask" class="c-mask"></div>
 <div class="navbar-fixed-bottom visible-xs navbar-default"
 	style="min-height: 45px; padding-left: 10px; padding-right: 10px;">
@@ -193,67 +190,8 @@
 			</span>
 		</div>
 	</div>
-	<div class="pull-right">
-		<a href="/?desktop=1" class="pull-right"> <i class="stv-display"></i><b>
-				Xem bản Desktop</b></a>
-	</div>
+	
 </div>
 
 <div id="fb-root"></div>
 
-<div class="fb-chat-popup">
-	<div class="fb-page-header">
-		<i class="glyphicon glyphicon-comment"></i> <span class="title">Hỗ
-			Trợ Trực Tuyến</span>
-	</div>
-	<div class="fb-page-box">
-		<div class="fb-page"
-			data-href="https://www.facebook.com/muasim24h.vn/?fref=ts"
-			data-height="350" data-width="300" data-small-header="false"
-			data-adapt-container-width="false" data-hide-cover="false"
-			data-show-facepile="false" data-tabs="messages"
-			data-show-posts="false"></div>
-		<div class="chat-single">Hotline: 0961003003 - 0996003003</div>
-
-	</div>
-
-</div>
-
-<script>
-    $(document).ready(function () {
-//         $("head").append('<link rel="stylesheet" href="<c:url value="/resource/css/tssodep.css"/>">');
-        $(".facebook").click(function () {
-            window.open('');
-            return false;
-        });
-        w = $(document).width();
-        if (w >= 1024) {
-            $("a.dropdown-toggle").each(function (index) {
-                href = $(this).attr('href');
-                text = $(this).text();
-                $(this).attr('href', 'Sim-So-Dep-' + text.trim() + '.html');
-            });
-            $("a.dropdown-toggle").click(function () {
-                window.location = $(this).attr('href');
-            })
-        }
-        $("button[name='submit']").click(function () {
-            sim = $("#sim").val();
-            if (sim.length == 10 || sim.length == 11) {
-                window.location = "/" + sim + ".html";
-                return false;
-            }
-        })
-    })
-</script>
-<div class="phonering-alo-phone phonering-alo-green phonering-alo-show "
-	id="phonering-alo-phoneIcon"
-	style="left: -40px; top: 470px; display: block;">
-	<div class="phonering-alo-ph-circle"></div>
-	<div class="phonering-alo-ph-circle-fill"></div>
-	<a href="tel:0961003003"></a>
-	<div class="phonering-alo-ph-img-circle">
-		<a href="tel:0961003003"></a> <a href="tel:0961003003"
-			class="pps-btn-img " title="Liên hệ">
-	</div>
-</div>

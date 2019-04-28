@@ -9,7 +9,7 @@
 		</div>
 		<p style="text-align: center;">
 			<img alt="" class="hidden-xs img-responsive img-fluid" height="230"
-				src="images/bg_hotline.png" style="margin: auto;" width="194" />
+				src="<c:url value="/resource/images/bg_hotline.png"/>" style="margin: auto;" width="194" />
 		</p>
 		<p
 			style="list-style-type: none; font-family: Arial, Helvetica, sans-serif; padding: 0px; margin-bottom: 0px; color: rgb(0, 0, 0); font-size: 12px; line-height: normal; text-align: center;">
@@ -480,25 +480,8 @@
 			<div id="bodem">
 				<span style="text-align: center;">Load...</span>
 			</div>
-			<script>
-                                                                                                                                  
-				window.onload = function() {
-					$("#bodem").load('/index.php/online');
-				}
-			</script>
+			
 		</div>
 	</div>
-	<div class="panel panel-primary hidden-xs" id="box2">
-		<div class="panel-heading">
-			<h6 class="panel-title">
-				<i class="glyphicon glyphicon-star"></i> Kết nối trên Facebook
-			</h6>
-		</div>
-		<div class="panel-body">
-			<iframe allowtransparency="true" frameborder="0" height="200"
-				scrolling="no"
-				src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmuasim24h.vn&amp;tabs=timeline&amp;width=218&amp;height=200&amp;small_header=false&amp;adapt_container_width=true&amp;hide_cover=false&amp;show_facepile=true&amp;appId=1781861188729270"
-				style="border: none; overflow: hidden" width="218"> </iframe>
-		</div>
-	</div>
+
 </div>

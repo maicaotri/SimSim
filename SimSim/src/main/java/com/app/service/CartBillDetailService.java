@@ -16,13 +16,15 @@ public interface CartBillDetailService {
 
 	public List<CartBillDetail> getAll();
 	
-	public List<CartBillDetail> findByUsername(String username, int page, int size);
+	public List<CartBillDetail> find(String username, int page, int size);
 	
-	public List<CartBillDetail> findCartByUsername(String username, int page, int size);
+	public List<CartBillDetail> find(String username, String status, int page, int size);
 	
 	public List<CartBillDetail> findBillByUsername(String username, int page, int size);
 	
 	public List<CartBillDetail> findBillByUsernameAndListSimId(String username,List<Integer> listSimId, int page, int size);
 
 	public boolean payByUsernameAndListSimId(String username,List<Integer> listCartBillDetailId);
+	
+	public boolean isExist(String username, int simId);
 }

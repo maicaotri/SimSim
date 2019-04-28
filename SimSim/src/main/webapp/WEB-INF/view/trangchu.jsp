@@ -22,7 +22,8 @@
 				</div>
 				<div class="cart wow fadeInLeft" data-toggle="modal"
 					data-target="#myModal">
-					<a href="${pageContext.request.contextPath}/user/cart" class="addcart hidden-xs"> <i
+					<a href="${pageContext.request.contextPath}/user/cart"
+						class="addcart hidden-xs"> <i
 						class="glyphicon glyphicon-shopping-cart font-12 hidden-xs"></i>
 						Giỏ hàng <span class="hidden-xs badge" id="cart">0</span>
 					</a>
@@ -66,11 +67,11 @@
 
 					</div>
 					<div class="panel-body">
-						<form id="search1" action="${pageContext.request.contextPath}/sim/findSim" class="form-horizontal" method="get">
+						<form class="form-horizontal" method="get">
 							<div class="form-group">
 								<div class="col-md-4 col-xs-12 col-lg-4">
 									<div class="row">
-										<select name="networdId" class="form-control strong">
+										<select id="networdId" class="form-control strong">
 											<option value="0">Chọn mạng di động</option>
 											<option value="1">Viettel</option>
 											<option value="2">Mobifone</option>
@@ -84,30 +85,30 @@
 									style="margin-right: -15px;">
 									<div class="input-group">
 										<div class="input-group-addon font-12">Giá từ:</div>
-										<input name="priceFrom" class="form-control price"
+										<input id="priceFrom" class="form-control price"
 											placeholder="100,000" />
 									</div>
 								</div>
 								<div class="col-md-4 col-xs-6 col-lg-4 showgia">
 									<div class="input-group">
 										<div class="input-group-addon font-12">Đến:</div>
-										<input name="priceTo" class="form-control price"
+										<input id="priceTo" class="form-control price"
 											placeholder="10,000,000" />
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="input-group">
-									<input name="simFind" type="text" value=""
+									<input id="simFind" type="text" value=""
 										class="form-control pull-left popover-dismiss"
 										placeholder="Nhập số sim bạn cần tìm" data-container="body"
 										data-toggle="popover" data-placement="bottom"
 										data-content=" - Sử dụng dấu <span class='red'>
-										x</span> đại điện cho 1 số và dấu <span class='red'>*</span> đại điện cho một chuỗi số. <br /> + Để tìm sim bắt đầu bằng 098, quý khách nhập vào 098*<br /> + Để tìm sim kết thúc bằng 888, quý khách nhập vào *888<br /> + Để tìm sim bắt đầu bằng 098 và kết thúc bằng 888, nhập vào 098*888<br /> + Để tìm sim bên trong có số 888, nhập vào 888<br /> + Để tìm sim bắt đầu bằng 098 và kết thúc bằng 808, 818, 828, 838, 848, 858, 868, 878, 888, 898 nhập vào 098*8x8<br /> "
+                                        x</span> đại điện cho 1 số và dấu <span class='red'>*</span> đại điện cho một chuỗi số. <br /> + Để tìm sim bắt đầu bằng 098, quý khách nhập vào 098*<br /> + Để tìm sim kết thúc bằng 888, quý khách nhập vào *888<br /> + Để tìm sim bắt đầu bằng 098 và kết thúc bằng 888, nhập vào 098*888<br /> + Để tìm sim bên trong có số 888, nhập vào 888<br /> + Để tìm sim bắt đầu bằng 098 và kết thúc bằng 808, 818, 828, 838, 848, 858, 868, 878, 888, 898 nhập vào 098*8x8<br /> "
 										title="Hướng dẫn tìm kiếm sim" /> <span
 										class="input-group-btn">
-										<button type="submit" class="btn btn-sm btn-warning strong">Tìm
-											sim</button>
+										<button type="button" class="btn btn-sm btn-warning strong"
+											id="searchBtn">Tìm sim</button>
 									</span>
 								</div>
 							</div>
@@ -122,29 +123,17 @@
 								</span>
 							</div>
 							<div class="form-group text-center fullsearch">
-								Dãy số không gồm: <input name="notContainNumbers" value="1" type="checkbox">
-					<span> 1 </span> <input name="notContainNumbers" value="2" type="checkbox">
-					<span> 2 </span> <input name="notContainNumbers" value="3" type="checkbox">
-					<span> 3 </span> <input name="notContainNumbers" value="4" type="checkbox">
-					<span> 4 </span> <input name="notContainNumbers" value="5" type="checkbox">
-					<span> 5 </span> <input name="notContainNumbers" value="6" type="checkbox">
-					<span> 6 </span> <input name="notContainNumbers" value="7" type="checkbox">
-					<span> 7 </span> <input name="notContainNumbers" value="8" type="checkbox">
-					<span> 8 </span> <input name="notContainNumbers" value="9" type="checkbox">
-					<span> 9 </span>
-							</div>
-							<div class="form-group text-center fullsearch">
 								<div class="col-md-5 col-xs-6 col-md-offset-1">
 									<div class="input-group">
 										<div class="input-group-addon font-12">Tổng điểm:</div>
-										<input name="totalNumbers" maxlength="2" class="form-control mp0 "
-											placeholder=" < 81" />
+										<input id="totalNumbers" maxlength="2"
+											class="form-control mp0 " placeholder=" < 81" />
 									</div>
 								</div>
 								<div class="col-md-5 col-xs-6">
 									<div class="input-group">
 										<div class="input-group-addon font-12">Tổng Nút:</div>
-										<input name="score" maxlength="1" class="form-control mp0 "
+										<input id="score" maxlength="1" class="form-control mp0 "
 											placeholder=" 0 -9" />
 									</div>
 								</div>
@@ -166,108 +155,111 @@
 					<table class="table table-bordered table-condensed">
 						<thead>
 							<tr>
-								<th class="active center">STT</th>
-								<th class="active">Sim</th>
-								<th class="active sortprice">Giá tiền <span
-									class="glyphicon"> <a class="pricetoogle" href=""> <span
-											class="glyphicon-arrow-up"></span> <span
-											class="glyphicon glyphicon-arrow-down"></span>
-									</a>
-								</span>
-								</th>
+								<th class="active text-center">Sim</th>
+								<th class="active sortprice text-center">Giá tiền </th>
 								<th class="active text-center">Tổng</th>
-								<th class="active">Mạng di dộng</th>
-								<th class="active text-center">Đặt mua</th>
-								<th class="active text-center text-center">Giỏ hàng</th>
+								<th class="active text-center">Mạng di dộng</th>
+								<th class="active text-center">Giỏ hàng</th>
 							</tr>
 						</thead>
-						<tbody>
-							<td>
-							<td colspan="8">
-								<div id="loc1" style="float: right;">
-									<form method="POST" class="form-inline" id="loc">
-										<strong>Lọc danh sách:</strong> <select name="loctheogia"
-											Class="locgia from-control">
-											<option value="" selected="selected">Mọi mức giá</option>
-											<option value="">Dưới 1 Triệu</option>
-											<option value="">Từ 1 -2 Triệu</option>
-											<option value="">Từ 2 - 3 Triệu</option>
-											<option value="">Từ 3 - 5 Triệu</option>
-											<option value="">Từ 5 - 8 Triệu</option>
-											<option value="">Từ 8 - 10 Triệu</option>
-											<option value="">Từ 10 -15 Triệu</option>
-											<option value="">Từ 15 - 20 Triệu</option>
-											<option value="">Trên 20 Triệu</option>
-										</select> <select name="loctheomang" class="locmang from-control">
-											<option value="" class="locmang from-control option">Mọi
-												mạng</option>
-											<option value="" class="locmang from-control option">Viettel</option>
-											<option value="" class="locmang from-control option">Mobifone</option>
-											<option value="" class="locmang from-control option">Vinaphone</option>
-											<option value="" class="locmang from-control option">Vietnamobile</option>
-											<option value="" class="locmang from-control option">Gmobile</option>
-										</select>
-									</form>
-
-								</div>
-							</td>
-							</td>
-							<c:if test="${listU != null}"></c:if>
-							<c:forEach items="${list}" var="sim">
-								<tr>
-									<td class="center">1</td>
-									<td><a href="" title="${sim.realNumber}" rel="nofollow">
-											<strong class="font-16 sim">${sim.realNumber}</strong>
-									</a></td>
-									<td class="font-13" style="color: black;"><fmt:formatNumber
-											type="number" maxFractionDigits="3" value="${sim.price}" />
-										VNĐ</td>
-									<td class="text-center"><span class="badge">${sim.sumOfNumbers}</span></td>
-									<td class="text-center"><span class="network n${sim.netword.id}"></span></td>
-									<td class="text-center"><a rel="nofollow" href="" class="btn btn-xs btn-warning ">Đặt mua</a></td>
-									<td class="text-center"><a rel="nofollow" title="Thêm sim ${sim.realNumber} vào giỏ hàng" 
-									href="${context}/user/addSimToCart"
-										class="addcarts" data-sim="${sim.realNumber}" data-gia="4.5">
-											<i class="glyphicon glyphicon-shopping-cart"></i>
-									</a></td>
-								</tr>
-							</c:forEach>
-
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="8" class="text-center">
-									<ul class="pagination pagination-sm">
-										<li><span class="inactive" href="#">Trước</span></li>
-										<li class="active"><a title="Go to page 1 of 140"
-											class="current" href="">[1]</a></li>
-										<li><a class="paginate" title="Go to page 2 of 200"
-											href="">2</a></li>
-										<li><a class="paginate" title="Go to page 3 of 200"
-											href="">3</a></li>
-										<li><a class="paginate" title="Go to page 4 of 200"
-											href="">4</a></li>
-										<li><a class="paginate" title="Go to page 5 of 200"
-											href="">5</a></li>
-										<li><a class="paginate" title="Go to page 6 of 200"
-											href="">6</a></li>
-										<li><a class="paginate" title="Go to page 7 of 200"
-											href="">...</a></li>
-										<li><a class="paginate" title="Go to page 200 of 200"
-											href="">200</a></li>
-										<li><a class="paginate" href="/?page=2">Tiếp theo</a></li>
-									</ul>
-								</td>
-							</tr>
-						</tfoot>
+						<tbody id="appendData" class="text-center">
 					</table>
 				</div>
+				<div id="appendBtnPage"
+					style="vertical-align: middle; text-align: center; margin-top: 3px;"></div>
 			</div>
 			<%@ include file="menu_right.jsp"%>
 		</div>
 	</div>
-<%-- 	<script src="<c:url value="/resource/js/sim.js"/>" --%>
-<!-- 		type="text/javascript"></script> -->
+	<script src="<c:url value="/resource/js/sim.js"/>"
+		type="text/javascript"></script>
+	<script type="text/javascript">
+	
+	$( document ).ready(function() {
+        loadData();
+        $("#searchBtn").click(function(){
+            loadData();
+        }); 
+    });
+	
+	   function loadData(page){
+	        $.ajax({
+	            type: "POST", // HTTP method POST or GET
+	            url: '${pageContext.request.contextPath}/sim/findSimDetail', 
+	            dataType: 'json',
+	             data: {
+	                 page: page,
+	                 size: 20,
+	                 networdId: $('#networdId').val(),
+	                 priceFrom: $('#priceFrom').val(),
+	                 priceTo: $('#priceTo').val(),
+	                 score: $('#score').val(),
+	                 totalNumbers: $('#totalNumbers').val(),
+	                 simFind: $('#simFind').val(),
+	                 totalNumbers: $('#totalNumbers').val(),
+	             },
+	            success: function(data) {
+	                console.log(data); 
+	                //$('#manage_user table > tbody').prepend(data);
+	                //alert(data);
+	                $('#appendBtnPage').empty();
+	                $('#appendData').empty();
+	                data.listSim.forEach(v => {
+	                    var tr = document.createElement('tr');
+	                    var tdRealNumber =  document.createElement('td');
+	                    tdRealNumber.innerHTML = "<strong class='font-16 sim'>" + v.realNumber + "</strong>";
+	                    var tdPrice = document.createElement('td');
+	                    tdPrice.innerHTML = v.price +" VNĐ";
+	                    var tdTotalNumber = document.createElement('td');
+	                    tdTotalNumber.innerHTML =v.sumOfNumbers;
+	                    
+	                    var tdNetword =  document.createElement('td');
+	                    if(v.netword.id==1){
+	                    	tdNetword.innerHTML ="<span class='network n1'></span>";
+	                        }
+	                        if(v.netword.id==2){
+	                        	tdNetword.innerHTML ="<span class='network n2'></span>";
+	                        }
+	                        if(v.netword.id==3){
+	                        	tdNetword.innerHTML ="<span class='network n3'></span>";
+	                        }
+	                        if(v.netword.id==4){
+	                        	tdNetword.innerHTML ="<span class='network n3'></span>";
+	                        }
+	                        if(v.netword.id==5){
+	                        	tdNetword.innerHTML ="<span class='network n5'></span>";
+	                        }
+	                        
+	                    var tdCart = document.createElement('td');
+	                    tdCart.innerHTML ="<a rel='nofollow'' title='Thêm vào giỏ hàng' href='${pageContext.request.contextPath}/user/addSimToCart?simId="+v.id+"' class='addcarts' data-gia='4.5'> <i class='glyphicon glyphicon-shopping-cart'> </i> </a>";
+	                    
+	                    tr.append(tdRealNumber);
+	                    tr.append(tdPrice);
+	                    tr.append(tdTotalNumber);
+	                    tr.append(tdNetword);
+	                    tr.append(tdCart);
+	                    $('#appendData').append(tr);
+	                });
+	                
+	                data.listPage.forEach(p => {
+	                    var btn = document.createElement('BUTTON');
+	                    btn.innerHTML = p;
+	                    btn.onclick = function(){
+	                        loadData(p);
+	                      };
+	                    $('#appendBtnPage').append(btn);
+	                });
+	            },
+	            error: function(xhr, ajaxOptions, thrownError) {
+	                //On error, we alert user
+	                alert(thrownError);
+	            },
+	            complete: function() {
+	                //alert('update success'); 
+	            }
+	        });
+	        }
+	</script>
 	<%@ include file="footer.jsp"%>
 </body>
 </html>

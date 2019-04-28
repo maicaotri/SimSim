@@ -16,9 +16,9 @@ public interface CartBillDetailDao {
 
 	public List<CartBillDetail> getAll();
 
-	public List<CartBillDetail> findByUsername(String username, int page, int size);
+	public List<CartBillDetail> find(String username, int page, int size);
 	
-	public List<CartBillDetail> findCartByUsername(String username, int page, int size);
+	public List<CartBillDetail> find(String username, String status, int page, int size);
 	
 	public List<CartBillDetail> findBillByUsername(String username, int page, int size);
 	
@@ -29,4 +29,6 @@ public interface CartBillDetailDao {
 	public void setStatusOrdered(List<Integer> listId, Integer billId, String username);
 	
 	public List<CartBillDetail> getByUsernameListId(String username, List<Integer> listId);
+	
+	public boolean isExist(String username, int simId);
 }
