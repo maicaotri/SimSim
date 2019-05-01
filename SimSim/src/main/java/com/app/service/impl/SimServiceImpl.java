@@ -61,13 +61,13 @@ public class SimServiceImpl implements SimService {
 	}
 
 	public List<Sim> findSim(Integer networkId, double priceFrom, double priceTo, Integer score,
-			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled, Integer sold) {
-		return simDao.findSim(networkId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size, enabled, sold);
+			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled, Integer sold, Integer simType) {
+		return simDao.findSim(networkId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, page, size, enabled, sold, simType);
 	}
 
 	public int countAll(Integer networkId, double priceFrom, double priceTo, Integer score, Integer totalNumbers,
-			String number, List<Integer> notContainNumbers) {
-		return simDao.countAll(networkId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers);
+			String number, List<Integer> notContainNumbers, Integer simType) {
+		return simDao.countAll(networkId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, simType);
 	}
 
 }

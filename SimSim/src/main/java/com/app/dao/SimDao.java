@@ -32,12 +32,12 @@ public interface SimDao {
 	public boolean updateSoldSim(List<Integer> list);
 	
 	public List<Sim> findSim(Integer networkId, double priceFrom, double priceTo, Integer score,
-			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled, Integer sold);
+			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled, Integer sold, Integer simType);
 	
 	public void setSimSold(List<Integer> listSimId);
 	
 	public int countAll(Integer networkId, double priceFrom, double priceTo, Integer score,
-			Integer totalNumbers, String number, List<Integer> notContainNumbers);
+			Integer totalNumbers, String number, List<Integer> notContainNumbers, Integer simType);
 	
 	public int simIsExist(String simNumber);
 }

@@ -107,19 +107,19 @@
 <body>
 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-		<li class="dropdown"><a href="" class="dropdown-toggle"
+		<li class="dropdown"><a  class="dropdown-toggle"
 			data-toggle="dropdown"> <span class="net"></span> <a
 				id="vinaPhone">VinaPhone<a></a> <span class="caret"></span></a></li>
-		<li class="dropdown"><a href="" class="dropdown-toggle"
+		<li class="dropdown"><a  class="dropdown-toggle"
 			data-toggle="dropdown"> <span class="net"></span> <a
 				id="mobiFone">Mobifone<a></a> <span class="caret"></span></a></li>
-		<li class="dropdown"><a href="" class="dropdown-toggle"
+		<li class="dropdown"><a  class="dropdown-toggle"
 			data-toggle="dropdown"> <span class="net"></span> <a id="viettel">Viettel<a></a>
 					<span class="caret"></span></a></li>
-		<li class="dropdown"><a href="" class="dropdown-toggle"
+		<li class="dropdown"><a  class="dropdown-toggle"
 			data-toggle="dropdown"> <span class="net"></span> <a
 				id="vietnamMobile">VietnamMobile<a></a> <span class="caret"></span></a></li>
-		<li class="dropdown"><a href="" class="dropdown-toggle"
+		<li class="dropdown"><a  class="dropdown-toggle"
 			data-toggle="dropdown"> <span class="net"></span> <a id="gmobile">Gmobile<a></a>
 					<span class="caret"></span></a></li>
 
@@ -152,69 +152,33 @@
 			</h2>
 		</div>
 		<div class="list-group">
-			<a class="list-group-item" href=""> <strong>Sim Tứ Quý</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Lục Quý</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Ngũ Quý</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Lộc
-					Phát</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Thần
-					Tài</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim ông địa</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim tiến
-					đơn</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Tiến
-					đôi</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Taxi 2</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Taxi 3</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Taxi 4</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Lặp</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim kép</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim đối</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Đảo</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim gánh</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Đặc
+			<a id="simType1" class="list-group-item" > <strong>Sim Tứ Quý</strong> </a> 
+			<a id="simType2" class="list-group-item" > <strong>Sim Ngũ Quý</strong> </a> 
+			<a id="simType3" class="list-group-item" > <strong>Sim Lộc Phát</strong> </a> 
+			<a id="simType4" class="list-group-item" > <strong>Sim Thần Tài</strong> </a> 
+			<a id="simType5" class="list-group-item" > <strong>Sim ông địa</strong> </a> 
+			<a id="simType6" class="list-group-item" > <strong>Sim tiến đơn</strong> </a> 
+			<a id="simType7" class="list-group-item" > <strong>Sim Tiến đôi</strong>
+			</a> <a id="simType8" class="list-group-item" > <strong>Sim Taxi 2</strong>
+			</a> <a id="simType9" class="list-group-item" > <strong>Sim Taxi 3</strong>
+			</a> <a id="simType10" class="list-group-item" > <strong>Sim Taxi 4</strong>
+			</a> <a id="simType11" class="list-group-item" > <strong>Sim Lặp</strong>
+			</a> <a id="simType12" class="list-group-item" > <strong>Sim kép</strong>
+			</a> <a id="simType13" class="list-group-item" > <strong>Sim đối</strong>
+			</a> <a id="simType14" class="list-group-item" > <strong>Sim Đảo</strong>
+			</a> <a id="simType15" class="list-group-item" > <strong>Sim gánh</strong>
+			</a> <a id="simType16" class="list-group-item" > <strong>Sim Đặc
 					Biệt</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim Năm
+			</a> <a id="simType17" class="list-group-item" > <strong>Sim Năm
 					Sinh</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim đầu số
+			</a> <a id="simType18" class="list-group-item" > <strong>Sim đầu số
 					cổ</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim tam Hoa
+			</a> <a id="simType19" class="list-group-item" > <strong>Sim tam Hoa
 					Đơn</strong>
-			</a> <a class="list-group-item" href=""> <strong>Sim tam Hoa
+			</a> <a id="simType20" class="list-group-item" > <strong>Sim tam Hoa
 					Kép</strong>
 			</a>
 		</div>
-	</div>
-	<div class="panel panel-primary hidden-xs">
-		<div class="panel-heading">
-			<h2 class="panel-title">
-				<i class="glyphicon glyphicon-list"></i> Tìm sim theo đầu số
-			</h2>
-		</div>
-		<ul class="list-group">
-			<a class="list-group-item" href="">Đầu Số 096 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 097 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 098 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 091 VinaPhone</a>
-			<a class="list-group-item" href="">Đầu Số 094 VinaPhone</a>
-			<a class="list-group-item" href="">Đầu Số 090 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 093 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 092 Vietnamobile</a>
-			<a class="list-group-item" href="">Đầu Số 099 Gmobile</a>
-			<a class="list-group-item" href="">Đầu Số 086 Viettel</a>
-			<a class="list-group-item" href="">Đầu Số 088 VinaPhone</a>
-			<a class="list-group-item" href="">Đầu Số 089 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 081 VinaPhone</a>
-			<a class="list-group-item" href="">Đầu Số 082 VinaPhone</a>
-			<a class="list-group-item" href="">Đầu Số 083 VinaPhone</a>
-			<a class="list-group-item" href="">Đầu Số 084 VinaPhone</a>
-			<a class="list-group-item" href="">Đầu Số 085 VinaPhone</a>
-			<a class="list-group-item" href="">Đầu Số 070 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 076 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 077 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 078 MobiFone</a>
-			<a class="list-group-item" href="">Đầu Số 079 MobiFone</a>
-		</ul>
 	</div>
 
 	<div class="panel panel-primary hidden-xs">
@@ -224,16 +188,16 @@
 			</h2>
 		</div>
 		<div class="list-group">
-			<a class="list-group-item" href="">Sim Tứ Quý 9999</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 8888</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 7777</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 6666</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 5555</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 4444</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 3333</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 2222</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 1111</a> <a
-				class="list-group-item" href="">Sim Tứ Quý 0000</a>
+			<a class="list-group-item" >Sim Tứ Quý 9999</a> <a
+				class="list-group-item" >Sim Tứ Quý 8888</a> <a
+				class="list-group-item" >Sim Tứ Quý 7777</a> <a
+				class="list-group-item" >Sim Tứ Quý 6666</a> <a
+				class="list-group-item" >Sim Tứ Quý 5555</a> <a
+				class="list-group-item" >Sim Tứ Quý 4444</a> <a
+				class="list-group-item" >Sim Tứ Quý 3333</a> <a
+				class="list-group-item" >Sim Tứ Quý 2222</a> <a
+				class="list-group-item" >Sim Tứ Quý 1111</a> <a
+				class="list-group-item" >Sim Tứ Quý 0000</a>
 		</div>
 	</div>
 
@@ -244,53 +208,113 @@
     
     $( document ).ready(function() {
         $("#vinaPhone").click(function(){
-        	loadDataByMenu(3, null, null, 1);
+        	loadDataByMenu(3, null, null, null, 1);
         }); 
         $("#mobiFone").click(function(){
-        	loadDataByMenu(2, null, null, 1);
+        	loadDataByMenu(2, null, null, null, 1);
         }); 
         $("#viettel").click(function(){
-        	loadDataByMenu(1, null, null, 1);
+        	loadDataByMenu(1, null, null, null, 1);
         }); 
         $("#vietnamMobile").click(function(){
-        	loadDataByMenu(4, null, null, 1);
+        	loadDataByMenu(4, null, null, null, 1);
         }); 
         $("#gmobile").click(function(){
-        	loadDataByMenu(5, null, null, 1);
+        	loadDataByMenu(5, null, null, null, 1);
         }); 
         $("#over100tr").click(function(){
-        	loadDataByMenu(null, 100000000, 2000000000, 1);
+        	loadDataByMenu(null, 100000000, 2000000000, null, 1);
         }); 
         $("#50to100tr").click(function(){
-        	loadDataByMenu(null, 50000000, 100000000, 1);
+        	loadDataByMenu(null, 50000000, 100000000, null, 1);
         }); 
         $("#50to100tr").click(function(){
-        	loadDataByMenu(null, 50000000, 100000000, 1);
+        	loadDataByMenu(null, 50000000, 100000000, null, 1);
         }); 
         $("#20to50tr").click(function(){
-        	loadDataByMenu(null, 20000000, 50000000, 1);
+        	loadDataByMenu(null, 20000000, 50000000, null, 1);
         }); 
         $("#10to20tr").click(function(){
-        	loadDataByMenu(null, 10000000, 20000000, 1);
+        	loadDataByMenu(null, 10000000, 20000000, null, 1);
         }); 
         $("#5to10tr").click(function(){
-        	loadDataByMenu(null, 5000000, 10000000, 1);
+        	loadDataByMenu(null, 5000000, 10000000, null, 1);
         }); 
         $("#2to5tr").click(function(){
-        	loadDataByMenu(null, 2000000, 5000000, 1);
+        	loadDataByMenu(null, 2000000, 5000000, null, 1);
         }); 
         $("#1to2tr").click(function(){
-        	loadDataByMenu(null, 1000000, 2000000, 1);
+        	loadDataByMenu(null, 1000000, 2000000, null, 1);
         }); 
         $("#500kTo1tr").click(function(){
-        	loadDataByMenu(null, 500000, 1000000, 1);
+        	loadDataByMenu(null, 500000, 1000000, null, 1);
         }); 
         $("#0to500k").click(function(){
-        	loadDataByMenu(null, 0, 500000, 1);
+        	loadDataByMenu(null, 0, 500000, null, 1);
+        }); 
+        $("#simType1").click(function(){
+        	loadDataByMenu(null, null, null, 1, 1);
+        }); 
+        $("#simType2").click(function(){
+        	loadDataByMenu(null, null, null, 2, 1);
+        }); 
+        $("#simType3").click(function(){
+        	loadDataByMenu(null, null, null, 3, 1);
+        }); 
+        $("#simType4").click(function(){
+        	loadDataByMenu(null, null, null, 4, 1);
+        }); 
+        $("#simType5").click(function(){
+        	loadDataByMenu(null, null, null, 5, 1);
+        }); 
+        $("#simType6").click(function(){
+        	loadDataByMenu(null, null, null, 6, 1);
+        }); 
+        $("#simType7").click(function(){
+        	loadDataByMenu(null, null, null, 7, 1);
+        }); 
+        $("#simType8").click(function(){
+        	loadDataByMenu(null, null, null, 8, 1);
+        }); 
+        $("#simType9").click(function(){
+        	loadDataByMenu(null, null, null, 9, 1);
+        }); 
+        $("#simType10").click(function(){
+        	loadDataByMenu(null, null, null, 10, 1);
+        }); 
+        $("#simType11").click(function(){
+        	loadDataByMenu(null, null, null, 11, 1);
+        }); 
+        $("#simType12").click(function(){
+        	loadDataByMenu(null, null, null, 12, 1);
+        }); 
+        $("#simType13").click(function(){
+        	loadDataByMenu(null, null, null, 13, 1);
+        }); 
+        $("#simType14").click(function(){
+        	loadDataByMenu(null, null, null, 14, 1);
+        }); 
+        $("#simType15").click(function(){
+        	loadDataByMenu(null, null, null, 15, 1);
+        }); 
+        $("#simType16").click(function(){
+        	loadDataByMenu(null, null, null, 16, 1);
+        }); 
+        $("#simType17").click(function(){
+        	loadDataByMenu(null, null, null, 17, 1);
+        }); 
+        $("#simType18").click(function(){
+        	loadDataByMenu(null, null, null, 18, 1);
+        }); 
+        $("#simType19").click(function(){
+        	loadDataByMenu(null, null, null, 19, 1);
+        }); 
+        $("#simType20").click(function(){
+        	loadDataByMenu(null, null, null, 20, 1);
         }); 
     });
     
-       function loadDataByMenu(network, priceFrom, priceTo, page){
+       function loadDataByMenu(network, priceFrom, priceTo, simTypeId, page){
             $.ajax({
                 type: "POST", // HTTP method POST or GET
                 url: '${pageContext.request.contextPath}/sim/findSimDetail', 
@@ -300,7 +324,8 @@
                      size: 20,
                      networkId: network,
                      priceFrom: priceFrom,
-                     priceTo: priceTo
+                     priceTo: priceTo,
+                     simTypeId: simTypeId
                  },
                 success: function(data) {
                     console.log(data); 
@@ -351,7 +376,7 @@
                         var btn = document.createElement('BUTTON');
                         btn.innerHTML = p;
                         btn.onclick = function(){
-                            loadData(p);
+                        	loadDataByMenu(network, priceFrom, priceTo, simTypeId, p);
                           };
                         $('#appendBtnPage').append(btn);
                     });

@@ -41,7 +41,7 @@ public class Sim implements Serializable {
 	private List<CartBillDetail> cartBillDetails;
 
 	// bi-directional many-to-one association to Simtype
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "simTypeId")
 	private SimType simType;
 

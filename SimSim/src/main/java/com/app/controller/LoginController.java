@@ -56,7 +56,6 @@ public class LoginController {
 
 	@RequestMapping("/")
 	public ModelAndView getListUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		request.setAttribute("mess", "Hello");
-		return new ModelAndView("wellcome");
+		return new ModelAndView("redirect:/trangchu");
 	}
 }
