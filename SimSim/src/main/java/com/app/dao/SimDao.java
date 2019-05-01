@@ -16,7 +16,7 @@ public interface SimDao {
 
 	public List<Sim> getAll();
 
-	public List<Sim> findByNetword(int networdId, int page, int size);
+	public List<Sim> findByNetword(int networkId, int page, int size);
 
 	public List<Sim> findByScore(int score, int page, int size);
 
@@ -31,12 +31,12 @@ public interface SimDao {
 	//set sim da ban
 	public boolean updateSoldSim(List<Integer> list);
 	
-	public List<Sim> findSim(Integer networdId, double priceFrom, double priceTo, Integer score,
+	public List<Sim> findSim(Integer networkId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled, Integer sold);
 	
 	public void setSimSold(List<Integer> listSimId);
 	
-	public int countAll(Integer networdId, double priceFrom, double priceTo, Integer score,
+	public int countAll(Integer networkId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers);
 	
 	public int simIsExist(String simNumber);

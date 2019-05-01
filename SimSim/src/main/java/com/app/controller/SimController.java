@@ -73,7 +73,7 @@ public class SimController {
 
 	@RequestMapping(value = "/sim/findSimDetail", method = RequestMethod.POST)
 	public @ResponseBody SimView findSimDetail(HttpServletRequest request, HttpServletResponse response,
-			HttpSession session, @RequestParam(name = "networdId", required = false) Integer networdId,
+			HttpSession session, @RequestParam(name = "networkId", required = false) Integer networkId,
 			@RequestParam(name = "priceFrom", required = false, defaultValue = "0") double priceFrom,
 			@RequestParam(name = "priceTo", required = false, defaultValue = "10000000") double priceTo,
 			@RequestParam(name = "score", required = false) Integer score,
@@ -84,9 +84,9 @@ public class SimController {
 			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
-		List<Sim> listSim = simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number,
+		List<Sim> listSim = simService.findSim(networkId, priceFrom, priceTo, score, totalNumbers, number,
 				notContainNumbers, page, size, null, 0);
-		List<Integer> listPage = PageProcessing.getListPage(page, size, getTotalRecords(request, response, session, networdId,
+		List<Integer> listPage = PageProcessing.getListPage(page, size, getTotalRecords(request, response, session, networkId,
 				priceFrom, priceTo, score, totalNumbers, number, page, size, notContainNumbers));
 		return new SimView(listSim, listPage);
 	}

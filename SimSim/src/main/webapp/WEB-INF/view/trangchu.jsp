@@ -56,7 +56,7 @@
 							<div class="form-group">
 								<div class="col-md-4 col-xs-12 col-lg-4">
 									<div class="row">
-										<select id="networdId" class="form-control strong">
+										<select id="networkId" class="form-control strong">
 											<option value="0">Chọn mạng di động</option>
 											<option value="1">Viettel</option>
 											<option value="2">Mobifone</option>
@@ -175,7 +175,7 @@
 	             data: {
 	                 page: page,
 	                 size: 20,
-	                 networdId: $('#networdId').val(),
+	                 networkId: $('#networkId').val(),
 	                 priceFrom: $('#priceFrom').val(),
 	                 priceTo: $('#priceTo').val(),
 	                 score: $('#score').val(),

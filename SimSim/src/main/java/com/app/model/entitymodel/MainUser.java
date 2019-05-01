@@ -11,6 +11,9 @@ import java.util.List;
 @Entity
 public class MainUser implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
+	private static final String ROLE_USER = "ROLE_USER";
+	private static final String ROLE_ADMIN = "ROLE_ADMIN";
 
 	@Id
 	private String username;

@@ -145,14 +145,14 @@ public class SimDaoImpl implements SimDao {
 		return true;
 	}
 
-	public List<Sim> findSim(Integer networdId, double priceFrom, double priceTo, Integer score,
+	public List<Sim> findSim(Integer networkId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled,
 			Integer sold) {
 		session = sessionFactory.getCurrentSession();
 		String sql = "SELECT * FROM sim WHERE (price >= :priceFrom) AND (price <= :priceTo) ";
 		StringBuilder str = new StringBuilder("");
-		if (networdId != null && networdId > 0)
-			str.append(" AND (networdId ='").append(networdId).append("') ");
+		if (networkId != null && networkId > 0)
+			str.append(" AND (networdId ='").append(networkId).append("') ");
 		if (score != null && score > -1 && score < 10)
 			str.append(" AND (score ='").append(score).append("') ");
 		if (totalNumbers != null && totalNumbers > 20 && totalNumbers < 81)
@@ -209,13 +209,13 @@ public class SimDaoImpl implements SimDao {
 		}
 	}
 
-	public int countAll(Integer networdId, double priceFrom, double priceTo, Integer score, Integer totalNumbers,
+	public int countAll(Integer networkId, double priceFrom, double priceTo, Integer score, Integer totalNumbers,
 			String number, List<Integer> notContainNumbers) {
 		session = sessionFactory.getCurrentSession();
 		String sql = "SELECT COUNT(*) FROM sim WHERE (`enabled` = '1') AND (sold = '0') AND (price >= :priceFrom) AND (price <= :priceTo) ";
 		StringBuilder str = new StringBuilder("");
-		if (networdId != null && networdId > 0)
-			str.append(" AND (networdId ='").append(networdId).append("') ");
+		if (networkId != null && networkId > 0)
+			str.append(" AND (networdId ='").append(networkId).append("') ");
 		if (score != null && score > -1 && score < 10)
 			str.append(" AND (score ='").append(score).append("') ");
 		if (totalNumbers != null && totalNumbers > 20 && totalNumbers < 81)
