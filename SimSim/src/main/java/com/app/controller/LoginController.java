@@ -51,7 +51,7 @@ public class LoginController {
 			// authentication.getName();
 			new SecurityContextLogoutHandler().logout(request, response, authentication);
 		}
-		return "redirect:/dangnhap";
+		return "redirect:/trangchu";
 	}
 
 	@RequestMapping("/")

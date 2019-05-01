@@ -71,14 +71,14 @@ public class CartBillDetailController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName();
 		HttpSession sessionHttp = request.getSession();
-		List<CartBillDetail> list = cartBillDetailService.find(username, page, size);
+		List<CartBillDetail> list = cartBillDetailService.find(username, CartBillDetail.READY, page, size);
 		double totalPrice = 0;
 		for (CartBillDetail i : list) {
 			if (i.getSim().getDealPrice() != null)
 				totalPrice += i.getSim().getDealPrice();
 			totalPrice += i.getSim().getPrice();
 		}
-		sessionHttp.setAttribute("list", list);
+		sessionHttp.setAttribute("listCart", list);
 		sessionHttp.setAttribute("totalPrice", totalPrice);
 		return new ModelAndView("giohang");
 	}
@@ -92,10 +92,25 @@ public class CartBillDetailController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		String username = authentication.getName();
 		HttpSession sessionHttp = request.getSession();
-		cartBillDetailService.payByUsernameAndListSimId(username, listId);
+		cartBillDetailService.payByUsernameAndListId(username, listId);
 		List<CartBillDetail> list = cartBillDetailService.findBillByUsername(username, page, size);
-		sessionHttp.setAttribute("list", list);
+		sessionHttp.setAttribute("listBill", list);
 		return new ModelAndView("redirect:/user/bill");
+	}
+	
+	@RequestMapping(value = "/user/cart/delete")
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@RequestParam(name = "id", required = true) int id,
+			@RequestParam(name = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(name = "size", required = false, defaultValue = "10") int size,
+			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String username = authentication.getName();
+		HttpSession sessionHttp = request.getSession();
+		cartBillDetailService.delete(id);
+		List<CartBillDetail> list = cartBillDetailService.findBillByUsername(username, page, size);
+		sessionHttp.setAttribute("listCart", list);
+		return new ModelAndView("redirect:/user/cart");
 	}
 
 	@RequestMapping(value = "/user/bill")
@@ -107,7 +122,7 @@ public class CartBillDetailController {
 		String username = authentication.getName();
 		HttpSession sessionHttp = request.getSession();
 		List<CartBillDetail> list = cartBillDetailService.findBillByUsername(username, page, size);
-		sessionHttp.setAttribute("list", list);
+		sessionHttp.setAttribute("listBill", list);
 		return new ModelAndView("hoadon");
 	}
 

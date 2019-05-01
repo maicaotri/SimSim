@@ -85,8 +85,8 @@
 							<div class="sparkline13-hd">
 								<div class="main-sparkline13-hd">
 									<h1>Danh sách tài khoản</h1>
-Tìm kiếm theo username, email, fisrt, lastname<input id="keyword" placeholder="keyword" type="text"/>
-<button id="searchBtn">Search</button>
+Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keyword" type="text" />
+<button id="searchBtn" class="btn btn-sm">Search</button>
 								</div>
 							</div>
 							<div class="sparkline13-graph">
@@ -192,9 +192,9 @@ Tìm kiếm theo username, email, fisrt, lastname<input id="keyword" placeholder
 
 		<script type="text/javascript">
 	$( document ).ready(function() {
-		loadData();
+		loadData(1);
 		$("#searchBtn").click(function(){
-			loadData();
+			loadData(1);
 	    }); 
 	});
 	
@@ -202,10 +202,11 @@ Tìm kiếm theo username, email, fisrt, lastname<input id="keyword" placeholder
 	function loadData(page){
 		$.ajax({
 		    type: "POST", 
-		    url: '${pageContext.request.contextPath}/finduser', 
+		    url: '${pageContext.request.contextPath}/admin/user/finduser', 
 		    dataType: 'json',
 		     data: {
 		    	 keyword: $('#keyword').val(),
+		    	 page: page
 		     },
 		    success: function(data) {
 		    	console.log(data); 
@@ -246,15 +247,19 @@ Tìm kiếm theo username, email, fisrt, lastname<input id="keyword" placeholder
 		        	tr.append(tdEnabled);
 		        	$('#appendData').append(tr);
 		        });
-		        
+		        if(data.listUser.length == 0){
+		        	var tr = document.createElement('tr');
+		        	tr.append('Không tìm thấy kết quả');
+		        	$('#appendData').append(tr);
+		        }
 		        data.listPage.forEach(p => {
-		        	var btn = document.createElement('BUTTON');
-		        	btn.innerHTML = p;
-		        	btn.onclick = function(){
-		        		loadData(p);
-		        	  };
-		        	$('#appendBtnPage').append(btn);
-		        });
+                    var btn = document.createElement('BUTTON');
+                    btn.innerHTML = p;
+                    btn.onclick = function(){
+                        loadData(p);
+                      };
+                    $('#appendBtnPage').append(btn);
+                });
 		    },
 		    error: function(xhr, ajaxOptions, thrownError) {
 		        //On error, we alert user

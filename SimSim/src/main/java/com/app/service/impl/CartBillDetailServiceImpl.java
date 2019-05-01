@@ -54,7 +54,7 @@ public class CartBillDetailServiceImpl implements CartBillDetailService {
 		return cartBillDetailDao.findCartByUsernameAndListSimId(username, listSimId, page, size);
 	}
 
-	public boolean payByUsernameAndListSimId(String username, List<Integer> listId) {
+	public boolean payByUsernameAndListId(String username, List<Integer> listId) {
 		return cartBillDetailDao.payByUsernameAndListId(username, listId);
 	}
 

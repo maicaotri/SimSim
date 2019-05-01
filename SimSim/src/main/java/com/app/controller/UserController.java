@@ -43,7 +43,7 @@ public class UserController {
 		HttpSession sessionHttp = request.getSession();
 		sessionHttp.setAttribute("username", authentication.getName());
 
-		return new ModelAndView("listuser");
+		return new ModelAndView("admin/table_user");
 	}
 
 	@RequestMapping("/admin/listUser")
@@ -88,6 +88,20 @@ public class UserController {
 
 	@RequestMapping(value = "/admin/user/finduser", method = RequestMethod.POST)
 	public @ResponseBody UserView findUser(@RequestParam(name = "keyword", required = false) String keyword,
+			@RequestParam(name = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(name = "size", required = false, defaultValue = "10") int size) {
+		List<MainUser> listUser = null;
+		if (keyword != null && keyword.length() > 0) {
+			listUser = userService.findUsers(keyword, page, size);
+		} else {
+			listUser = userService.getAll(page, size);
+		}
+		List<Integer> listPage = PageProcessing.getListPage(page, size, userService.countUsers(keyword));
+		return new UserView(listUser, listPage);
+	}
+	
+	@RequestMapping(value = "/finduser", method = RequestMethod.POST)
+	public @ResponseBody UserView demoFindUser(@RequestParam(name = "keyword", required = false) String keyword,
 			@RequestParam(name = "page", required = false, defaultValue = "1") int page,
 			@RequestParam(name = "size", required = false, defaultValue = "10") int size) {
 		List<MainUser> listUser = null;

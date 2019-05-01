@@ -16,23 +16,9 @@
 </head>
 
 <body>
-<c:set var="context" value="${pageContext.request.contextPath}" />
+	<c:set var="context" value="${pageContext.request.contextPath}" />
 	<div class="container-fluid">
-		<div class="container-fluid tophotline hidden-xs">
-			<div class="container">
-				<div class="pull-left wow fadeInRight">
-					<i class="glyphicon glyphicon-calendar"></i> Hôm nay: 23/03/2019
-				</div>
-				<div class="cart wow fadeInLeft" data-toggle="modal"
-					data-target="#myModal">
-					<a href="/user/cart" class="addcart hidden-xs"> <i
-						class="glyphicon glyphicon-shopping-cart font-12 hidden-xs"></i>
-						Giỏ hàng <span class="hidden-xs badge" id="cart">0</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="clearfix"></div>
+	<%@ include file="top_elements.jsp"%>
 
 		<div class="container">
 			<div class="row" id="row123">
@@ -185,19 +171,22 @@
 							<table class="table table-hover table-condensed table-bordered">
 								<thead>
 									<tr>
-<!-- 										<th class="active text-center col-md-1">Chọn</th> -->
+										<th class="active text-center col-md-1">Chọn</th>
 										<th class="active text-center col-md-1">STT</th>
 										<th class="active text-center">Số sim</th>
 										<th class="active text-center">Mạng</th>
+										<th class="active text-center">Tình trạng</th>
 										<th class="active"></th>
 									</tr>
 								</thead>
-								<c:forEach items="${list}" var="i" varStatus="loopCounter">
+								<c:forEach items="${listCart}" var="i" varStatus="loopCounter">
 									<tr>
-<!-- 										<td class="center"><input type="checkbox" -->
-<%-- 											value="${i.id}" name="listId" /></td> --%>
-										<td class="center">
-											${loopCounter.count}</td>
+										<td class="center"><c:if test="${i.sim.sold == 0}">
+												<input type="checkbox" value="${i.id}" name="listId" />
+											</c:if> <c:if test="${i.sim.sold == 1}">
+												<input type="checkbox" disabled="${i.id}" name="listId" />
+											</c:if></td>
+										<td class="center">${loopCounter.count}</td>
 										<td><div class="">
 												<strong style="size: 16px;">Sim: </strong> <strong
 													style="color: red; font-size: 18px;">
@@ -206,19 +195,53 @@
 												</strong>VNĐ<br>
 											</div></td>
 										<td class="text-center"><span
-                                        class="network n${i.sim.netword.id}"></span> </td>
-										<td class="text-center"><a href="" class="delcart"
+											class="network n${i.sim.netword.id}"></span></td>
+										<td class="text-center"
+											style="font-weight: lighter; font-size: small;"><c:if
+												test="${i.sim.sold == 0}">Còn</c:if> <c:if
+												test="${i.sim.sold == 1}">Đã bán</c:if></td>
+										<td class="text-center"><a
+											href="${context}/user/cart/delete?id=${i.id}" class="delcart"
 											data-sim="${i.sim.realNumber}"> <i
 												class="glyphicon glyphicon-trash text-danger"></i>
 										</a></td>
 									</tr>
 								</c:forEach>
 								<tr>
-									<td colspan="4" class="active">
+									<td colspan="6" class="active">
 										<h5 class="pull-right">
-											Tổng tiền: <span id="total"> <fmt:formatNumber
-													type="number" maxFractionDigits="3" value="${totalPrice}" />
-											</span> VNĐ <input type="submit" value="Thanh toán" />
+											<%-- 											Tổng tiền: <span id="total"> <fmt:formatNumber --%>
+											<%-- 													type="number" maxFractionDigits="3" value="${totalPrice}" /> --%>
+											<!-- 											</span> VNĐ  -->
+											<!-- 											<input type="submit" value="Thanh toán" /> -->
+
+											<button type="button" class="btn btn-success btn-sm"
+												data-toggle="modal" data-target="#myModal">Thanh
+												toán</button>
+											<!-- Modal -->
+											<div class="modal fade" id="myModal" role="dialog">
+												<div class="modal-dialog">
+
+													<!-- Modal content-->
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+															<h4 class="modal-title">Xác nhận thanh toán</h4>
+														</div>
+														<div class="modal-body">
+															<p>Bạn chắc chắn muốn thanh toán cho những sản phẩm
+																đã chọn?</p>
+														</div>
+														<div class="modal-footer">
+															<button type="button" class="btn btn-sm"
+																data-dismiss="modal">Hủy</button>
+															<input type="submit" value="Thanh toán"
+																class="btn btn-success btn-sm" />
+														</div>
+													</div>
+
+												</div>
+											</div>
 										</h5>
 									</td>
 								</tr>

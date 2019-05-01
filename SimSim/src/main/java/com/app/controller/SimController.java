@@ -85,7 +85,7 @@ public class SimController {
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
 
 		List<Sim> listSim = simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number,
-				notContainNumbers, page, size, null, null);
+				notContainNumbers, page, size, null, 0);
 		List<Integer> listPage = PageProcessing.getListPage(page, size, getTotalRecords(request, response, session, networdId,
 				priceFrom, priceTo, score, totalNumbers, number, page, size, notContainNumbers));
 		return new SimView(listSim, listPage);

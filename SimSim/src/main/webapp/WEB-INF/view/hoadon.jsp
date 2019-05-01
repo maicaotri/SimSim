@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Giỏ hàng</title>
+<title>Đơn hàng</title>
 <link href="<c:url value="/resource/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
 <link
@@ -18,21 +18,7 @@
 <body>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 	<div class="container-fluid">
-		<div class="container-fluid tophotline hidden-xs">
-			<div class="container">
-				<div class="pull-left wow fadeInRight">
-					<i class="glyphicon glyphicon-calendar"></i> Hôm nay: 23/03/2019
-				</div>
-				<div class="cart wow fadeInLeft" data-toggle="modal"
-					data-target="#myModal">
-					<a href="/user/cart" class="addcart hidden-xs"> <i
-						class="glyphicon glyphicon-shopping-cart font-12 hidden-xs"></i>
-						Giỏ hàng <span class="hidden-xs badge" id="cart">0</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="clearfix"></div>
+		  <%@ include file="top_elements.jsp"%>
 
 		<div class="container">
 			<div class="row" id="row123">
@@ -191,7 +177,7 @@
 										<th class="active">Trạng thái</th>
 									</tr>
 								</thead>
-								<c:forEach items="${list}" var="i" varStatus="loopCounter">
+								<c:forEach items="${listBill}" var="i" varStatus="loopCounter">
 									<tr>
 										<td class="center">
 											${i.billId}</td>

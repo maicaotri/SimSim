@@ -13,6 +13,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "cart_bill_detail")
 public class CartBillDetail implements Serializable {
 	private static final long serialVersionUID = 1L;
+	public static final String READY = "READY";
+	public static final String ORDERED = "ORDERED";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

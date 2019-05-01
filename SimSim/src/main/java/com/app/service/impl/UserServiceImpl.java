@@ -54,6 +54,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public int countUsers(String keyword) {
+		if (keyword == null || keyword.length() == 0) {
+			return countAll();
+		}
 		return userDao.countUsers(keyword);
 	}
 

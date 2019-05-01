@@ -8,7 +8,7 @@ public class PageProcessing {
 	public static List<Integer> getListPage(int page, int size, int totalRecords) {
 		int totalPages;
 		List<Integer> list = new ArrayList<Integer>();
-		if (totalRecords / size == 0) {
+		if (totalRecords % size == 0) {
 			totalPages = totalRecords / size;
 		} else {
 			totalPages = totalRecords / size + 1;

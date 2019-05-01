@@ -15,22 +15,7 @@
 
 <body>
 	<div class="container-fluid">
-		<div class="container-fluid tophotline hidden-xs">
-			<div class="container">
-				<div class="pull-left wow fadeInRight">
-					<i class="glyphicon glyphicon-calendar"></i> Hôm nay: 23/03/2019
-				</div>
-				<div class="cart wow fadeInLeft" data-toggle="modal"
-					data-target="#myModal">
-					<a href="${pageContext.request.contextPath}/user/cart"
-						class="addcart hidden-xs"> <i
-						class="glyphicon glyphicon-shopping-cart font-12 hidden-xs"></i>
-						Giỏ hàng <span class="hidden-xs badge" id="cart">0</span>
-					</a>
-				</div>
-			</div>
-		</div>
-		<div class="clearfix"></div>
+		<%@ include file="top_elements.jsp"%>
 
 		<div class="container">
 			<div class="row" id="row123">
@@ -85,14 +70,14 @@
 									style="margin-right: -15px;">
 									<div class="input-group">
 										<div class="input-group-addon font-12">Giá từ:</div>
-										<input id="priceFrom" class="form-control price"
+										<input id="priceFrom" class="form-control"
 											placeholder="100,000" />
 									</div>
 								</div>
 								<div class="col-md-4 col-xs-6 col-lg-4 showgia">
 									<div class="input-group">
 										<div class="input-group-addon font-12">Đến:</div>
-										<input id="priceTo" class="form-control price"
+										<input id="priceTo" class="form-control"
 											placeholder="10,000,000" />
 									</div>
 								</div>
@@ -240,7 +225,11 @@
 	                    tr.append(tdCart);
 	                    $('#appendData').append(tr);
 	                });
-	                
+	                if(data.listSim.length==0){
+	                	var tr = document.createElement('tr');
+	                	tr.append('Không tìm thấy kết quả.');
+	                	$('#appendData').append(tr);
+	                }
 	                data.listPage.forEach(p => {
 	                    var btn = document.createElement('BUTTON');
 	                    btn.innerHTML = p;
