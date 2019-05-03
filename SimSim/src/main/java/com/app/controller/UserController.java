@@ -136,8 +136,8 @@ public class UserController {
 			return "redirect: /admin/user/table";
 		return "my_account";
 	}
-	
-	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/admin/user/updateUser", method = RequestMethod.POST)
 	public String updateUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			@RequestParam(name = "fName", required = true) String fName,
 			@RequestParam(name = "lName", required = true) String lName,
@@ -151,41 +151,62 @@ public class UserController {
 			@RequestParam(name = "enabled", required = true) Integer enabled,
 			@RequestParam(name = "role", required = true) Integer role,
 			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
-		
-			MainUser user = userService.getByUsername(username);
-			byte getEnabled =1;
-			if(enabled==0) getEnabled=0;
-			
-			String userRole = MainUser.ROLE_USER;
-			if(role==2) userRole=MainUser.ROLE_ADMIN;
-			
-			if(address!= null) user.setAdress(address);
-			if(email!= null) user.setEmail(email);
-			if(fName!= null) user.setfName(fName);
-			if(lName!= null) user.setlName(lName);
-			if(password!= null) user.setPassword(password);
-			if(phone!= null) user.setPhone(phone);
-			if(role!= null) user.setRole(userRole);
-			if(enabled!= null) user.setEnabled(getEnabled);
-			if(sex!= null) user.setSex(sex);
-			
-			userService.update(user);
-			request.setAttribute("mess", "Cập nhật tài khoản thành công");
-			
+
+		MainUser user = userService.getByUsername(username);
+		byte getEnabled = 1;
+		if (enabled == 0)
+			getEnabled = 0;
+
+		String userRole = MainUser.ROLE_USER;
+		if (role == 2)
+			userRole = MainUser.ROLE_ADMIN;
+
+		if (address != null)
+			user.setAdress(address);
+		if (email != null)
+			user.setEmail(email);
+		if (fName != null)
+			user.setfName(fName);
+		if (lName != null)
+			user.setlName(lName);
+		if (password != null)
+			user.setPassword(password);
+		if (phone != null)
+			user.setPhone(phone);
+		if (role != null)
+			user.setRole(userRole);
+		if (enabled != null)
+			user.setEnabled(getEnabled);
+		if (sex != null)
+			user.setSex(sex);
+
+		userService.update(user);
+		request.setAttribute("mess", "Cập nhật tài khoản thành công!");
+		user = userService.getByUsername(username);
+		request.setAttribute("user", user);
+
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication.getName().equals("admin"))
-			return "redirect: /admin/user/table";
+			return "admin/user_edit";
 		return "my_account";
 	}
-	
+
 	@RequestMapping(value = "/addUser")
 	public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return new ModelAndView("admin/user_add");
 	}
-	
+
+	@RequestMapping(value = "/admin/user/detail/{username}")
+	public ModelAndView getDetailUserPage(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@PathVariable(name = "username") String username) {
+		MainUser user = userService.getByUsername(username);
+		request.setAttribute("user", user);
+		return new ModelAndView("admin/user_edit");
+	}
+
 	@RequestMapping(value = "/editUser/{username}")
 	public ModelAndView getEditUserPage(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			@PathVariable(name="username") String username) {
+			@PathVariable(name = "username") String username) {
 		MainUser user = userService.getByUsername(username);
 		request.setAttribute("user", user);
 		return new ModelAndView("admin/user_edit");

@@ -77,14 +77,33 @@
 															<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
 																style="margin-left: 20%; width: 60%; border: 1px solid #a09f9f; border-radius: 10px;">
 																<br>
+														<span style="color: green; font-style: italic;">${mess}</span>
+														<br>
 																<div class="devit-card-custom">
-																	<p>Họ đệm:</p>
-																	<p>Tên:</p>
-																	<p>Giới tính:</p>
-																	<p>Tên đăng nhập:</p>
-																	<p>Email:</p>
-																	<p>Số điện thoại</p>
-																	<p>Địa chỉ:</p>
+																	<p>
+																		Tên: <span style="font-weight: bold;">
+																			${user.lName} ${user.fName} </span>
+																	</p>
+																	<p>
+																		Giới tính: <span style="font-weight: bold;">
+																			${user.sex} </span>
+																	</p>
+																	<p>
+																		Tên đăng nhập: <span style="font-weight: bold;">
+																			${user.username} </span>
+																	</p>
+																	<p>
+																		Email: <span style="font-weight: bold;">
+																			${user.email} </span>
+																	</p>
+																	<p>
+																		Số điện thoại: <span style="font-weight: bold;">
+																			${user.phone} </span>
+																	</p>
+																	<p>
+																		Địa chỉ: <span style="font-weight: bold;">
+																			${user.adress} </span>
+																	</p>
 																</div>
 															</div>
 														</div>
@@ -92,8 +111,10 @@
 														<div class="row">
 															<div class="col-lg-12">
 																<div class="payment-adress">
-																	<button type="submit" style="margin-right: 25%"
-																		class="btn btn-primary waves-effect waves-light pull-right">Back</button>
+																	<a href="${pageContext.request.contextPath}/admin/user/table">
+																		<button type="button" style="margin-right: 25%"
+																			class="btn btn-primary waves-effect waves-light pull-right">Trở về</button>
+																	</a>
 																</div>
 															</div>
 														</div>
@@ -105,16 +126,19 @@
 								</div>
 								<div class="product-tab-list tab-pane fade" id="reviews">
 									<div class="row">
-										<form action="${pageContext.request.contextPath}/createUser"
+										<form action="${pageContext.request.contextPath}/admin/user/updateUser"
 											method="post"
 											class="dropzone dropzone-custom needsclick add-professors"
 											id="demo1-upload" data-toggle="validator" role="form">
 											<div class="row">
 												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
-													style="margin-left: 20%; width: 60%">
+													style="margin-left: 20%; width: 60%;">
 													<div class="devit-card-custom">
 														<div class="form-group">
-															<label>Username: ${user.username}</label>
+															<div class="col-sm-3">Username:</div>
+															<div class="col-sm-9">
+																<label> ${user.username}</label>
+															</div>
 														</div>
 														<div class="form-group">
 															<label for="hoDem" class="col-sm-3 col-form-label">Họ<i
@@ -147,12 +171,15 @@
 															<div class="col-sm-9">
 																<input type="text" class="form-control" id="email"
 																	name="email" value="${user.email}" placeholder="Email"
-																	required><br>
-																	<input type="hidden" class="form-control" id="emailUser"
-																	 value="${user.email}">
+																	required><br> <input type="hidden"
+																	class="form-control" id="emailUser"
+																	value="${user.email}">
 															</div>
 															<div class="help-block with-errors" style="color: red"></div>
-															<p id="emailErr" style="color: red"></p>
+															<div class="col-sm-3"></div>
+															<div class="col-sm-9">
+																<p id="emailErr" style="color: red"></p>
+															</div>
 														</div>
 														<div class="form-group">
 															<label for="inputPass" class="col-sm-3 col-form-label">Mật
@@ -176,8 +203,11 @@
 																	name="rePassword" placeholder="Nhập lại mật khẩu"
 																	minlength="6" required><br>
 															</div>
+															<div class="col-sm-3"></div>
+															<div class="col-sm-9">
 															<div class="help-block with-errors" style="color: red"></div>
-															<div id="message" style="color: red"></div>
+															<p id="message" style="color: red"></p>
+															</div>
 														</div>
 
 														<div class="form-group">
@@ -208,9 +238,21 @@
 																class="zmdi zmdi-account material-icons-name"></i>
 															</label>
 															<div class="col-sm-9">
-																<select id="inputState" class="form-control" required>
-																	<option  value="2">Admin</option>
+																<select name="role" id="inputState" class="form-control" required>
+																	<option value="2">Admin</option>
 																	<option selected value="1">User</option>
+																</select><br>
+															</div>
+															<div class="help-block with-errors" style="color: red"></div>
+														</div>
+														<div class="form-group">
+															<label for="address" class="col-sm-3 col-form-label">Trạng thái<i
+																class="zmdi zmdi-account material-icons-name"></i>
+															</label>
+															<div class="col-sm-9">
+																<select name="enabled" id="enabled" class="form-control" required>
+																	<option selected value="1">Khả dụng</option>
+																	<option  value="0">Vô hiệu hóa</option>
 																</select><br>
 															</div>
 															<div class="help-block with-errors" style="color: red"></div>
@@ -221,8 +263,12 @@
 											<div class="row">
 												<div class="col-lg-12">
 													<div class="payment-adress">
+													<a href="${pageContext.request.contextPath}/admin/user/table">
+															<button type="button"
+                                                            class="btn btn-success waves-effect waves-light">Hủy</button>
+															</a>
 														<button type="submit"
-															class="btn btn-primary waves-effect waves-light">Lưu</button>
+															class="btn btn-success waves-effect waves-light">Lưu</button>
 													</div>
 												</div>
 											</div>
@@ -329,14 +375,15 @@
 
 		$(document).ready(function() {
 			$('#email').keyup(function() {
-				if($('#email').val() != $('#emailUser').val()){
-				checkEmailIsExist();
+				if ($('#email').val() != $('#emailUser').val()) {
+					checkEmailIsExist();
 				}
 			});
 
 		});
 
 		function checkEmailIsExist() {
+			// 			if($('#email').val() != $('#emailUser').val()){
 			$.ajax({
 				type : "POST",
 				url : '${pageContext.request.contextPath}/checkEmail',
@@ -359,6 +406,7 @@
 					//alert('update success'); 
 				}
 			});
+			// 			}
 		}
 	</script>
 </body>

@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void update(MainUser user) {
-		userDao.add(user);
+		userDao.update(user);
 	}
 
 	public void delete(String username) {

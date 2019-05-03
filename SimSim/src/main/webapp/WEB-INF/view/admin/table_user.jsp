@@ -101,9 +101,10 @@ Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keywor
 												<th data-field="phone">Sdt</th>
 												<th data-field="address">Địa chỉ</th>
 												<th data-field="enabled">Trạng thái</th>
+												<th data-field="enabled">Chi tiết</th>
 											</tr>
 										</thead>
-										<tbody id="appendData">
+										<tbody id="appendData" style="text-align: center;">
 
 										</tbody>
 									</table>
@@ -232,6 +233,9 @@ Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keywor
 		        	if(v.enabled==0){
 		        	tdEnabled.innerHTML ='Vô hiệu hóa';
 		        	}
+		        	var tdDetail = document.createElement('td');
+		        	tdDetail.innerHTML =" <a href='${pageContext.request.contextPath}/admin/user/detail/"+v.username
+		        	+"' > <button type='button' class='btn btn-default btn-sm'> <span class='glyphicon glyphicon-search'></span> Chi tiết </button></a>";
 		        	
 		        	
 		        	tr.append(tdUsername);
@@ -241,6 +245,7 @@ Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keywor
 		        	tr.append(tdPhone);
 		        	tr.append(tdAddress);
 		        	tr.append(tdEnabled);
+		        	tr.append(tdDetail);
 		        	$('#appendData').append(tr);
 		        });
 		        if(data.listUser.length == 0){
