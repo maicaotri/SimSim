@@ -81,7 +81,11 @@
 								class="mini-click-non">Quản lý sim</span>
 						</a>
 							<ul class="submenu-angle" aria-expanded="true">
-								<li><a title="Dashboard v.1" href=""><span
+								<li><a title="Dashboard v.1"
+									href="${pageContext.request.contextPath}/admin/sim/table"><span
+										class="mini-sub-pro">Danh sách sim</span></a></li>
+								<li><a title="Dashboard v.1"
+									href="${pageContext.request.contextPath}/addSim"><span
 										class="mini-sub-pro">Thêm sim</span></a></li>
 								<li><a title="Dashboard v.2" href=""><span
 										class="mini-sub-pro">Sửa sim</span></a></li>
@@ -90,7 +94,10 @@
 								class="educate-icon educate-professor icon-wrap"></span> <span
 								class="mini-click-non">Quản lý User</span></a>
 							<ul class="submenu-angle" aria-expanded="false">
-								<li><a title="All Professors" href=""><span
+								<li><a title="Dashboard v.1"
+									href="${pageContext.request.contextPath}/admin/danhsach"><span
+										class="mini-sub-pro">Danh sách tài khoản</span></a></li>
+								<li><a title="All Professors" href="${pageContext.request.contextPath}/addUser"><span
 										class="mini-sub-pro">Thêm user</span></a></li>
 								<li><a title="Add Professor" href=""><span
 										class="mini-sub-pro">Sửa user</span></a></li>

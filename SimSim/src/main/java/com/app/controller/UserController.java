@@ -66,7 +66,7 @@ public class UserController {
 		return "wellcome";
 	}
 
-	@RequestMapping(value="/checkUsername", method=RequestMethod.POST)
+	@RequestMapping(value = "/checkUsername", method = RequestMethod.POST)
 	public @ResponseBody NumberView usernameIsExist(@RequestParam(name = "username") String username) {
 		return new NumberView(userService.usernameIsExist(username));
 	}
@@ -99,7 +99,7 @@ public class UserController {
 		List<Integer> listPage = PageProcessing.getListPage(page, size, userService.countUsers(keyword));
 		return new UserView(listUser, listPage);
 	}
-	
+
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
 	public String createUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 			@RequestParam(name = "fName", required = true) String fName,
@@ -111,29 +111,83 @@ public class UserController {
 			@RequestParam(name = "rePassword", required = true) String rePassword,
 			@RequestParam(name = "phone", required = true) String phone,
 			@RequestParam(name = "address", required = true) String address,
-			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype
-			) {
-	int usernameIsExist = userService.usernameIsExist(username);
-	int emailIsExist = userService.emailIsExist(email);
-	if(usernameIsExist==0 && emailIsExist==0 && password.equals(rePassword)) {
-		MainUser newUser = new MainUser();
-		newUser.setAdress(address);
-		newUser.setEmail(email);
-		newUser.setEnabled((byte) 1);
-		newUser.setfName(fName);
-		newUser.setlName(lName);
-		newUser.setPassword(password);
-		newUser.setPhone(phone);
-		newUser.setRole("ROLE_USER");
-		newUser.setSex(sex);
-		newUser.setUsername(username);
-		userService.add(newUser);
-		request.setAttribute("mess", "Tạo tài khoản thành công");
-	}else {
-		request.setAttribute("mess", "Tạo tài khoản thất bại");
+			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
+		int usernameIsExist = userService.usernameIsExist(username);
+		int emailIsExist = userService.emailIsExist(email);
+		if (usernameIsExist == 0 && emailIsExist == 0 && password.equals(rePassword)) {
+			MainUser newUser = new MainUser();
+			newUser.setAdress(address);
+			newUser.setEmail(email);
+			newUser.setEnabled((byte) 1);
+			newUser.setfName(fName);
+			newUser.setlName(lName);
+			newUser.setPassword(password);
+			newUser.setPhone(phone);
+			newUser.setRole("ROLE_USER");
+			newUser.setSex(sex);
+			newUser.setUsername(username);
+			userService.add(newUser);
+			request.setAttribute("mess", "Tạo tài khoản thành công");
+		} else {
+			request.setAttribute("mess", "Tạo tài khoản thất bại");
+		}
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getName().equals("admin"))
+			return "redirect: /admin/user/table";
+		return "my_account";
 	}
-	return "my_account";
-	}
-
 	
+	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+	public String updateUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@RequestParam(name = "fName", required = true) String fName,
+			@RequestParam(name = "lName", required = true) String lName,
+			@RequestParam(name = "username", required = true) String username,
+			@RequestParam(name = "sex", required = true) String sex,
+			@RequestParam(name = "email", required = true) String email,
+			@RequestParam(name = "password", required = true) String password,
+			@RequestParam(name = "rePassword", required = true) String rePassword,
+			@RequestParam(name = "phone", required = true) String phone,
+			@RequestParam(name = "address", required = true) String address,
+			@RequestParam(name = "enabled", required = true) Integer enabled,
+			@RequestParam(name = "role", required = true) Integer role,
+			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
+		
+			MainUser user = userService.getByUsername(username);
+			byte getEnabled =1;
+			if(enabled==0) getEnabled=0;
+			
+			String userRole = MainUser.ROLE_USER;
+			if(role==2) userRole=MainUser.ROLE_ADMIN;
+			
+			if(address!= null) user.setAdress(address);
+			if(email!= null) user.setEmail(email);
+			if(fName!= null) user.setfName(fName);
+			if(lName!= null) user.setlName(lName);
+			if(password!= null) user.setPassword(password);
+			if(phone!= null) user.setPhone(phone);
+			if(role!= null) user.setRole(userRole);
+			if(enabled!= null) user.setEnabled(getEnabled);
+			if(sex!= null) user.setSex(sex);
+			
+			userService.update(user);
+			request.setAttribute("mess", "Cập nhật tài khoản thành công");
+			
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication.getName().equals("admin"))
+			return "redirect: /admin/user/table";
+		return "my_account";
+	}
+	
+	@RequestMapping(value = "/addUser")
+	public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		return new ModelAndView("admin/user_add");
+	}
+	
+	@RequestMapping(value = "/editUser/{username}")
+	public ModelAndView getEditUserPage(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+			@PathVariable(name="username") String username) {
+		MainUser user = userService.getByUsername(username);
+		request.setAttribute("user", user);
+		return new ModelAndView("admin/user_edit");
+	}
 }

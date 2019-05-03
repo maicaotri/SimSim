@@ -171,7 +171,7 @@
 									<table id="table" data-toggle="table">
 										<thead>
 											<tr>
-												<th data-field="id">Id</th>
+												<th data-field="id">ID</th>
 												<th data-field="sim">Sim</th>
 												<th data-field="price">Giá tiền</th>
 												<th data-field="name">Mạng</th>

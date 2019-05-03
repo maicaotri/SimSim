@@ -94,7 +94,6 @@ Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keywor
 									<table id="table" data-toggle="table">
 										<thead>
 											<tr>
-												<th data-field="id">Id</th>
 												<th data-field="username">Username</th>
 												<th data-field="firstName">Tên</th>
 												<th data-field="lastName">Họ</th>
@@ -214,8 +213,6 @@ Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keywor
 		        $('#appendData').empty();
 		        data.listUser.forEach(v => {
 		        	var tr = document.createElement('tr');
-		        	var tdId =  document.createElement('td');
-		        	tdId.innerHTML = v.id;
 		        	var tdUsername =  document.createElement('td');
 		        	tdUsername.innerHTML = v.username;
 		        	var tdFName =  document.createElement('td');
@@ -237,7 +234,6 @@ Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keywor
 		        	}
 		        	
 		        	
-		        	tr.append(tdId);
 		        	tr.append(tdUsername);
 		        	tr.append(tdFName);
 		        	tr.append(tdLName);

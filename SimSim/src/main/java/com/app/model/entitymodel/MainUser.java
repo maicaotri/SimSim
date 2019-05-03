@@ -12,8 +12,8 @@ import java.util.List;
 public class MainUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private static final String ROLE_USER = "ROLE_USER";
-	private static final String ROLE_ADMIN = "ROLE_ADMIN";
+	public static final String ROLE_USER = "ROLE_USER";
+	public static final String ROLE_ADMIN = "ROLE_ADMIN";
 
 	@Id
 	private String username;
@@ -23,9 +23,6 @@ public class MainUser implements Serializable {
 	private String email;
 
 	private String fName;
-
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
 
 	private String lName;
 
@@ -80,14 +77,6 @@ public class MainUser implements Serializable {
 
 	public void setfName(String fName) {
 		this.fName = fName;
-	}
-
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getlName() {

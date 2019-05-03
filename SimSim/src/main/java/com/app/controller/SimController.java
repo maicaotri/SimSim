@@ -147,14 +147,7 @@ public class SimController {
 	public ModelAndView getAdminTable(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return new ModelAndView("admin/table_sim");
 	}
-	@RequestMapping(value = "/addUser")
-	public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		return new ModelAndView("admin/user_add");
-	}
-	@RequestMapping(value = "/editUser")
-	public ModelAndView editUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		return new ModelAndView("admin/user_edit");
-	}
+
 	@RequestMapping(value = "/addSim")
 	public ModelAndView addSim(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return new ModelAndView("admin/sim_add");
