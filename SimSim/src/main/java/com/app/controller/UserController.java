@@ -191,7 +191,7 @@ public class UserController {
 		return "my_account";
 	}
 
-	@RequestMapping(value = "/addUser")
+	@RequestMapping(value = "admin/addUser")
 	public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return new ModelAndView("admin/user_add");
 	}

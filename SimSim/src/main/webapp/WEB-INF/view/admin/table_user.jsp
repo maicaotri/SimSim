@@ -85,8 +85,8 @@
 							<div class="sparkline13-hd">
 								<div class="main-sparkline13-hd">
 									<h1>Danh sách tài khoản</h1>
-Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keyword" type="text" />
-<button id="searchBtn" class="btn btn-sm">Search</button>
+Tìm kiếm theo username, email, tên:  <input placeholder="keyword" type="text" id="keyword" />
+<!-- <button id="searchBtn" class="btn btn-sm">Search</button> -->
 								</div>
 							</div>
 							<div class="sparkline13-graph">
@@ -193,7 +193,7 @@ Tìm kiếm theo username, email, tên:  <input id="keyword" placeholder="keywor
 		<script type="text/javascript">
 	$( document ).ready(function() {
 		loadData(1);
-		$("#searchBtn").click(function(){
+		$("#keyword").keyup(function() {
 			loadData(1);
 	    }); 
 	});

@@ -148,7 +148,7 @@ public class SimController {
 		return new ModelAndView("admin/table_sim");
 	}
 
-	@RequestMapping(value = "/addSim")
+	@RequestMapping(value = "/admin/addSim")
 	public ModelAndView addSim(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return new ModelAndView("admin/sim_add");
 	}

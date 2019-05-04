@@ -102,8 +102,7 @@
 													class="angle-down-topmenu"><i class="fas fa-angle-down"></i></span></a>
 												<div role="menu" class="dropdown-menu animated zoomIn">
 												<a href="#" class="dropdown-item">Danh sách sim</a>
-													<a href="#" class="dropdown-item">Thêm sim</a> <a href="#"
-														class="dropdown-item">Sửa sim</a> 
+													<a href="#" class="dropdown-item">Thêm sim mới</a> 
 												</div></li>
 												<li class="nav-item dropdown res-dis-nn"><a href="#"
                                                 data-toggle="dropdown" role="button" aria-expanded="false"
@@ -111,9 +110,7 @@
                                                     class="angle-down-topmenu"><i class="fas fa-angle-down"></i></span></a>
                                                 <div role="menu" class="dropdown-menu animated zoomIn">
                                                 <a href="#" class="dropdown-item">Danh sách tài khoản</a>
-                                                    <a href="#" class="dropdown-item">Thêm user</a> <a href="#"
-                                                        class="dropdown-item">Sửa user</a> 
-                                                </div></li>
+                                                    <a href="#" class="dropdown-item">Tạo tài khoản mới</a> </div></li>
 											
 										</ul>
 									</div>
@@ -149,17 +146,15 @@
 										href="#">Quản lý sim <span
 											class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul class="collapse dropdown-header-top">
-										<li><a href="">Danh sách sim</a></li>
-											<li><a href="">Thêm sim</a></li>
-											<li><a href="">Sửa sim</a></li>
+										<li><a href="href="${pageContext.request.contextPath}/admin/sim/table">Danh sách sim</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/addSim">Thêm sim mới</a></li>
 										</ul></li>
 									<li><a data-toggle="collapse" data-target="#demoevent"
 										href="#">Quản lý User <span
 											class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul id="demoevent" class="collapse dropdown-header-top">
-											<li><a href="">Danh sách tài khoản</a></li>
-											<li><a href="">Thêm user</a></li>
-											<li><a href="">Sửa user</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/danhsach">Danh sách tài khoản</a></li>
+											<li><a href="${pageContext.request.contextPath}/admin/addUser">Tạo tài khoản</a></li>
 										</ul></li>
 								</ul>
 							</nav>
