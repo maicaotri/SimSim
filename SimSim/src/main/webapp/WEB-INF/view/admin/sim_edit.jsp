@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Update user</title>
+<title>Update sim</title>
 <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resource/admin/img/favicon.ico"/>">
 <link
 	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900"
@@ -117,46 +117,66 @@
 														style="margin-left: 20%; width: 60%">
 														<div class="devit-card-custom">
 															<div class="form-group">
-															<label for="soSim"><i class="zmdi zmdi-account material-icons-name"></i></label>
+															<div class="col-sm-4">
+															<label for="soSim"><i class="zmdi zmdi-account material-icons-name"></i>Số sim: </label></div>
+															<div class="col-sm-8">
 																<input type="text" class="form-control" id="soSim" name="soSim"
 																	placeholder="Số sim" required>
 																	<div class="help-block with-errors" style="color: red"></div>
+																	</div>
 															</div>
 															<div class="form-group">
-															<label for="giaSim"><i class="zmdi zmdi-account material-icons-name"></i></label>
+															<div class="col-sm-4">
+															<label for="giaSim"><i class="zmdi zmdi-account material-icons-name"></i>Giá: </label></div>
+															<div class="col-sm-8">
 																<input type="text" class="form-control" id="giaSim" name="giaSim"
 																	placeholder="Giá" required>
 																	<div class="help-block with-errors" style="color: red"></div>
+																	</div>
 															</div>
 															<div class="form-group">
-															<label for="giamGia"><i class="zmdi zmdi-account material-icons-name"></i></label>
+															<div class="col-sm-4">
+															<label for="giamGia"><i class="zmdi zmdi-account material-icons-name"></i>Giảm giá:</label></div>
+															<div class="col-sm-8">
 																<input type="text" class="form-control" id="giamGia" name="giamGia"
 																	placeholder="Giảm giá" required>
 																	<div class="help-block with-errors" style="color: red"></div>
+																</div>
 															</div>
 															<div class="form-group">
-															<label for="diem"><i class="zmdi zmdi-account material-icons-name"></i></label>
+															<div class="col-sm-4">
+															<label for="diem"><i class="zmdi zmdi-account material-icons-name"></i>Điểm: </label></div>
+															<div class="col-sm-8">
 																<input type="text" class="form-control" id="diem" name="diem"
 																	placeholder="Điểm" required>
 																	<div class="help-block with-errors" style="color: red"></div>
 															</div>
-															<div class="form-group">
-															<label for="trangThai"><i class="zmdi zmdi-account material-icons-name"></i></label>
-																<input type="text" class="form-control" id="trangThai" name="trangThai"
-																	placeholder="Trạng thái" required>
-																	<div class="help-block with-errors" style="color: red"></div>
 															</div>
 															<div class="form-group">
-															<label for="tongNut"><i class="zmdi zmdi-account material-icons-name"></i></label>
+															<div class="col-sm-4">
+															<label for="trangThai"><i class="zmdi zmdi-account material-icons-name"></i>Trạng thái: </label></div>
+															<div class="col-sm-8">
+																<input type="text" class="form-control" id="trangThai" name="trangThai"
+																	placeholder="Trạng thái" required>
+																	<div class="help-block with-errors" style="color: red"></div></div>
+															</div>
+															<div class="form-group">
+															<div class="col-sm-4">
+															<label for="tongNut"><i class="zmdi zmdi-account material-icons-name"></i>Tổng nút:</label></div>
+															<div class="col-sm-8">
 																<input type="text" class="form-control" id="tongNut" name="tongNut"
 																	placeholder="Tổng nút" required>
 																	<div class="help-block with-errors" style="color: red"></div>
+																	</div>
 															</div>
 															<div class="form-group">
-															<label for="loaiSim"><i class="zmdi zmdi-account material-icons-name"></i></label>
+															<div class="col-sm-4">
+															<label for="loaiSim"><i class="zmdi zmdi-account material-icons-name"></i>Loại sim: </label></div>
+															<div class="col-sm-8">
 																<input type="text" class="form-control" id="loaiSim" name="loaiSim"
 																	placeholder="Loại sim" required>
 																	<div class="help-block with-errors" style="color: red"></div>
+																	</div>
 															</div>
 														</div>
 													</div>
@@ -164,8 +184,9 @@
 												<div class="row">
 													<div class="col-lg-12">
 														<div class="payment-adress">
+														<div id="btnDisableErr" style="color: red"></div>
 															<button type="submit"
-																class="btn btn-primary waves-effect waves-light">Submit</button>
+																class="btn btn-primary waves-effect waves-light" id="btnSubmit">Lưu</button>
 														</div>
 													</div>
 												</div>
@@ -239,5 +260,20 @@
 	<script src="<c:url value="/resource/admin/js/plugins.js"/>"></script>
 	<script src="<c:url value="/resource/admin/js/main.js"/>"></script>
 	<script src="<c:url value="/resource/admin/js/tawk-chat.js"/>"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function() {
+        $('#btnSubmit').click(function () {
+            if ($('#soSim').val() == '' || $('#giaSim').val() == '' || $('#giamGia').val() == '' 
+            	|| $('#diem').val() == '' || $('#trangThai').val() == ''
+            	|| $('#tongNut').val() == '' || $('#loaiSim').val() == '') {
+                $('#btnDisableErr').text("Bạn cần điền đầy đủ thông tin");
+            } else {
+            	$('#btnDisableErr').text("");
+            }
+        });
+    });
+	</script>
+	
 </body>
 </html>

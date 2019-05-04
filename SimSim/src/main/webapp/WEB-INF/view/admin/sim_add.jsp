@@ -5,15 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add user</title>
+<title>Add sim	</title>
 <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resource/admin/img/favicon.ico"/>">
-<link
-	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900"
-	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900">
 <link rel="stylesheet"
 	href="<c:url value="/resource/admin/css/bootstrap.min.css"/>">
 <link rel="stylesheet"
-	href="<c:url value="/resource/admin/css/font-awesome.min.css"/>">
+	href="<c:url value="/resource/admin/css/fontawesome.min.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="/resource/admin/css/owl.carousel.css"/>">
 <link rel="stylesheet"
@@ -76,34 +75,49 @@
 															style="margin-left: 20%; width: 60%">
 															<div class="devit-card-custom">
 																<div class="form-group">
-																<label for="soSim"><i class="zmdi zmdi-account material-icons-name"></i></label>
+																<div class="col-sm-4">
+																<label for="soSim"><i class="zmdi zmdi-account material-icons-name"></i>Số sim:</label></div>
+																<div class="col-sm-8">
 																	<input type="number" id="soSim" name="soSim" class="form-control"
 																		placeholder="Số sim" required>
 																		<div class="help-block with-errors" style="color: red"></div>
+																		</div>
 																</div>
 																<div class="form-group">
-																<label for="giaSim"><i class="zmdi zmdi-account material-icons-name"></i></label>
+																<div class="col-sm-4">
+																<label for="giaSim"><i class="zmdi zmdi-account material-icons-name"></i>Giá sim:</label></div>
+																<div class="col-sm-8">
 																	<input type="number" id="giaSim" name="giaSim" class="form-control"
 																		placeholder="Giá sim" required>
 																		<div class="help-block with-errors" style="color: red"></div>
+																		</div>
 																</div>
 																<div class="form-group">
-																<label for="diem"><i class="zmdi zmdi-account material-icons-name"></i></label>
+																<div class="col-sm-4">
+																<label for="diem"><i class="zmdi zmdi-account material-icons-name"></i>Điểm:</label></div>
+																<div class="col-sm-8">
 																	<input type="number" id="diem" name="diem" class="form-control"
 																		placeholder="Điểm" required>
 																		<div class="help-block with-errors" style="color: red"></div>
+																		</div>
 																</div>
 																<div class="form-group">
-																<label for="tongNut"><i class="zmdi zmdi-account material-icons-name"></i></label>
+																<div class="col-sm-4">
+																<label for="tongNut"><i class="zmdi zmdi-account material-icons-name"></i>Tổng nút:</label></div>
+																<div class="col-sm-8">
 																	<input type="number" id="tongNut" name="tongNut" class="form-control"
 																		placeholder="Tổng nút" required>
 																		<div class="help-block with-errors" style="color: red"></div>
+																		</div>
 																</div>
 																<div class="form-group">
-																<label for="loaiSim"><i class="zmdi zmdi-account material-icons-name"></i></label>
+																<div class="col-sm-4">
+																<label for="loaiSim"><i class="zmdi zmdi-account material-icons-name"></i>Loại sim:</label></div>
+																<div class="col-sm-8">
 																	<input type="text" id="loaiSim" name="loaiSim" class="form-control"
 																		placeholder="Loại sim" required>
 																		<div class="help-block with-errors" style="color: red"></div>
+																		</div>
 																</div>
 															</div>
 														</div>
@@ -111,8 +125,9 @@
 													<div class="row">
 														<div class="col-lg-12">
 															<div class="payment-adress">
+															<i><div id="btnDisableErr" style="color: red"></div></i>
 																<button type="submit"
-																	class="btn btn-primary waves-effect waves-light">Lưu</button>
+																	class="btn btn-primary waves-effect waves-light" id="btnSubmit">Lưu</button>
 															</div>
 														</div>
 													</div>
@@ -185,5 +200,18 @@
 	<script src="<c:url value="/resource/admin/js/plugins.js"/>"></script>
 	<script src="<c:url value="/resource/admin/js/main.js"/>"></script>
 	<script src="<c:url value="/resource/admin/js/tawk-chat.js"/>"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+        $('#btnSubmit').click(function () {
+            if ($('#soSim').val() == '' || $('#giaSim').val() == ''  
+            	|| $('#diem').val() == '' 
+            	|| $('#tongNut').val() == '' || $('#loaiSim').val() == '') {
+                $('#btnDisableErr').text("Bạn cần điền đầy đủ thông tin");
+            } else {
+            	$('#btnDisableErr').text("");
+            }
+        });
+    });
+	</script>
 </body>
 </html>

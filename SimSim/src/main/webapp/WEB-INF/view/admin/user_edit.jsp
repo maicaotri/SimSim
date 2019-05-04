@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="<c:url value="/resource/admin/css/bootstrap.min.css"/>">
 <link rel="stylesheet"
-	href="<c:url value="/resource/admin/css/font-awesome.min.css"/>">
+	href="<c:url value="/resource/admin/css/fontawesome.min.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="/resource/admin/css/owl.carousel.css"/>">
 <link rel="stylesheet"
@@ -76,9 +76,9 @@
 														<div class="row">
 															<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
 																style="margin-left: 20%; width: 60%; border: 1px solid #a09f9f; border-radius: 10px;">
+																<br> <span
+																	style="color: green; font-style: italic;">${mess}</span>
 																<br>
-														<span style="color: green; font-style: italic;">${mess}</span>
-														<br>
 																<div class="devit-card-custom">
 																	<p>
 																		Tên: <span style="font-weight: bold;">
@@ -111,9 +111,11 @@
 														<div class="row">
 															<div class="col-lg-12">
 																<div class="payment-adress">
-																	<a href="${pageContext.request.contextPath}/admin/user/table">
+																	<a
+																		href="${pageContext.request.contextPath}/admin/user/table">
 																		<button type="button" style="margin-right: 25%"
-																			class="btn btn-primary waves-effect waves-light pull-right">Trở về</button>
+																			class="btn btn-primary waves-effect waves-light pull-right">Trở
+																			về</button>
 																	</a>
 																</div>
 															</div>
@@ -126,7 +128,8 @@
 								</div>
 								<div class="product-tab-list tab-pane fade" id="reviews">
 									<div class="row">
-										<form action="${pageContext.request.contextPath}/admin/user/updateUser"
+										<form
+											action="${pageContext.request.contextPath}/admin/user/updateUser"
 											method="post"
 											class="dropzone dropzone-custom needsclick add-professors"
 											id="demo1-upload" data-toggle="validator" role="form">
@@ -135,140 +138,148 @@
 													style="margin-left: 20%; width: 60%;">
 													<div class="devit-card-custom">
 														<div class="form-group">
-															<div class="col-sm-3">Username:</div>
-															<div class="col-sm-9">
+															<div class="col-sm-4">Username:</div>
+															<div class="col-sm-8">
 																<label> ${user.username}</label>
 															</div>
 														</div>
+														<br>
 														<div class="form-group">
-															<label for="hoDem" class="col-sm-3 col-form-label">Họ<i
+															<label for="hoDem" class="col-sm-4 col-form-label">Họ<i
 																class="zmdi zmdi-account material-icons-name"></i></label>
-															<div class="col-sm-9">
+															<div class="col-sm-8">
 																<input type="text" class="form-control" id="hoDem"
 																	name="lName" value="${user.lName}" placeholder="Họ"
-																	required><br>
-															</div>
-															<div class="help-block with-errors" style="color: red"></div>
-														</div>
-														<div class="form-group">
-															<label for="ten" class="col-sm-3 col-form-label">Tên<i
-																class="zmdi zmdi-account material-icons-name"></i></label>
-															<div class="col-sm-9">
-																<input type="text" class="form-control" id="ten"
-																	name="fName" value="${user.fName}" placeholder="Tên"
-																	required><br>
+																	required>
+																<div class="help-block with-errors" style="color: red"></div>
 															</div>
 															<br>
-															<div class="help-block with-errors" style="color: red"></div>
+														</div>
+														<div class="form-group">
+															<label for="ten" class="col-sm-4 col-form-label">Tên<i
+																class="zmdi zmdi-account material-icons-name"></i></label>
+															<div class="col-sm-8">
+																<input type="text" class="form-control" id="ten"
+																	name="fName" value="${user.fName}" placeholder="Tên"
+																	required>
+																<div class="help-block with-errors" style="color: red"></div>
+															</div>
 														</div>
 														<input type="hidden" name="sex" value="${user.sex}">
 														<input type="hidden" name="username"
-															value="${user.username}"><br>
+															value="${user.username}">
 
 														<div class="form-group">
-															<label for="email" class="col-sm-3 col-form-label">Email<i
+															<label for="email" class="col-sm-4 col-form-label">Email<i
 																class="zmdi zmdi-account material-icons-name"></i></label>
-															<div class="col-sm-9">
-																<input type="text" class="form-control" id="email"
+															<div class="col-sm-8">
+																<input type="Email" class="form-control" id="email"
 																	name="email" value="${user.email}" placeholder="Email"
-																	required><br> <input type="hidden"
+																	required> <input type="hidden"
 																	class="form-control" id="emailUser"
 																	value="${user.email}">
+
+																<div class="help-block with-errors" style="color: red"></div>
 															</div>
-															<div class="help-block with-errors" style="color: red"></div>
-															<div class="col-sm-3"></div>
-															<div class="col-sm-9">
+															<div class="col-sm-4"></div>
+															<div class="col-sm-8">
 																<p id="emailErr" style="color: red"></p>
 															</div>
 														</div>
 														<div class="form-group">
-															<label for="inputPass" class="col-sm-3 col-form-label">Mật
+															<label for="inputPass" class="col-sm-4 col-form-label">Mật
 																khẩu<i class="zmdi zmdi-account material-icons-name"></i>
 															</label>
-															<div class="col-sm-9">
+															<div class="col-sm-8">
 																<input type="password" class="form-control"
 																	id="inputPass" value="${user.password}" name="password"
-																	placeholder="Mật khẩu" minlength="6" required><br>
+																	placeholder="Mật khẩu" minlength="6" required>
+																<div class="help-block with-errors" style="color: red"></div>
 															</div>
-															<div class="help-block with-errors" style="color: red"></div>
 														</div>
 														<div class="form-group">
-															<label for="inputRepass" class="col-sm-3 col-form-label">Nhập
+															<label for="inputRepass" class="col-sm-4 col-form-label">Nhập
 																lại mật khẩu<i
 																class="zmdi zmdi-account material-icons-name"></i>
 															</label>
-															<div class="col-sm-9">
+															<div class="col-sm-8">
 																<input type="password" class="form-control"
 																	id="inputRepass" value="${user.password}"
 																	name="rePassword" placeholder="Nhập lại mật khẩu"
-																	minlength="6" required><br>
+																	minlength="6" required>
 															</div>
-															<div class="col-sm-3"></div>
-															<div class="col-sm-9">
-															<div class="help-block with-errors" style="color: red"></div>
-															<p id="message" style="color: red"></p>
+															<div class="col-sm-4"></div>
+															<div class="col-sm-8">
+																<div class="help-block with-errors" style="color: red"></div>
+																<p id="message" style="color: red"></p>
 															</div>
 														</div>
 
 														<div class="form-group">
-															<label for="phone" class="col-sm-3 col-form-label">Số
+															<label for="phone" class="col-sm-4 col-form-label">Số
 																điện thoại<i
 																class="zmdi zmdi-account material-icons-name"></i>
 															</label>
-															<div class="col-sm-9">
+															<div class="col-sm-8">
 																<input type="number" class="form-control" id="phone"
 																	value="${user.phone}" name="phone"
-																	placeholder="Số điện thoại" required><br>
+																	placeholder="Số điện thoại" required>
+																<div class="help-block with-errors" style="color: red"></div>
 															</div>
-															<div class="help-block with-errors" style="color: red"></div>
 														</div>
 														<div class="form-group">
-															<label for="address" class="col-sm-3 col-form-label">Địa
+															<label for="address" class="col-sm-4 col-form-label">Địa
 																chỉ<i class="zmdi zmdi-account material-icons-name"></i>
 															</label>
-															<div class="col-sm-9">
+															<div class="col-sm-8">
 																<input type="address" class="form-control" id="address"
 																	value="${user.adress}" name="address"
-																	placeholder="Địa chỉ" required><br>
+																	placeholder="Địa chỉ" required>
+																<div class="help-block with-errors" style="color: red"></div>
 															</div>
-															<div class="help-block with-errors" style="color: red"></div>
 														</div>
 														<div class="form-group">
-															<label for="address" class="col-sm-3 col-form-label">Quyền<i
+															<label for="quyen" class="col-sm-4 col-form-label">Quyền<i
 																class="zmdi zmdi-account material-icons-name"></i>
 															</label>
-															<div class="col-sm-9">
-																<select name="role" id="inputState" class="form-control" required>
+															<div class="col-sm-8">
+																<select name="role" id="quyen" class="form-control"
+																	required>
 																	<option value="2">Admin</option>
 																	<option selected value="1">User</option>
-																</select><br>
+																</select>
+
+																<div class="help-block with-errors" style="color: red"></div>
 															</div>
-															<div class="help-block with-errors" style="color: red"></div>
 														</div>
 														<div class="form-group">
-															<label for="address" class="col-sm-3 col-form-label">Trạng thái<i
-																class="zmdi zmdi-account material-icons-name"></i>
+															<label for="state" class="col-sm-4 col-form-label">Trạng
+																thái<i class="zmdi zmdi-account material-icons-name"></i>
 															</label>
-															<div class="col-sm-9">
-																<select name="enabled" id="enabled" class="form-control" required>
+															<div class="col-sm-8">
+																<select name="enabled" id="state" class="form-control"
+																	required>
 																	<option selected value="1">Khả dụng</option>
-																	<option  value="0">Vô hiệu hóa</option>
-																</select><br>
+																	<option value="0">Vô hiệu hóa</option>
+																</select>
+																<div class="help-block with-errors" style="color: red"></div>
 															</div>
-															<div class="help-block with-errors" style="color: red"></div>
 														</div>
 													</div>
 												</div>
 											</div>
 											<div class="row">
 												<div class="col-lg-12">
+												
 													<div class="payment-adress">
-													<a href="${pageContext.request.contextPath}/admin/user/table">
+													<div id="btnDisableErr" style="color: red"></div>
+														<a
+															href="${pageContext.request.contextPath}/admin/user/table">
 															<button type="button"
-                                                            class="btn btn-success waves-effect waves-light">Hủy</button>
-															</a>
+																class="btn btn-info cancle">Hủy</button>
+														</a>
 														<button type="submit"
-															class="btn btn-success waves-effect waves-light">Lưu</button>
+															class="btn btn-success waves-effect waves-light" id="btnSubmit">Lưu</button>
 													</div>
 												</div>
 											</div>
@@ -346,6 +357,7 @@
 	<script src="<c:url value="./resource/js/validator.js"/>"
 		type="text/javascript"></script>
 	<script>
+	
 		$('#inputPass').on(
 				'keyup',
 				function() {
@@ -408,6 +420,18 @@
 			});
 			// 			}
 		}
+		
+		$(document).ready(function() {
+        $('#btnSubmit').click(function () {
+            if ($('#hoDem').val() == '' || $('#ten').val() == '' || $('#email').val() == '' 
+            	|| $('#inputPass').val() == '' || $('#inputRepass').val() == ''
+            	|| $('#phone').val() == '' || $('#address').val() == '') {
+                $('#btnDisableErr').text("Bạn cần điền đầy đủ thông tin");
+            } else {
+            	$('#btnDisableErr').text("");
+            }
+        });
+    });
 	</script>
 </body>
 </html>

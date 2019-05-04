@@ -25,8 +25,9 @@
 	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/admin/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resource/admin/css/font-awesome.min.css"/>">
+	href="<c:url value="/resource/admin/css/fontawesome.min.css"/>">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resource/admin/css/owl.carousel.css"/>">
 <link rel="stylesheet" type="text/css"
@@ -68,17 +69,16 @@
 <body>
 	<div class="left-sidebar-pro">
 		<nav id="sidebar" class="">
-			<div class="sidebar-header">
-				<a href=""><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
-				<strong><a href=""><img src="img/logo/logosn.png"
-						alt="" /></a></strong>
-			</div>
+			<div class="sidebar-header" style="width: 200px">
+				<a href=""> <img src="<c:url value="/resource/admin/img/logo/sim.jpg"/>" alt="" class="main-logo" style="width: 30%; height:40%"></a>
+				<strong><a href=""><img src="<c:url value="/resource/admin/img/logo/sim.jpg"/>" alt="" class="main-logo" style="width: 30%; height:40%">
+				</a></strong>
+			</div><br>
 			<div class="left-custom-menu-adp-wrap comment-scrollbar">
 				<nav class="sidebar-nav left-sidebar-menu-pro">
 					<ul class="metismenu" id="menu1">
-						<li class="active"><a class="has-arrow" href=""> <span
-								class="educate-icon educate-home icon-wrap"></span> <span
-								class="mini-click-non">Quản lý sim</span>
+						<li class="active"><a class="has-arrow" href=""> <i class="fab fa-buffer"></i> <span
+								class="mini-click-non"> Quản lý sim</span>
 						</a>
 							<ul class="submenu-angle" aria-expanded="true">
 								<li><a title="Dashboard v.1"
@@ -90,9 +90,8 @@
 								<li><a title="Dashboard v.2" href=""><span
 										class="mini-sub-pro">Sửa sim</span></a></li>
 							</ul></li>
-						<li><a class="has-arrow" href="" aria-expanded="false"><span
-								class="educate-icon educate-professor icon-wrap"></span> <span
-								class="mini-click-non">Quản lý User</span></a>
+						<li><a class="has-arrow" href="" aria-expanded="false"><i class="fas fa-id-card-alt"></i> <span
+								class="mini-click-non">  Quản lý User</span></a>
 							<ul class="submenu-angle" aria-expanded="false">
 								<li><a title="Dashboard v.1"
 									href="${pageContext.request.contextPath}/admin/danhsach"><span
