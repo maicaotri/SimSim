@@ -70,4 +70,8 @@ public class SimServiceImpl implements SimService {
 		return simDao.countAll(networkId, priceFrom, priceTo, score, totalNumbers, number, notContainNumbers, simType);
 	}
 
+	public boolean simIsExist(String simNumber) {
+		return simDao.simIsExist(simNumber);
+	}
+
 }

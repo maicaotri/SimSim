@@ -1,16 +1,22 @@
 package com.app.controller;
 
+import java.util.regex.Pattern;
+
 public class TestClass {
 public static void main(String[] args) {
-//	System.out.println(java.time.LocalTime.now());
-//	System.out.println(java.time.LocalDate.now().toString()); 
-//	System.out.println(java.time.LocalDateTime.now());  
-	
-	String s = "*888";
-	String[] arr = s.split("\\*");
-	System.out.println(arr.length);
-	System.out.println(arr[0]);
-	System.out.println("--------------------");
-	System.out.println(arr[1]);
+String number ="0999666888";
+int n = Integer.parseInt(number);
+
+int sum = 0;
+while (n > 0) {
+	sum = sum + n % 10;
+	n = n / 10;
+}
+
+short rs = Short.parseShort(sum+"");
+System.out.println(rs);
+short a = 10;
+System.out.println(rs+a);
+
 }
 }

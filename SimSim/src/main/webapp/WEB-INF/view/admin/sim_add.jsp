@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add sim	</title>
-<link rel="shortcut icon" type="image/x-icon" href="<c:url value="/resource/admin/img/favicon.ico"/>">
+<title>Add sim</title>
+<link rel="shortcut icon" type="image/x-icon"
+	href="<c:url value="/resource/admin/img/favicon.ico"/>">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900">
 <link rel="stylesheet"
@@ -44,12 +45,13 @@
 <link rel="stylesheet" href="<c:url value="/resource/admin/style.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="/resource/admin/css/responsive.css"/>">
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="<c:url value="/resource/js/validator.js"/>"
-    type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="<c:url value="/resource/js/validator.js"/>"
+	type="text/javascript"></script>
 <script
 	src="<c:url value="/resource/admin/js/vendor/modernizr-2.8.3.min.js"/>"></script>
-<script src="<c:url value="/resource/admin/js/validator.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resource/admin/js/validator.js"/>"
+	type="text/javascript"></script>
 </head>
 <body>
 	<%@ include file="menu.jsp"%>
@@ -67,7 +69,9 @@
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 										<div class="review-content-section">
 											<div id="dropzone1" class="pro-ad addcoursepro">
-												<form action="#"
+												<form
+													action="${pageContext.request.contextPath}/admin/sim/addNewSim"
+													method="post"
 													class="dropzone dropzone-custom needsclick add-professors"
 													id="demo1-upload" data-toggle="validator" role="form">
 													<div class="row">
@@ -75,49 +79,82 @@
 															style="margin-left: 20%; width: 60%">
 															<div class="devit-card-custom">
 																<div class="form-group">
-																<div class="col-sm-4">
-																<label for="soSim"><i class="zmdi zmdi-account material-icons-name"></i>Số sim:</label></div>
-																<div class="col-sm-8">
-																	<input type="number" id="soSim" name="soSim" class="form-control"
-																		placeholder="Số sim" required>
+																	<div class="col-sm-4">
+																		<label for="soSim"><i
+																			class="zmdi zmdi-account material-icons-name"></i>Số
+																			sim:</label>
+																	</div>
+																	<div class="col-sm-8">
+																		<input type="text" id="soSim" name="realNumber"
+																			maxlength="10" class="form-control"
+																			placeholder="Số sim" required>
 																		<div class="help-block with-errors" style="color: red"></div>
-																		</div>
+																		<div id="simNumberErr" style="color: red"></div>
+																	</div>
 																</div>
 																<div class="form-group">
-																<div class="col-sm-4">
-																<label for="giaSim"><i class="zmdi zmdi-account material-icons-name"></i>Giá sim:</label></div>
-																<div class="col-sm-8">
-																	<input type="number" id="giaSim" name="giaSim" class="form-control"
-																		placeholder="Giá sim" required>
+																	<div class="col-sm-4">
+																		<label for="giaSim"><i
+																			class="zmdi zmdi-account material-icons-name"></i>Giá
+																			sim:</label>
+																	</div>
+																	<div class="col-sm-8">
+																		<input type="number" id="giaSim" name="price"
+																			class="form-control" placeholder="Giá sim" required>
 																		<div class="help-block with-errors" style="color: red"></div>
-																		</div>
+																	</div>
 																</div>
 																<div class="form-group">
-																<div class="col-sm-4">
-																<label for="diem"><i class="zmdi zmdi-account material-icons-name"></i>Điểm:</label></div>
-																<div class="col-sm-8">
-																	<input type="number" id="diem" name="diem" class="form-control"
-																		placeholder="Điểm" required>
+																	<div class="col-sm-4">
+																		<label for="networdId"><i
+																			class="zmdi zmdi-account material-icons-name"></i>Nhà
+																			mạng:</label>
+																	</div>
+																	<div class="col-sm-8">
+																		<select id="networdId" class="form-control strong"
+																			name="networdId">
+																			<option value="1">Viettel</option>
+																			<option value="2">Mobifone</option>
+																			<option value="3">Vinaphone</option>
+																			<option value="4">Vietnamobile</option>
+																			<option value="5">Gmobile</option>
+																		</select>
 																		<div class="help-block with-errors" style="color: red"></div>
-																		</div>
+																	</div>
 																</div>
 																<div class="form-group">
-																<div class="col-sm-4">
-																<label for="tongNut"><i class="zmdi zmdi-account material-icons-name"></i>Tổng nút:</label></div>
-																<div class="col-sm-8">
-																	<input type="number" id="tongNut" name="tongNut" class="form-control"
-																		placeholder="Tổng nút" required>
+																	<div class="col-sm-4">
+																		<label for="loaiSim"><i
+																			class="zmdi zmdi-account material-icons-name"></i>Loại
+																			sim:</label>
+																	</div>
+																	<div class="col-sm-8">
+																		<select id="simTypeId" class="form-control strong"
+																			name="simTypeId">
+																			<option value="21">Sim thường</option>
+																			<option value="1">Sim Tứ Quý</option>
+																			<option value="2">Sim Ngũ Quý</option>
+																			<option value="3">Sim Lộc Phát</option>
+																			<option value="4">Sim Thần Tài</option>
+																			<option value="5">Sim ông địa</option>
+																			<option value="6">Sim tiến đơn</option>
+																			<option value="7">Sim Tiến đôi</option>
+																			<option value="8">Sim Taxi 2</option>
+																			<option value="9">Sim Taxi 3</option>
+																			<option value="10">Sim Taxi 4</option>
+																			<option value="11">Sim Lặp</option>
+																			<option value="12">Sim kép</option>
+																			<option value="13">Sim đối</option>
+																			<option value="14">Sim Đảo</option>
+																			<option value="15">Sim gánh</option>
+																			<option value="16">Sim Đặc Biệt</option>
+																			<option value="17">Sim Năm Sinh</option>
+																			<option value="18">Sim đầu số cổ</option>
+																			<option value="19">Sim tam Hoa Đơn</option>
+																			<option value="20">Sim tam Hoa Kép</option>
+																		</select>
 																		<div class="help-block with-errors" style="color: red"></div>
-																		</div>
-																</div>
-																<div class="form-group">
-																<div class="col-sm-4">
-																<label for="loaiSim"><i class="zmdi zmdi-account material-icons-name"></i>Loại sim:</label></div>
-																<div class="col-sm-8">
-																	<input type="text" id="loaiSim" name="loaiSim" class="form-control"
-																		placeholder="Loại sim" required>
-																		<div class="help-block with-errors" style="color: red"></div>
-																		</div>
+																	</div>
 																</div>
 															</div>
 														</div>
@@ -125,9 +162,10 @@
 													<div class="row">
 														<div class="col-lg-12">
 															<div class="payment-adress">
-															<i><div id="btnDisableErr" style="color: red"></div></i>
+																<i><div id="btnDisableErr" style="color: red"></div></i>
 																<button type="submit"
-																	class="btn btn-primary waves-effect waves-light" id="btnSubmit">Lưu</button>
+																	class="btn btn-primary waves-effect waves-light"
+																	id="btnSubmit">Lưu</button>
 															</div>
 														</div>
 													</div>
@@ -201,17 +239,47 @@
 	<script src="<c:url value="/resource/admin/js/main.js"/>"></script>
 	<script src="<c:url value="/resource/admin/js/tawk-chat.js"/>"></script>
 	<script type="text/javascript">
-	$(document).ready(function() {
-        $('#btnSubmit').click(function () {
-            if ($('#soSim').val() == '' || $('#giaSim').val() == ''  
-            	|| $('#diem').val() == '' 
-            	|| $('#tongNut').val() == '' || $('#loaiSim').val() == '') {
-                $('#btnDisableErr').text("Bạn cần điền đầy đủ thông tin");
-            } else {
-            	$('#btnDisableErr').text("");
-            }
-        });
-    });
+		$(document).ready(
+				function() {
+					$('#btnSubmit').click(
+							function() {
+								if ($('#soSim').val() == ''
+										|| $('#giaSim').val() == '') {
+									$('#btnDisableErr').text(
+											"Bạn cần điền đầy đủ thông tin");
+								} else {
+									$('#btnDisableErr').text("");
+								}
+							});
+
+					$('#soSim').keyup(function() {
+                        checksimIsExist();
+                    });
+				});
+		function checksimIsExist(){
+            $.ajax({
+                type: "POST", 
+                url: '${pageContext.request.contextPath}/checksimIsExist', 
+                dataType: 'json',
+                 data: {
+                     simNumber: $('#soSim').val()
+                 },
+                success: function(data) {
+                    if(data == true){
+                        $("#simNumberErr").text("Sim này đã tồn tại");
+                    }else{
+                        $("#simNumberErr").text("");
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    //On error, we alert user
+                    alert(thrownError);
+                },
+                complete: function() {
+                    //alert('update success'); 
+                }
+            });
+        }
 	</script>
 </body>
 </html>

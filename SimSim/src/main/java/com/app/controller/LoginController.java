@@ -45,12 +45,7 @@ public class LoginController {
 
 	@RequestMapping("/dangxuat")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (authentication != null) {
-			// lay username nguoi dung hien tai dang dang nhap tren he thong
-			// authentication.getName();
-			new SecurityContextLogoutHandler().logout(request, response, authentication);
-		}
+		SecurityContextHolder.getContext().setAuthentication(null);
 		return "redirect:/trangchu";
 	}
 

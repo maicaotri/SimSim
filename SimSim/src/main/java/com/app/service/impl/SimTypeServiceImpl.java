@@ -24,11 +24,11 @@ public class SimTypeServiceImpl implements SimTypeService {
 		simTypeDao.update(n);
 	}
 
-	public void delete(int id) {
+	public void delete(short id) {
 		simTypeDao.delete(id);
 	}
 
-	public SimType getById(int id) {
+	public SimType getById(short id) {
 		return simTypeDao.getById(id);
 	}
 

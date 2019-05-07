@@ -22,6 +22,7 @@ import com.app.model.NumberView;
 import com.app.model.UserView;
 import com.app.model.entitymodel.MainUser;
 import com.app.service.UserService;
+import com.app.util.PageProcessing;
 
 @Controller
 public class UserController {
@@ -191,7 +192,7 @@ public class UserController {
 		return "my_account";
 	}
 
-	@RequestMapping(value = "admin/addUser")
+	@RequestMapping(value = "admin/adduser")
 	public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return new ModelAndView("admin/user_add");
 	}

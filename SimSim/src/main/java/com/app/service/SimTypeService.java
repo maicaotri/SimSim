@@ -10,9 +10,9 @@ public interface SimTypeService {
 
 	public void update(SimType n);
 
-	public void delete(int id);
+	public void delete(short id);
 
-	public SimType getById(int id);
+	public SimType getById(short id);
 
 	public List<SimType> getAll();
 }

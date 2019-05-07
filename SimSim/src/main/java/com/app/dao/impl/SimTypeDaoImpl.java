@@ -25,11 +25,11 @@ public class SimTypeDaoImpl implements SimTypeDao {
 		sessionFactory.getCurrentSession().merge(n);
 	}
 
-	public void delete(int id) {
+	public void delete(short id) {
 		sessionFactory.getCurrentSession().delete(getById(id));
 	}
 
-	public SimType getById(int id) {
+	public SimType getById(short id) {
 		return (SimType) sessionFactory.getCurrentSession().get(SimType.class, id);
 	}
 

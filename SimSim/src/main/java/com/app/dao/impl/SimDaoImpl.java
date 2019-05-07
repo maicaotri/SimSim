@@ -145,9 +145,9 @@ public class SimDaoImpl implements SimDao {
 		return true;
 	}
 
-	public List<Sim> findSim(Integer networkId, double priceFrom, double priceTo, Integer score,
-			Integer totalNumbers, String number, List<Integer> notContainNumbers, int page, int size, Integer enabled,
-			Integer sold, Integer simType) {
+	public List<Sim> findSim(Integer networkId, double priceFrom, double priceTo, Integer score, Integer totalNumbers,
+			String number, List<Integer> notContainNumbers, int page, int size, Integer enabled, Integer sold,
+			Integer simType) {
 		session = sessionFactory.getCurrentSession();
 		String sql = "SELECT * FROM sim WHERE (price >= :priceFrom) AND (price <= :priceTo) ";
 		StringBuilder str = new StringBuilder("");
@@ -251,11 +251,14 @@ public class SimDaoImpl implements SimDao {
 		return Integer.parseInt(query.list().get(0).toString());
 	}
 
-	public int simIsExist(String simNumber) {
+	public boolean simIsExist(String simNumber) {
 		session = sessionFactory.getCurrentSession();
-		String sql = "SELECT COUNT(*) FROM sim WHERE 0969924283 =:simNumber";
+		String sql = "SELECT COUNT(*) FROM sim WHERE realNumber =:simNumber";
 		SQLQuery query = session.createSQLQuery(sql);
 		query.setParameter("simNumber", simNumber);
-		return Integer.parseInt(query.list().get(0).toString());
+		int count = Integer.parseInt(query.list().get(0).toString());
+		if (count > 0)
+			return true;
+		return false;
 	}
 }

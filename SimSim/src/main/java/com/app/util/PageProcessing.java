@@ -1,4 +1,4 @@
-package com.app.controller;
+package com.app.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ public class PageProcessing {
 		if (totalRecords % size == 0) {
 			totalPages = totalRecords / size;
 		} else {
-			totalPages = totalRecords / size + 1;
+			totalPages = (totalRecords / size) + 1;
 		}
 		if (totalPages > 0 && totalPages < 6) {
 			for (int i = 1; i < totalPages + 1; i++) {
@@ -19,8 +19,8 @@ public class PageProcessing {
 			}
 		}
 		if (totalPages >= 6) {
-			if (page >= totalPages) {
-				for (int i = page - 4; i < page + 1; i++) {
+			if (page == totalPages) {
+				for (int i = page - 4; i < page+1; i++) {
 					list.add(i);
 				}
 			} else {

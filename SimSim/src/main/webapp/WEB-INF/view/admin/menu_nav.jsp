@@ -94,23 +94,23 @@
 								<div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
 									<div class="header-top-menu tabl-d-n">
 										<ul class="nav navbar-nav mai-top-nav">
-											<li class="nav-item"><a href="#" class="nav-link">Home</a>
+											<li class="nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a>
 											</li>
 											<li class="nav-item dropdown res-dis-nn"><a href="#"
 												data-toggle="dropdown" role="button" aria-expanded="false"
 												class="nav-link dropdown-toggle">Quản lý sim <span
 													class="angle-down-topmenu"><i class="fas fa-angle-down"></i></span></a>
 												<div role="menu" class="dropdown-menu animated zoomIn">
-												<a href="#" class="dropdown-item">Danh sách sim</a>
-													<a href="#" class="dropdown-item">Thêm sim mới</a> 
+												<a href="${pageContext.request.contextPath}/admin/sim/table" class="dropdown-item">Danh sách sim</a>
+													<a href="${pageContext.request.contextPath}/admin/sim/addsim" class="dropdown-item">Thêm sim mới</a> 
 												</div></li>
 												<li class="nav-item dropdown res-dis-nn"><a href="#"
                                                 data-toggle="dropdown" role="button" aria-expanded="false"
                                                 class="nav-link dropdown-toggle">Quản lý user <span
                                                     class="angle-down-topmenu"><i class="fas fa-angle-down"></i></span></a>
                                                 <div role="menu" class="dropdown-menu animated zoomIn">
-                                                <a href="#" class="dropdown-item">Danh sách tài khoản</a>
-                                                    <a href="#" class="dropdown-item">Tạo tài khoản mới</a> </div></li>
+                                                <a href="${pageContext.request.contextPath}/admin/danhsach" class="dropdown-item">Danh sách tài khoản</a>
+                                                    <a href="${pageContext.request.contextPath}/admin/adduser" class="dropdown-item">Tạo tài khoản mới</a> </div></li>
 											
 										</ul>
 									</div>
@@ -119,10 +119,9 @@
 									<div class="header-right-info">
 										<ul class="nav navbar-nav mai-top-nav header-right-menu">
 											<li class="nav-item">
-											<a href="#" data-toggle="dropdown"
-												role="button" aria-expanded="false"
-												class="nav-link dropdown-toggle"><i class="fas fa-user"></i> <span
-													class="admin-name">Log out</span> 
+											<a href="${pageContext.request.contextPath}/dangxuat"
+												role="button"><i class="fas fa-user"></i> <span
+													class="admin-name">Đăng xuất</span> 
 											</a>
 												</li>
 										</ul>

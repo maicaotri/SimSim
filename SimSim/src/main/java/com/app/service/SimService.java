@@ -34,4 +34,6 @@ public interface SimService {
 	public int countAll(Integer networkId, double priceFrom, double priceTo, Integer score,
 			Integer totalNumbers, String number, List<Integer> notContainNumbers, Integer simType);
 
+	public boolean simIsExist(String simNumber);
+	
 }
