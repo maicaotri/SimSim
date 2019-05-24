@@ -1,8 +1,3 @@
-<%-- 
-    Document   : menu_nav
-    Created on : Mar 25, 2019, 7:06:16 PM
-    Author     : Admin
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -142,14 +137,14 @@
 							<nav id="dropdown">
 								<ul class="mobile-menu-nav">
 									<li><a data-toggle="collapse" data-target="#Charts"
-										href="#">Quản lý sim <span
+										href="href="${pageContext.request.contextPath}/admin/sim/table">Quản lý sim <span
 											class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul class="collapse dropdown-header-top">
 										<li><a href="href="${pageContext.request.contextPath}/admin/sim/table">Danh sách sim</a></li>
 											<li><a href="${pageContext.request.contextPath}/admin/addSim">Thêm sim mới</a></li>
 										</ul></li>
 									<li><a data-toggle="collapse" data-target="#demoevent"
-										href="#">Quản lý User <span
+										href="${pageContext.request.contextPath}/admin/danhsach">Quản lý User <span
 											class="admin-project-icon edu-icon edu-down-arrow"></span></a>
 										<ul id="demoevent" class="collapse dropdown-header-top">
 											<li><a href="${pageContext.request.contextPath}/admin/danhsach">Danh sách tài khoản</a></li>

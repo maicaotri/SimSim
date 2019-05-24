@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -116,13 +117,15 @@ public class UserController {
 		int usernameIsExist = userService.usernameIsExist(username);
 		int emailIsExist = userService.emailIsExist(email);
 		if (usernameIsExist == 0 && emailIsExist == 0 && password.equals(rePassword)) {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
+			String hashedPassword = passwordEncoder.encode(password);
 			MainUser newUser = new MainUser();
 			newUser.setAdress(address);
 			newUser.setEmail(email);
 			newUser.setEnabled((byte) 1);
 			newUser.setfName(fName);
 			newUser.setlName(lName);
-			newUser.setPassword(password);
+			newUser.setPassword(hashedPassword);
 			newUser.setPhone(phone);
 			newUser.setRole("ROLE_USER");
 			newUser.setSex(sex);

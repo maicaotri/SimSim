@@ -69,10 +69,10 @@
 								<p id="usernameErr" style="color: red"></p>
 							</div>
 							<div class="form-group">
-								Sex <input type="radio" name="sex" id="inputSex" class="agree-term" required /> 
-									<label for="inputSex" class="label-agree-term">Male</label> 
+								Sex <input type="radio" name="sex" id="inputSex" class="agree-term" required checked="checked" /> 
+									<label for="inputSex" class="label-agree-term" value="Nam" >Nam</label> 
 									<input type="radio" name="sex" id="inputSex" class="agree-term" required />
-								<label for="inputSex" class="label-agree-term">Female</label>
+								<label for="inputSex" class="label-agree-term" value="Nữ" >Nữ</label>
 								<div class="help-block with-errors" style="color: red"></div>
 							</div>
 							<div class="form-group">

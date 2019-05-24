@@ -158,6 +158,8 @@
 	</div>
 	<script src="<c:url value="/resource/js/sim.js"/>"
 		type="text/javascript"></script>
+		
+		  
 	<script type="text/javascript">
 	
 	$( document ).ready(function() {

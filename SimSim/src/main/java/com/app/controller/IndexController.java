@@ -27,13 +27,6 @@ public class IndexController {
 		return new ModelAndView("trangchu");
 	}
 	
-	@RequestMapping("/trangchutest1")
-	public ModelAndView getTrangChuTest1(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		List<Sim> list = simService.getAll();
-		request.setAttribute("list", list);
-		return new ModelAndView("trangchuTest1");
-	}
-	
 	@RequestMapping("/footer")
 	public ModelAndView getFooter(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		return new ModelAndView("footer");
@@ -51,4 +44,5 @@ public class IndexController {
 		}
 		return "wellcome";
 	}
+	
 }
