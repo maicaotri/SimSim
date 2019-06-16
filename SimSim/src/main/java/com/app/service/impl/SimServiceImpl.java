@@ -14,7 +14,7 @@ import com.app.service.SimService;
 @Transactional
 public class SimServiceImpl implements SimService {
 	@Autowired
-	SimDao simDao;
+	private SimDao simDao;
 
 	public void add(Sim n) {
 		simDao.add(n);

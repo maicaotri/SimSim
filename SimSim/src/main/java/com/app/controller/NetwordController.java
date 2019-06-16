@@ -18,8 +18,7 @@ import com.app.service.NetwordService;
 @Controller
 public class NetwordController {
 	@Autowired
-	NetwordService networdService;
-	
+	private NetwordService networdService;
 	
 	@RequestMapping("/netword/list")
 	public @ResponseBody List<Netword> listUser(HttpServletRequest request, HttpServletResponse response, HttpSession session,

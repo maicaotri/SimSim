@@ -19,7 +19,7 @@ import com.app.service.UserService;
 @Controller
 public class LoginController {
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@RequestMapping("/dangnhap")
 	public String loginToSystem(HttpServletRequest request, HttpServletResponse response, HttpSession session, 

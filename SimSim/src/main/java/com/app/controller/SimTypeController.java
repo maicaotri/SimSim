@@ -18,7 +18,7 @@ import com.app.service.SimTypeService;
 @Controller
 public class SimTypeController {
 	@Autowired
-	SimTypeService simTypeService;
+	private SimTypeService simTypeService;
 
 	@RequestMapping("/simtype/list")
 	public @ResponseBody List<SimType> listUser(HttpServletRequest request, HttpServletResponse response,

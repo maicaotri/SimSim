@@ -26,9 +26,9 @@ import com.app.service.SimService;
 @Controller
 public class CartBillDetailController {
 	@Autowired
-	CartBillDetailService cartBillDetailService;
+	private CartBillDetailService cartBillDetailService;
 	@Autowired
-	SimService simService;
+	private SimService simService;
 
 	@RequestMapping(value = "/cartBillDetail/list", method = RequestMethod.GET)
 	public @ResponseBody List<CartBillDetail> listUser(HttpServletRequest request, HttpServletResponse response,

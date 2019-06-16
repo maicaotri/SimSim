@@ -29,11 +29,11 @@ import com.app.util.PageProcessing;
 @Controller
 public class SimController {
 	@Autowired
-	SimService simService;
+	private SimService simService;
 	@Autowired
-	SimTypeService simTypeService;
+	private SimTypeService simTypeService;
 	@Autowired
-	NetwordService networdService;
+	private NetwordService networdService;
 
 	@RequestMapping("/sim/list")
 	public @ResponseBody List<Sim> getAll(HttpServletRequest request, HttpServletResponse response, HttpSession session,

@@ -28,7 +28,7 @@ import com.app.util.PageProcessing;
 @Controller
 public class UserController {
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@RequestMapping("/admin/")
 	public ModelAndView getListUser(HttpServletRequest request, HttpServletResponse response, HttpSession session) {

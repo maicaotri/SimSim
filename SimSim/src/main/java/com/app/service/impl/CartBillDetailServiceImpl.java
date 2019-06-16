@@ -15,7 +15,7 @@ import com.app.service.CartBillDetailService;
 @Transactional
 public class CartBillDetailServiceImpl implements CartBillDetailService {
 	@Autowired
-	CartBillDetailDao cartBillDetailDao;
+	private CartBillDetailDao cartBillDetailDao;
 
 	public void add(CartBillDetail n) {
 		cartBillDetailDao.add(n);

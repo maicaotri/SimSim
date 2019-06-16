@@ -14,7 +14,7 @@ import com.app.service.BillService;
 @Transactional
 public class BillServiceImpl implements BillService {
 	@Autowired
-	BillDao billDao;
+	private BillDao billDao;
 
 	public void add(Bill n) {
 		billDao.add(n);

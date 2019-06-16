@@ -18,7 +18,7 @@ import com.app.service.SimService;
 @Controller
 public class IndexController {
 	@Autowired
-	SimService simService;
+	private SimService simService;
 
 	@RequestMapping("/trangchu")
 	public ModelAndView getTrangChu(HttpServletRequest request, HttpServletResponse response, HttpSession session) {

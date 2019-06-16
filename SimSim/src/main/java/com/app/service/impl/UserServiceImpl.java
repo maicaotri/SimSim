@@ -15,7 +15,7 @@ import com.app.service.UserService;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	UserDao userDao;
+	private UserDao userDao;
 
 	public void add(MainUser user) {
 		userDao.add(user);

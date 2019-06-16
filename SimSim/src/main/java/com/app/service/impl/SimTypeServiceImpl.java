@@ -14,7 +14,7 @@ import com.app.service.SimTypeService;
 @Transactional
 public class SimTypeServiceImpl implements SimTypeService {
 	@Autowired
-	SimTypeDao simTypeDao;
+	private SimTypeDao simTypeDao;
 
 	public void add(SimType n) {
 		simTypeDao.add(n);

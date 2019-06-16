@@ -18,7 +18,7 @@ import com.app.service.BillService;
 @Controller
 public class BillController {
 	@Autowired
-	BillService billService;
+	private BillService billService;
 
 	@RequestMapping("/bill/list")
 	public @ResponseBody List<Bill> listUser(HttpServletRequest request, HttpServletResponse response,

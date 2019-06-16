@@ -14,7 +14,7 @@ import com.app.service.NetwordService;
 @Transactional
 public class NetworServiceImpl implements NetwordService {
 	@Autowired
-	NetwordDao networdDao;
+	private NetwordDao networdDao;
 
 	public void add(Netword n) {
 		networdDao.add(n);
