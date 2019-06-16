@@ -179,6 +179,7 @@
 												<th data-field="phone">Tổng điểm</th>
 												<th data-field="task">Tình trạng</th>
 												<th data-field="enabled">Khả dụng</th>
+												<th data-field="enabled">Chi tiet</th>
 											</tr>
 										</thead>
 										<tbody id="appendData">
@@ -328,6 +329,8 @@
 		        	if(v.enabled==0){
 		        	tdEnabled.innerHTML ='Vô hiệu hóa';
 		        	}
+		        	var idEdit = document.createElement('td');
+		        	idEdit.innerHTML = "<a href='${pageContext.request.contextPath}/admin/sim/editsim/"+ v.id +"'><button class='btn btn-info'>Edit</button></a>";
 		        	
 		        	
 		        	tr.append(tdId);
@@ -338,6 +341,7 @@
 		        	tr.append(tdTotalNumber);
 		        	tr.append(tdSold);
 		        	tr.append(tdEnabled);
+		        	tr.append(idEdit);
 		        	$('#appendData').append(tr);
 		        });
 		        
