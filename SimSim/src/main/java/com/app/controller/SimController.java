@@ -35,34 +35,6 @@ public class SimController {
 	@Autowired
 	private NetwordService networdService;
 
-	@RequestMapping("/sim/list")
-	public @ResponseBody List<Sim> getAll(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
-
-		List<Sim> list = simService.getAll();
-		return list;
-	}
-
-	@RequestMapping(value = "/sim/findSim", method = RequestMethod.GET)
-	public ModelAndView findSim(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-			@RequestParam(name = "networdId", required = false) Integer networdId,
-			@RequestParam(name = "simTypeId", required = false) Integer simTypeId,
-			@RequestParam(name = "priceFrom", required = false, defaultValue = "0") double priceFrom,
-			@RequestParam(name = "priceTo", required = false, defaultValue = "10000000") double priceTo,
-			@RequestParam(name = "score", required = false) Integer score,
-			@RequestParam(name = "totalNumbers", required = false) Integer totalNumbers,
-			@RequestParam(name = "simFind", required = false) String number,
-			@RequestParam(name = "page", required = false, defaultValue = "1") int page,
-			@RequestParam(name = "size", required = false, defaultValue = "10") int size,
-			@RequestParam(name = "notContainNumbers", required = false) List<Integer> notContainNumbers,
-			@RequestHeader(name = "content-type", required = false, defaultValue = "UTF-8") String contentype) {
-
-		List<Sim> list = simService.findSim(networdId, priceFrom, priceTo, score, totalNumbers, number,
-				notContainNumbers, page, size, 1, 0, simTypeId);
-		request.setAttribute("list", list);
-		return new ModelAndView("trangchu");
-	}
-
 	@RequestMapping(value = "/sim/findSimDetail", method = RequestMethod.POST)
 	public @ResponseBody SimView findSimDetail(HttpServletRequest request, HttpServletResponse response,
 			HttpSession session, @RequestParam(name = "networkId", required = false) Integer networkId,
@@ -239,10 +211,6 @@ public class SimController {
 		return new ModelAndView("admin/sim_edit");
 	}
 
-	@RequestMapping(value = "/test")
-	public String test() {
-		return "admin/test";
-	}
 
 	public int sumOfNumbers(int numbers) {
 		int sum = 0;
